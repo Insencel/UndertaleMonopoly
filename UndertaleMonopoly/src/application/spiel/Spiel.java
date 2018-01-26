@@ -9,13 +9,20 @@ public class Spiel
 	private Spieler[] spieler;
 	
 	
+	public void spielen()
+	{
+		
+	}
+	
 	public void überLos()
 	{
 		
 	}
 	
-	public void spielen()
+	private void nächsterSpieler()
 	{
-		
+		spieler = {spieler[1], spieler[2], spieler[3], spieler[0]};
 	}
+	
+	
 }
