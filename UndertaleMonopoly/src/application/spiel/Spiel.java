@@ -8,10 +8,16 @@ public class Spiel
 	//TODO Überlegen wie ein Kartendeck funktioniert
 	private Spieler[] spieler;
 	
+	public Spiel()
+	{
+		this.spieler = new Spieler[] {new Spieler(), new Spieler(), new Spieler(), new Spieler()};
+		spielen();
+	}
+	
 	
 	public void spielen()
 	{
-		
+		nächsterSpieler();
 	}
 	
 	public void überLos()
@@ -21,7 +27,7 @@ public class Spiel
 	
 	private void nächsterSpieler()
 	{
-		spieler = {spieler[1], spieler[2], spieler[3], spieler[0]};
+		spieler = new Spieler[]{spieler[1], spieler[2], spieler[3], spieler[0]};
 	}
 	
 	

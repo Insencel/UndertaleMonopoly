@@ -13,7 +13,7 @@ public class Spieler {
 		this.gold = 1000;
 		this.position = 0;
 		String url = getClass().getResource("").toString();
-		this.bild = new ImageView(new Image(url, 0, 0, true, false));
+		//this.bild = new ImageView(new Image(url, 0, 0, true, false));
 	}
 	
 	public void überweisen(int gold, Spieler s)
