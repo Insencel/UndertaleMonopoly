@@ -10,7 +10,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try
 		{
-			FXMLLoader loader = new FXMLLoader();
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource(arg0));
 		}
 		primaryStage.show();
 	}
