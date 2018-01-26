@@ -23,20 +23,44 @@ public class Spieler {
 		s.setGold(gold+s.getGold());
 	}
 	
-	public void kaufen(Spielfeld sf)
+	public void kaufen(KaufbaresFeld kf)
 	{
-		
+		kf.setBesitzer(this);
+		this.gold -= gold;
 	}
 	
 	public void bewegen()
 	{
-		
+		this.position += this.würfel[0].würfeln()+this.würfel[1].würfeln();
 	}
 	
 	
 	
 	
 	
+	public ImageView getBild() {
+		return bild;
+	}
+
+	public void setBild(ImageView bild) {
+		this.bild = bild;
+	}
+
+	public int getPosition() {
+		return position;
+	}
+
+	public void setPosition(int position) {
+		this.position = position;
+	}
+
+	public Würfel[] getWürfel() {
+		return würfel;
+	}
+
+	public void setWürfel(Würfel[] würfel) {
+		this.würfel = würfel;
+	}
 	
 	public int getGold() {
 		return gold;
