@@ -31,7 +31,7 @@ public class Spieler {
 	
 	public void bewegen()
 	{
-		this.position += this.würfel[0].würfeln()+this.würfel[1].würfeln();
+		this.position += this.würfel[0].würfeln() + this.würfel[1].würfeln();
 	}
 	
 	
