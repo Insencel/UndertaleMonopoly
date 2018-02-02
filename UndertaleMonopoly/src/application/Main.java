@@ -11,22 +11,24 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+	public static Stage primaryStage;
+	
+	
 	@Override
 	public void start(Stage primaryStage)
 	{
-		
+		this.primaryStage = primaryStage;
 		try
 		{
-			System.out.println();
 			FXMLLoader loader = new FXMLLoader(Main.class.getResource("Startscreen.fxml"));
 			Scene scene = new Scene((Parent) loader.load());
-			primaryStage.setScene(scene);
+			this.primaryStage.setScene(scene);
 		}
 		catch (IOException e)
 		{
 			e.printStackTrace();
 		}
-		primaryStage.show();
+		this.primaryStage.show();
 	}
 
 	public static void main(String[] args) {
