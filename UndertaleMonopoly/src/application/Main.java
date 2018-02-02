@@ -17,18 +17,18 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage)
 	{
-		this.primaryStage = primaryStage;
+		Main.primaryStage = primaryStage;
 		try
 		{
 			FXMLLoader loader = new FXMLLoader(Main.class.getResource("Startscreen.fxml"));
 			Scene scene = new Scene((Parent) loader.load());
-			this.primaryStage.setScene(scene);
+			primaryStage.setScene(scene);
 		}
 		catch (IOException e)
 		{
 			e.printStackTrace();
 		}
-		this.primaryStage.show();
+		primaryStage.show();
 	}
 
 	public static void main(String[] args) {
