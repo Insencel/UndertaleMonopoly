@@ -17,6 +17,7 @@ public class Main extends Application {
 		
 		try
 		{
+			System.out.println();
 			FXMLLoader loader = new FXMLLoader(Main.class.getResource("Startscreen.fxml"));
 			Scene scene = new Scene((Parent) loader.load());
 			primaryStage.setScene(scene);
