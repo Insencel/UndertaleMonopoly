@@ -1,7 +1,8 @@
-package application;
+package application.gui;
 
 import java.io.IOException;
 
+import application.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,7 +23,18 @@ public class StartscreenController {
 		FXMLLoader loader = new FXMLLoader(Main.class.getResource("Spielfeld.fxml"));
 		try
 		{
-			if(btn2spieler.)
+			if(btn2spieler.isSelected())
+			{
+				
+			}
+			else if(btn3spieler.isSelected())
+			{
+				
+			}
+			else 
+			{
+				
+			}
 			
 			Scene scene = new Scene((Parent) loader.load());
 			Main.primaryStage.setScene(scene);

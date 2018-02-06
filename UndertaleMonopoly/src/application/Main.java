@@ -1,8 +1,8 @@
 package application;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import application.gui.StartscreenController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,7 +20,7 @@ public class Main extends Application {
 		Main.primaryStage = primaryStage;
 		try
 		{
-			FXMLLoader loader = new FXMLLoader(Main.class.getResource("Startscreen.fxml"));
+			FXMLLoader loader = new FXMLLoader(StartscreenController.class.getResource("Startscreen.fxml"));
 			Scene scene = new Scene((Parent) loader.load());
 			primaryStage.setScene(scene);
 		}
