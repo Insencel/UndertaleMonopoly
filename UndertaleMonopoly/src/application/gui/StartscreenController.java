@@ -20,22 +20,9 @@ public class StartscreenController {
 	@FXML
 	private void start()
 	{
-		FXMLLoader loader = new FXMLLoader(Main.class.getResource("Spielfeld.fxml"));
 		try
 		{
-			if(btn2spieler.isSelected())
-			{
-				
-			}
-			else if(btn3spieler.isSelected())
-			{
-				
-			}
-			else 
-			{
-				
-			}
-			
+			FXMLLoader loader = new FXMLLoader(StartscreenController.class.getResource("Spielfeld.fxml"));
 			Scene scene = new Scene((Parent) loader.load());
 			Main.primaryStage.setScene(scene);
 		}
@@ -43,6 +30,23 @@ public class StartscreenController {
 		{
 			e.printStackTrace();
 		}
+		
+		
+		if(btn2spieler.isSelected())
+		{
+			
+		}
+		else if(btn3spieler.isSelected())
+		{
+			
+		}
+		else 
+		{
+			
+		}
+			
+			
+	
 	}
 	
 }
