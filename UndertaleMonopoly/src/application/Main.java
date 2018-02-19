@@ -18,6 +18,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage)
 	{
 		Main.primaryStage = primaryStage;
+		
 		try
 		{
 			FXMLLoader loader = new FXMLLoader(StartscreenController.class.getResource("Startscreen.fxml"));

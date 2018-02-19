@@ -1,6 +1,6 @@
 package application.eventkarten;
 
-public class eventkarten {
+public class Eventkarten {
 
 	/*
 	 * Monsterkid schenkt dir 50G. [+50G]
