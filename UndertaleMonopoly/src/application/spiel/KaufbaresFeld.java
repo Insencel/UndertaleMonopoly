@@ -1,6 +1,6 @@
 package application.spiel;
 
-import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class KaufbaresFeld extends Spielfeld {
 	private Spieler besitzer;
@@ -10,7 +10,7 @@ public class KaufbaresFeld extends Spielfeld {
 	private byte häuser;
 	private boolean hotel;
 	
-	public KaufbaresFeld(Image bild, int preis, String typ)
+	public KaufbaresFeld(ImageView bild, int preis, String typ)
 	{
 		super(bild);
 		this.preis = preis;

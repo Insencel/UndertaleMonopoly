@@ -1,12 +1,12 @@
 package application.spiel;
 
-import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public abstract class Spielfeld
 {
-	protected Image bild;
+	protected ImageView bild;
 	
-	public Spielfeld(Image bild)
+	public Spielfeld(ImageView bild)
 	{
 		this.bild = bild;
 	}
