@@ -9,7 +9,7 @@ public class SpielDB {
 	
 	public void spielstandLaden()
 	{
-		db.auslesen(tabelle, query)
+		//db.auslesen(tabelle, query)
 	}
 	
 	public void neuesSpiel(String name, int spielerzahl)
