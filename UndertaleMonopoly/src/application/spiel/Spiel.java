@@ -16,9 +16,10 @@ public class Spiel
 		spielen();
 	}
 	
-	public Spiel(Spieler[] spieler)
+	public Spiel(int amZug, Spieler[] spieler)
 	{
-		
+		this.amZug = amZug;
+		this.spieler = spieler;
 	}
 	
 	
@@ -45,5 +46,8 @@ public class Spiel
 		
 	}
 	
-	
+	public void setSpieler(Spieler[] s)
+	{
+		this.spieler = s;
+	}
 }

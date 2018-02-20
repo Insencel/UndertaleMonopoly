@@ -18,13 +18,7 @@ public class Datenbank {
 			verbindung = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "");
 			
 			Statement anweisung = verbindung.createStatement();
-			anweisung.executeUpdate(
-				"CREATE TABLE IF NOT EXISTS UndertaleMonopoly.spieler(" +
-					"SPIELERID INT NOT NULL Auto_Increment, " +
-					"GOLD INT NOT NULL, " +
-					"POSITION INT NOT NULL," +
-					"SPIELID INT NOT NULL " +
-				")");
+			
 			
 			anweisung.executeUpdate(
 					"CREATE TABLE IF NOT EXISTS UndertaleMonopoly.spiel(" +
@@ -35,11 +29,20 @@ public class Datenbank {
 					")");
 			
 			anweisung.executeUpdate(
+				"CREATE TABLE IF NOT EXISTS UndertaleMonopoly.spieler(" +
+					"SPIELERID INT NOT NULL Auto_Increment, " +
+					"GOLD INT NOT NULL, " +
+					"POSITION INT NOT NULL," +
+					"SPIELID INT NOT NULL " +
+				")");
+			
+			anweisung.executeUpdate(
 					"CREATE TABLE IF NOT EXISTS UndertaleMonopoly.spielfelder(" +
 						"SPIELFELDERID INT NOT NULL Auto_Increment, " +
-						"SPIELID INT NOT NULL" +
+						"SPIELID INT NOT NULL, " +
 						"SPIELERID INT " +
 					")");
+			
 		}
 		catch(ClassNotFoundException e)
 		{
@@ -74,7 +77,7 @@ public class Datenbank {
 		try	
 		{
 			Statement anweisung = verbindung.createStatement();
-			rs = anweisung.executeQuery("SELECT * FROM UndertaleMonopoly." + tabelle + "KONTAKTE" + query);
+			rs = anweisung.executeQuery("SELECT * FROM UndertaleMonopoly." + tabelle + query);
 		}
 		catch (SQLException e)
 		{
@@ -89,7 +92,7 @@ public class Datenbank {
 		try
 		{
 			Statement anweisung = verbindung.createStatement();
-			anweisung.executeUpdate("DELETE FROM UndertaleMonopoly." + tabelle + "kontakte WHERE " + query);
+			anweisung.executeUpdate("DELETE FROM UndertaleMonopoly." + tabelle + " WHERE " + query);
 		}
 		catch (SQLException e)
 		{

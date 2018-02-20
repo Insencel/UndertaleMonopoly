@@ -1,6 +1,5 @@
 package application.spiel;
 
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Spieler {
@@ -9,11 +8,16 @@ public class Spieler {
 	private int position;
 	private Würfel[] würfel = {new Würfel(), new Würfel()}; //Die zwei Würfel
 	
-	public Spieler(){
+	public Spieler()
+	{
 		this.gold = 1000;
 		this.position = 0;
-		String url = getClass().getResource("").toString();
-		//this.bild = new ImageView(new Image(url, 0, 0, true, false));
+	}
+	
+	public Spieler(int gold, int position)
+	{
+		this.gold = gold;
+		this.position = position;
 	}
 	
 	public void überweisen(int gold, Spieler s)
