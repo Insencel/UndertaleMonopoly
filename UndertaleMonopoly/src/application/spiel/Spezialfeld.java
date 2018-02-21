@@ -1,14 +1,13 @@
 package application.spiel;
 
-import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public abstract class Spezialfeld extends Spielfeld
 {
 	
-	public Spezialfeld(Image bild, String name)
+	public Spezialfeld(ImageView bild, String name)
 	{
-		super(bild);
-		this.bild = bild;
+		//super(bild);
 	}
 	
 	@Override

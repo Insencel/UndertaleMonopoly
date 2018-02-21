@@ -1,20 +1,17 @@
 package application.spiel;
 
-import javafx.scene.image.ImageView;
 
 public class KaufbaresFeld extends Spielfeld {
 	private Spieler besitzer;
 	private final int preis;
-	private String typ;
-	//TODO eventuell typ auf ENUM umändern
+	private Spielfeldgebiet gebiet;
 	private byte häuser;
 	private boolean hotel;
 	
-	public KaufbaresFeld(ImageView bild, int preis, String typ)
+	public KaufbaresFeld(int preis, Spielfeldgebiet gebiet)
 	{
-		super(bild);
 		this.preis = preis;
-		this.typ = typ;
+		this.gebiet = gebiet;
 	}
 	
 	@Override

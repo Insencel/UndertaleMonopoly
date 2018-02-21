@@ -3,9 +3,11 @@ package application.datenbankanbindung;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 import application.spiel.Spiel;
 import application.spiel.Spieler;
+import application.spiel.Spielfeld;
 
 public class SpielDB {
 
@@ -19,13 +21,21 @@ public class SpielDB {
 			ResultSet spielerSet = db.auslesen("spiel", " WHERE SPIELID='" + spielSet.getString("SPIELID") + "'");
 			ResultSet spielfelderSet = db.auslesen("spielfelder", "WHERE SPIELID='" + spielSet.getString("SPIELID") + "'");
 			
+			ArrayList<Spieler> s = new ArrayList<Spieler>();
 			
-			
-			for(spielerSet.next())
+			do
 			{
-				s = {new Spieler(Integer.parseInt(spielerSet.getString("GOLD")), Integer.parseInt(spielerSet.getString("POSITION")))};
+				s.add(new Spieler(Integer.parseInt(spielerSet.getString("GOLD")), Integer.parseInt(spielerSet.getString("POSITION"))));
 			}
+			while(spielerSet.next());
 			
+			ArrayList<Spielfeld> sf = new ArrayList<Spielfeld>();
+			
+			do
+			{
+				//sf.add(new Spielfeld(Integer.parseInt(spielerSet.getString("PREIS")), Integer.parseInt(spielerSet.getString("POSITION"))));
+			}
+			while(spielerSet.next());
 		}
 		catch (SQLException e)
 		{
