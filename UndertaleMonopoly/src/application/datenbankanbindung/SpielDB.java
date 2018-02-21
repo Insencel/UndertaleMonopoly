@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+import javax.naming.spi.DirStateFactory.Result;
+
 import application.spiel.Spiel;
 import application.spiel.Spieler;
 import application.spiel.Spielfeld;
@@ -71,5 +73,24 @@ public class SpielDB {
 		{
 			e.printStackTrace();
 		}
+	}
+	
+	public boolean isSpielExistent(String name)
+	{
+		boolean b = false;
+		
+		ResultSet rs = db.auslesen("spiel", "WHERE SPIELNAME='" + name + "'");
+		try {
+			if(rs.getString("SPIELID") != null)
+			{
+				b=true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return b;
+		
 	}
 }

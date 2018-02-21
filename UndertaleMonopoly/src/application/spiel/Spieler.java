@@ -1,10 +1,8 @@
 package application.spiel;
 
-import javafx.scene.image.ImageView;
 
 public class Spieler {
 	private int gold;
-	private ImageView bild;
 	private int position;
 	private Würfel[] würfel = {new Würfel(), new Würfel()}; //Die zwei Würfel
 	
@@ -42,14 +40,6 @@ public class Spieler {
 	
 	
 	
-	public ImageView getBild() {
-		return bild;
-	}
-
-	public void setBild(ImageView bild) {
-		this.bild = bild;
-	}
-
 	public int getPosition() {
 		return position;
 	}
