@@ -12,10 +12,10 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="920.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.gui.StartscreenController{">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="920.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="920.0" stroke="RED" strokeType="INSIDE" strokeWidth="0.0" width="1280.0" />
-      <GridPane fx:id="gp1" prefHeight="920.0" prefWidth="1280.0">
+      <GridPane prefHeight="920.0" prefWidth="1280.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="914.0" minWidth="10.0" />
@@ -47,7 +47,7 @@
             </ImageView>
          </children>
       </GridPane>
-      <GridPane fx:id="gp2" prefHeight="920.0" prefWidth="1280.0" visible="false">
+      <GridPane prefHeight="920.0" prefWidth="1280.0" visible="false">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
