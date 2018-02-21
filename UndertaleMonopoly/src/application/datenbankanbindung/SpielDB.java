@@ -13,7 +13,7 @@ import application.spiel.Spielfeld;
 
 public class SpielDB {
 
-	private Datenbank db;
+	private Datenbank db = new Datenbank();
 	
 	public Spiel spielstandLaden(String name)
 	{

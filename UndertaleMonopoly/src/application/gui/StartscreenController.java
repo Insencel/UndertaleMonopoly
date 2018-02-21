@@ -1,7 +1,6 @@
 package application.gui;
 
 import java.io.IOException;
-import java.net.URL;
 
 import application.Main;
 import application.datenbankanbindung.SpielDB;
@@ -91,11 +90,11 @@ public class StartscreenController
 	public void startmoeglich()
 	{
 		System.out.println("HI");
-		//if(!sdb.isSpielExistent(tf.getText()))
+		if(!sdb.isSpielExistent(tf.getText()))
 		{
 			System.out.println("Yay");
 		}
-		//else
+		else
 		{
 			System.out.println("WTF?!?!?!");
 		}

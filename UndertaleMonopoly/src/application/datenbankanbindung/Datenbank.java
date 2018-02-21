@@ -22,25 +22,28 @@ public class Datenbank {
 			
 			anweisung.executeUpdate(
 					"CREATE TABLE IF NOT EXISTS UndertaleMonopoly.spiel(" +
-						"SPIELID INT NOT NULL Auto_Increment, " +
-						"AMZUG INT, " +
-						"SPIELNAME VARCHAR(32), " +
-						"ZULETZTGESPEICHERT TIMESTAMP " +
+						"SpielID INT NOT NULL Auto_Increment, " +
+						"AmZug INT, " +
+						"Spielname VARCHAR(32), " +
+						"ZuletztGespeichert TIMESTAMP, " +
+						"PRIMARY KEY (`SpielID`) " +
 					")");
 			
 			anweisung.executeUpdate(
 				"CREATE TABLE IF NOT EXISTS UndertaleMonopoly.spieler(" +
-					"SPIELERID INT NOT NULL Auto_Increment, " +
-					"GOLD INT NOT NULL, " +
-					"POSITION INT NOT NULL," +
-					"SPIELID INT NOT NULL " +
+					"SpielerID INT NOT NULL Auto_Increment, " +
+					"Gold INT NOT NULL, " +
+					"Position INT NOT NULL," +
+					"SpielID INT NOT NULL, " +
+					"PRIMARY KEY (`SPIELERID`) " +
 				")");
 			
 			anweisung.executeUpdate(
 					"CREATE TABLE IF NOT EXISTS UndertaleMonopoly.spielfelder(" +
-						"SPIELFELDERID INT NOT NULL Auto_Increment, " +
-						"SPIELID INT NOT NULL, " +
-						"SPIELERID INT " +
+						"SpielfelderID INT NOT NULL Auto_Increment, " +
+						"SpielID INT NOT NULL, " +
+						"SpielerID INT, " +
+						"PRIMARY KEY (`SpielfelderID`) " +
 					")");
 			
 		}
@@ -77,11 +80,11 @@ public class Datenbank {
 		try	
 		{
 			Statement anweisung = verbindung.createStatement();
-			rs = anweisung.executeQuery("SELECT * FROM UndertaleMonopoly." + tabelle + query);
+			//rs = anweisung.executeQuery("SELECT * FROM UndertaleMonopoly." + tabelle + query);
 		}
 		catch (SQLException e)
 		{
-			System.out.println("Auslesen funktioniert nicht");
+			System.out.println("Fehler beim Auslesen");
 			e.printStackTrace();
 		}
 		return rs;
