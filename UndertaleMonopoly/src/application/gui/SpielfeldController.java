@@ -63,6 +63,7 @@ public class SpielfeldController
 	}
 	
 	
+	@SuppressWarnings("static-access")
 	@FXML
 	public void bewegen()
 	{
@@ -71,7 +72,34 @@ public class SpielfeldController
 		würfelL.setImage(new Image("bilder/würfel/Würfel " + (würfel[0] +1) + ".jpg"));
 		würfelR.setImage(new Image("bilder/würfel/Würfel " + (würfel[1] +1) + ".jpg"));
 		
-		int spielerBewegen = spiel.getSpieler()[]getAmZug()-1;
+		int zuBewegenderSpieler = spiel.getAmZug() -1;
+		if(zuBewegenderSpieler<0)
+		{
+			zuBewegenderSpieler = spiel.getSpieler().length;
+		}
+		
+		int spielerPosition = spiel.getSpieler()[zuBewegenderSpieler].getPosition();
+		
+		int[] position = spiel.getTabellenposition(spielerPosition);
+		switch(zuBewegenderSpieler)
+		{
+		case 0:
+			gp.setColumnIndex(sp1, position[0]);
+			gp.setRowIndex(sp1, position[1]);
+			break;
+		case 1:
+			gp.setColumnIndex(sp2, position[0]);
+			gp.setRowIndex(sp2, position[1]);
+			break;
+		case 2:
+			gp.setColumnIndex(sp3, position[0]);
+			gp.setRowIndex(sp3, position[1]);
+			break;
+		case 3:
+			gp.setColumnIndex(sp4, position[0]);
+			gp.setRowIndex(sp4, position[1]);
+			break;
+		}
 	}
 	
 	
