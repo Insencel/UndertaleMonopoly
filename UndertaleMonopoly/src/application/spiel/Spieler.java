@@ -4,7 +4,6 @@ package application.spiel;
 public class Spieler {
 	private int gold;
 	private int position;
-	private Würfel[] würfel = {new Würfel(), new Würfel()}; //Die zwei Würfel
 	public final static int startkapital = 1500;
 	
 	public Spieler()
@@ -31,12 +30,6 @@ public class Spieler {
 		kf.setBesitzer(this);
 		this.gold -= gold;
 	}
-	
-	public void bewegen()
-	{
-		this.position += this.würfel[0].würfeln() + this.würfel[1].würfeln();
-	}
-	
 	
 	
 	
