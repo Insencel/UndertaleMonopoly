@@ -80,10 +80,13 @@ public class StartscreenController
 	{
 		try
 		{
-			sdb.spielstandLaden(tv.getSelectionModel().getSelectedItem().spielname);;
 			FXMLLoader loader = new FXMLLoader(StartscreenController.class.getResource("Spielfeld.fxml"));
 			Scene scene = new Scene((Parent) loader.load());
 			Main.primaryStage.setScene(scene);
+			sdb.spielstandLaden(tv.getSelectionModel().getSelectedItem().spielname);;
+			
+			
+			
 		}
 		catch (IOException e)
 		{

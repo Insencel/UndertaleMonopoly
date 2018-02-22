@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Spiel
 {
 	private Spielfeld[] spielfelder = {new KaufbaresFeld(60, Spielfeldgebiet.RUINS)};
-	private final int[][] tabellenposition = {{1, 10}, {1, 9}, {1, 8}, {1, 7}, {1, 6}, {1, 5}, {1, 4}, {1, 3}, {1, 2}, {1, 1}, {2, 1}, {3, 1}, {4, 1}, {5, 1}, {6, 1}, {7, 1}, {8, 1}, {9, 1}, {10, 1}, {10, 2}, {10, 3}, {10, 4}, {10, 5}, {10, 6}, {10, 7}, {10, 8}, {10, 9}, {10, 10}, {9, 10}, {8, 10},{7, 10}, {6, 10}, {5, 10}, {4, 10}, {3, 10}, {2, 10}};
+	private final int[][] tabellenposition = {{1, 11}, {1, 10}, {1, 9}, {1, 8}, {1, 7}, {1, 6}, {1, 5}, {1, 4}, {1, 3}, {1, 2}, {1, 1}, {2, 1}, {3, 1}, {4, 1}, {5, 1}, {6, 1}, {7, 1}, {8, 1}, {9, 1}, {10, 1}, {11,1} , {11, 2}, {11, 3}, {11, 4}, {11, 5}, {11, 6}, {11, 7}, {11, 8}, {11, 9}, {11, 10}, {11, 11}, {10, 11}, {9, 11}, {8, 11},{7, 11}, {6, 11}, {5, 11}, {4, 11}, {3, 11}, {2, 11}};
 	//TODO Überlegen wie ein Kartendeck funktioniert
 	private Spieler[] spieler;
 	private int amZug;
@@ -64,9 +64,30 @@ public class Spiel
 		}
 		
 	}
+
 	
-	public void setSpieler(Spieler[] s)
-	{
-		this.spieler = s;
+	
+	
+	
+	public int getAmZug() {
+		return amZug;
 	}
+
+	public void setAmZug(int amZug) {
+		this.amZug = amZug;
+	}
+
+	public Spielfeld[] getSpielfelder() {
+		return spielfelder;
+	}
+
+	public int[] getTabellenposition(int i) {
+		return tabellenposition[i];
+	}
+
+	public Spieler[] getSpieler() {
+		return spieler;
+	}
+	
+	
 }
