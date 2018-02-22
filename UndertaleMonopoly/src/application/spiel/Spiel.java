@@ -1,5 +1,6 @@
 package application.spiel;
 
+import java.util.ArrayList;
 
 public class Spiel
 {
@@ -12,14 +13,14 @@ public class Spiel
 	public Spiel()
 	{
 		this.spieler = new Spieler[] {new Spieler(), new Spieler(), new Spieler(), new Spieler()};
-		spielen();
+		this.amZug = 0;
 	}
 	
-	public Spiel(int amZug, Spieler[] spieler, Spielfeld[] spielfelder)
+	public Spiel(int amZug, ArrayList<Spieler> spieler, ArrayList<Integer> besitzer)
 	{
 		this.amZug = amZug;
-		this.spieler = spieler;
-		ersetzeKaufbareFelder(spielfelder);
+		this.spieler = spieler.toArray(new Spieler[spieler.size()]);
+		setzeBesitzer(besitzer);
 	}
 	
 	
@@ -37,15 +38,16 @@ public class Spiel
 		
 	}
 	
-	private void ersetzeKaufbareFelder(Spielfeld[] kaufbareFelder)
+	private void setzeBesitzer(ArrayList<Integer> besitzer)
 	{
-		int kaufbaresFeldCounter = 0;
+		int besitzerCounter = 0;
 		
-		for(int i = 0; i<this.spielfelder.length; i++, kaufbaresFeldCounter++)
+		for(int i = 0; i<this.spielfelder.length; i++, besitzerCounter++)
 		{
 			if(this.spielfelder[i] instanceof KaufbaresFeld)
 			{
-				this.spielfelder[i] = kaufbareFelder[kaufbaresFeldCounter];
+				KaufbaresFeld k = (KaufbaresFeld) this.spielfelder[i];
+				k.setBesitzer(spieler[besitzer.get(besitzerCounter)]);
 			}
 		}
 	}

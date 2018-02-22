@@ -5,10 +5,11 @@ public class Spieler {
 	private int gold;
 	private int position;
 	private Würfel[] würfel = {new Würfel(), new Würfel()}; //Die zwei Würfel
+	public final static int startkapital = 1500;
 	
 	public Spieler()
 	{
-		this.gold = 1000;
+		this.gold = startkapital;
 		this.position = 0;
 	}
 	
@@ -48,14 +49,6 @@ public class Spieler {
 		this.position = position;
 	}
 
-	public Würfel[] getWürfel() {
-		return würfel;
-	}
-
-	public void setWürfel(Würfel[] würfel) {
-		this.würfel = würfel;
-	}
-	
 	public int getGold() {
 		return gold;
 	}

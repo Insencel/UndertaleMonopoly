@@ -7,9 +7,13 @@ import java.util.ArrayList;
 
 import javax.naming.spi.DirStateFactory.Result;
 
+import application.gui.SpielfeldController;
+import application.gui.Spielstand;
 import application.spiel.Spiel;
 import application.spiel.Spieler;
 import application.spiel.Spielfeld;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class SpielDB {
 
@@ -17,56 +21,71 @@ public class SpielDB {
 	
 	public Spiel spielstandLaden(String name)
 	{
+		Spiel s;
+		
 		try
 		{
-			ResultSet spielSet = db.auslesen("spiel", " WHERE SPIELNAME='" + name + "'");
-			ResultSet spielerSet = db.auslesen("spiel", " WHERE SPIELID='" + spielSet.getString("SPIELID") + "'");
-			ResultSet spielfelderSet = db.auslesen("spielfelder", "WHERE SPIELID='" + spielSet.getString("SPIELID") + "'");
+			ResultSet spielSet = db.auslesen("spiel", " WHERE Spielname='" + name + "'");
 			
-			ArrayList<Spieler> s = new ArrayList<Spieler>();
-			
-			do
+			if(spielSet.next())
 			{
-				s.add(new Spieler(Integer.parseInt(spielerSet.getString("GOLD")), Integer.parseInt(spielerSet.getString("POSITION"))));
+				ResultSet spielerSet = db.auslesen("spieler", " WHERE SpielID='" + spielSet.getString("SpielID") + "'");
+				ResultSet spielfelderSet = db.auslesen("spielfelder", "WHERE SpielID='" + spielSet.getString("SpielID") + "'");
+			
+				ArrayList<Spieler> sp = new ArrayList<Spieler>();
+			
+				while(spielerSet.next())
+				{
+					sp.add(new Spieler(Integer.parseInt(spielerSet.getString("Gold")), Integer.parseInt(spielerSet.getString("Position"))));
+				}
+			
+			
+				ArrayList<Integer> sf = new ArrayList<Integer>();
+			
+				while(spielfelderSet.next())
+				{
+					sf.add( spielfelderSet.getInt("SpielerID"));
+				}
+			
+				s = new Spiel(spielSet.getInt("AmZug"), sp, sf);
+				
+				SpielfeldController.spiel = s;
 			}
-			while(spielerSet.next());
-			
-			ArrayList<Spielfeld> sf = new ArrayList<Spielfeld>();
-			
-			do
+			else
 			{
-				//sf.add(new Spielfeld(Integer.parseInt(spielerSet.getString("PREIS")), Integer.parseInt(spielerSet.getString("POSITION"))));
+				throw new SQLException();
 			}
-			while(spielerSet.next());
+			
 		}
 		catch (SQLException e)
 		{
 			System.out.println("Laden nicht möglich");
 			e.printStackTrace();
+			s = new Spiel();
 		}
-		
-		Spiel s = new Spiel();
 		
 		return s;
 	}
 	
 	public void neuesSpiel(String name, int spielerzahl)
 	{
-		db.einlesen("spiel", "AMZUG, SPIELNAME, ZULETZTGESPEICHERT", "0, " + name + ", " + new Timestamp(System.currentTimeMillis()).toString());
+		db.einlesen("spiel", "AmZug, Spielname", "0, '" + name + "'");
 
 		try
 		{
-			String spielID = db.auslesen("spielfelder", "WHERE SPIELNAME ='" + name + "'").getString("SPIELID");
+			ResultSet rs =  db.auslesen("spiel", "WHERE Spielname ='" + name + "'");
+			rs.next();
+			String spielID = rs.getString("SpielID");
 			
 			for(int i = 0; i<10; i++)
 			{
-				db.einlesen("spielfelder", "SPIELID", spielID);
+				db.einlesen("spielfelder", "SpielID", spielID);
 			}
 			
 			
 			for(int i = 0; i<spielerzahl; i++)
 			{
-				db.einlesen("spieler", "GOLD, POSITION, SPIELID", "100, 0, " + spielID);
+				db.einlesen("spieler", "Gold, Position, SpielID", Spieler.startkapital + ", 0, " + spielID);
 			}
 		}
 		catch (SQLException e)
@@ -79,18 +98,40 @@ public class SpielDB {
 	{
 		boolean b = false;
 		
-		ResultSet rs = db.auslesen("spiel", "WHERE SPIELNAME='" + name + "'");
+		ResultSet rs = db.auslesen("spiel", "WHERE Spielname = '" + name + "'");
+		
 		try {
-			if(rs.getString("SPIELID") != null)
+			if(rs.next())
 			{
 				b=true;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.printStackTrace(); 
 		}
 		
 		return b;
 		
+	}
+	
+	public ObservableList<Spielstand> alleSpielständeLaden()
+	{
+		ArrayList<Spielstand> spielständeAl = new ArrayList<Spielstand>();
+		
+		ResultSet rs = db.auslesen("spiel", "");
+		
+		try
+		{
+			while(rs.next())
+			{
+				spielständeAl.add(new Spielstand(rs.getString("Spielname"), rs.getString("ZuletztGespielt")));
+			}
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		ObservableList<Spielstand> spielstände = FXCollections.observableList(spielständeAl);
+		return spielstände;
 	}
 }

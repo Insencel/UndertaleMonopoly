@@ -25,8 +25,8 @@ public class Datenbank {
 						"SpielID INT NOT NULL Auto_Increment, " +
 						"AmZug INT, " +
 						"Spielname VARCHAR(32), " +
-						"ZuletztGespeichert TIMESTAMP, " +
-						"PRIMARY KEY (`SpielID`) " +
+						"ZuletztGespielt TIMESTAMP, " +
+						"PRIMARY KEY (SpielID) " +
 					")");
 			
 			anweisung.executeUpdate(
@@ -35,7 +35,7 @@ public class Datenbank {
 					"Gold INT NOT NULL, " +
 					"Position INT NOT NULL," +
 					"SpielID INT NOT NULL, " +
-					"PRIMARY KEY (`SPIELERID`) " +
+					"PRIMARY KEY (SPIELERID) " +
 				")");
 			
 			anweisung.executeUpdate(
@@ -43,7 +43,7 @@ public class Datenbank {
 						"SpielfelderID INT NOT NULL Auto_Increment, " +
 						"SpielID INT NOT NULL, " +
 						"SpielerID INT, " +
-						"PRIMARY KEY (`SpielfelderID`) " +
+						"PRIMARY KEY (SpielfelderID) " +
 					")");
 			
 		}
@@ -65,11 +65,11 @@ public class Datenbank {
 			
 			Statement anweisung = verbindung.createStatement();
 			anweisung.executeUpdate("INSERT INTO UndertaleMonopoly." + tabelle + "(" + spalten + ") VALUES(" + values + ")");
-			
+			//anweisung.executeUpdate("INSERT INTO UndertaleMonopoly.spiel (AmZug, Spielname) VALUES (0, Test)");
 		}
 		catch (SQLException e)
 		{
-			
+			e.printStackTrace();
 			System.out.println("Einlesen funktioniert nicht");
 		}
 	}
@@ -80,7 +80,8 @@ public class Datenbank {
 		try	
 		{
 			Statement anweisung = verbindung.createStatement();
-			//rs = anweisung.executeQuery("SELECT * FROM UndertaleMonopoly." + tabelle + query);
+			rs = anweisung.executeQuery("SELECT * FROM UndertaleMonopoly." + tabelle + " " + query);
+			
 		}
 		catch (SQLException e)
 		{
