@@ -1,6 +1,7 @@
 package application.spiel;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Spiel
 {
@@ -9,6 +10,7 @@ public class Spiel
 	//TODO Überlegen wie ein Kartendeck funktioniert
 	private Spieler[] spieler;
 	private int amZug;
+	private int paschcounter;
 	
 	public Spiel()
 	{
@@ -23,15 +25,36 @@ public class Spiel
 		setzeBesitzer(besitzer);
 	}
 	
-	
-	
-	
-	
-
-	public void spielen()
+	public int[] momentanenSpielerBewegen()
 	{
-		nächsterSpieler();
+		Random rdm = new Random();
+		int[] würfel = {rdm.nextInt(), rdm.nextInt()};
+		
+		for(int i = 0; i<würfel.length; i++)
+		{
+			spieler[amZug].setPosition(spieler[amZug].getPosition() + würfel[i]);
+		}
+		
+		if(spieler[amZug].getPosition()>tabellenposition.length)
+		{
+			spieler[amZug].setPosition(spieler[amZug].getPosition()-tabellenposition.length);
+		}
+		
+		if(würfel[0] == würfel[1])
+		{
+			paschcounter++;
+		}
+		else
+		{
+			paschcounter = 0;
+			nächsterSpieler();
+		}
+		
+		return würfel;
 	}
+	
+	
+	
 	
 	public void überLos()
 	{
@@ -60,14 +83,16 @@ public class Spiel
 		}
 		else
 		{
-			amZug = amZug+1;
+			amZug++;
 		}
 		
 	}
 
 	
 	
-	
+	public int getPaschcounter() {
+		return paschcounter;
+	}
 	
 	public int getAmZug() {
 		return amZug;
