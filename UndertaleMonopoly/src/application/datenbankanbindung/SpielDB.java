@@ -61,7 +61,7 @@ public class SpielDB {
 		{
 			System.out.println("Laden nicht möglich");
 			e.printStackTrace();
-			s = new Spiel();
+			s = new Spiel(4);
 		}
 		
 		return s;
@@ -87,6 +87,7 @@ public class SpielDB {
 			{
 				db.einlesen("spieler", "Gold, Position, SpielID", Spieler.startkapital + ", 0, " + spielID);
 			}
+			SpielfeldController.spiel = new Spiel(spielerzahl);
 		}
 		catch (SQLException e)
 		{

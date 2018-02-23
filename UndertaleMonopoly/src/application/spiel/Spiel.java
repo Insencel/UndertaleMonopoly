@@ -12,9 +12,13 @@ public class Spiel
 	private int amZug;
 	private int paschcounter;
 	
-	public Spiel()
+	public Spiel(int spieleranzahl)
 	{
-		this.spieler = new Spieler[] {new Spieler(), new Spieler(), new Spieler(), new Spieler()};
+		spieler = new Spieler[spieleranzahl];
+		for(int i = 0; i<spieler.length; i++)
+		{
+			this.spieler[i] = new Spieler();
+		}
 		this.amZug = 0;
 	}
 	
@@ -28,14 +32,15 @@ public class Spiel
 	public int[] momentanenSpielerBewegen()
 	{
 		Random rdm = new Random();
-		int[] würfel = {rdm.nextInt(), rdm.nextInt()};
+		int[] würfel = {rdm.nextInt(6)+1, rdm.nextInt(6)+1};
+		
 		
 		for(int i = 0; i<würfel.length; i++)
 		{
 			spieler[amZug].setPosition(spieler[amZug].getPosition() + würfel[i]);
 		}
 		
-		if(spieler[amZug].getPosition()>tabellenposition.length)
+		if(spieler[amZug].getPosition()>=tabellenposition.length)
 		{
 			spieler[amZug].setPosition(spieler[amZug].getPosition()-tabellenposition.length);
 		}
@@ -89,6 +94,19 @@ public class Spiel
 	}
 
 	
+	public int getIndexOfTabellenposition(int[] gesucht)
+	{
+		int rückgabe = -1;
+		for(int i = 0; i < tabellenposition.length; i++)
+		{
+			if(tabellenposition[i][0] == gesucht[0]   &&   tabellenposition[i][1] == gesucht[1])
+			{
+				rückgabe = i;
+			}
+		}
+		
+		return rückgabe;
+	}
 	
 	public int getPaschcounter() {
 		return paschcounter;
@@ -108,6 +126,10 @@ public class Spiel
 
 	public int[] getTabellenposition(int i) {
 		return tabellenposition[i];
+	}
+	
+	public int[][] getTabellenposition() {
+		return tabellenposition;
 	}
 
 	public Spieler[] getSpieler() {

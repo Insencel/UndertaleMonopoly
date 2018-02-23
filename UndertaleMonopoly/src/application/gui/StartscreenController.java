@@ -40,7 +40,7 @@ public class StartscreenController
 	@FXML
 	private ImageView start;
 	@FXML
-	private Label spielExistent;-
+	private Label spielExistent;
 	@FXML
 	private ImageView zwei;
 	@FXML
@@ -66,8 +66,9 @@ public class StartscreenController
 			sdb.neuesSpiel(tf.getText(), this.spieleranzahl);
 			FXMLLoader loader = new FXMLLoader(StartscreenController.class.getResource("Spielfeld.fxml"));
 			Scene scene = new Scene((Parent) loader.load());
-			scene.setRoot((Parent) loader.load());
 			Main.primaryStage.setScene(scene);
+			
+			
 		}
 		catch (IOException e)
 		{
@@ -83,9 +84,8 @@ public class StartscreenController
 		{
 			FXMLLoader loader = new FXMLLoader(StartscreenController.class.getResource("Spielfeld.fxml"));
 			Scene scene = new Scene((Parent) loader.load());
-			scene.setRoot((Parent) loader.load());
 			Main.primaryStage.setScene(scene);
-			sdb.spielstandLaden(tv.getSelectionModel().getSelectedItem().spielname);;
+			sdb.spielstandLaden(tv.getSelectionModel().getSelectedItem().spielname);
 			
 			
 			
