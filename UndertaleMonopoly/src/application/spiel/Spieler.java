@@ -1,5 +1,6 @@
 package application.spiel;
 
+import application.spiel.spielfelder.KaufbaresFeld;
 
 public class Spieler {
 	private int gold;
@@ -11,7 +12,7 @@ public class Spieler {
 		this.gold = startkapital;
 		this.position = 0;
 	}
-	
+		
 	public Spieler(int gold, int position)
 	{
 		this.gold = gold;
@@ -22,17 +23,31 @@ public class Spieler {
 	{
 		//TODO überweisen von Gold an einen anderen Spieler
 		this.gold -= gold;
-		s.setGold(gold+s.getGold());
+		
+		//Bei s==null heißt es, dass der Spieler Gold an die Bank gibt (Bank hat unendlich Geld, deswegen verliert der Spieler das Geld hier einfach)
+		if(s!=null)
+		{
+			s.plusGold(gold);
+		}
 	}
+	
 	
 	public void kaufen(KaufbaresFeld kf)
 	{
 		kf.setBesitzer(this);
-		this.gold -= gold;
+		this.gold -= kf.getPreis();
 	}
 	
 	
+	public void plusGold(int gold)
+	{
+		this.gold+=gold;
+	}
 	
+	public void minusGold(int gold)
+	{
+		this.gold+=gold;
+	}
 	
 	public int getPosition() {
 		return position;
@@ -45,9 +60,4 @@ public class Spieler {
 	public int getGold() {
 		return gold;
 	}
-
-	public void setGold(int gold) {
-		this.gold = gold;
-	}
-
 }

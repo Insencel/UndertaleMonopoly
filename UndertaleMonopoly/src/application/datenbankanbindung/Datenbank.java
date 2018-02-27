@@ -26,16 +26,17 @@ public class Datenbank {
 						"AmZug INT, " +
 						"Spielname VARCHAR(32), " +
 						"ZuletztGespielt TIMESTAMP, " +
-						"PRIMARY KEY (SpielID) " +
+						"PRIMARY KEY (SpielID)" +
 					")");
 			
 			anweisung.executeUpdate(
 				"CREATE TABLE IF NOT EXISTS UndertaleMonopoly.spieler(" +
 					"SpielerID INT NOT NULL Auto_Increment, " +
+					"SpielID INT NOT NULL, " +
 					"Gold INT NOT NULL, " +
 					"Position INT NOT NULL," +
-					"SpielID INT NOT NULL, " +
-					"PRIMARY KEY (SPIELERID) " +
+					"PRIMARY KEY (SPIELERID), " +
+					"INDEX (SpielID)" +
 				")");
 			
 			anweisung.executeUpdate(
@@ -43,7 +44,9 @@ public class Datenbank {
 						"SpielfelderID INT NOT NULL Auto_Increment, " +
 						"SpielID INT NOT NULL, " +
 						"SpielerID INT, " +
-						"PRIMARY KEY (SpielfelderID) " +
+						"PRIMARY KEY (SpielfelderID), " +
+						"INDEX (SpielID), " +
+						"INDEX (SpielerID)" +
 					")");
 			
 		}

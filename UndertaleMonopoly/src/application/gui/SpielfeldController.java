@@ -1,14 +1,16 @@
 package application.gui;
 
 
-import java.awt.Label;
 
 import application.spiel.Spiel;
+import application.spiel.spielfelder.KaufbaresFeld;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.control.Label;
 
 public class SpielfeldController
 {
@@ -36,6 +38,28 @@ public class SpielfeldController
 	private Label spieler;
 	@FXML
 	private Label goldmenge;
+	@FXML
+	private GridPane feldkarte;
+	@FXML
+	private GridPane feldGP;
+	@FXML
+	private Label feldname;
+	@FXML
+	private Label preis;
+	@FXML
+	private Label aufenthaltsgebuehr;
+	@FXML
+	private ImageView umblaetterpfeil;
+	@FXML
+	private Label buy;
+	@FXML
+	private Label dontBuy;
+	@FXML
+	private GridPane spielfeldTextGP;
+	@FXML
+	private Label spielfeldEventText;
+	@FXML
+	private Label okKnopf;
 	
 	@FXML
 	private ImageView f1;
@@ -119,12 +143,15 @@ public class SpielfeldController
 	private ImageView f40;
 	
 	public static Spiel spiel;
-	private final Image[] bilder = {new Image("bilder/spielfelder/Start.png"), new Image("bilder/spielfelder/Feld1.png"), new Image("bilder/spielfelder/kartenfeld.png"), new Image("bilder/spielfelder/Feld2.png"), new Image("bilder/spielfelder/Flowey.png"), new Image("bilder/spielfelder/Riverlady.png"), new Image("bilder/spielfelder/Feld3.png"), new Image("bilder/spielfelder/kartenfeld.png"), new Image("bilder/spielfelder/Feld4.png"), new Image("bilder/spielfelder/Feld5.png"), new Image("bilder/spielfelder/Gefängnis.png"), new Image("bilder/spielfelder/Feld6.png"), new Image("bilder/spielfelder/Ice-Fabric.png"), new Image("bilder/spielfelder/Feld7.png"), new Image("bilder/spielfelder/Feld8.png"), new Image("bilder/spielfelder/Riverlady.png"), new Image("bilder/spielfelder/Feld9.png"), new Image("bilder/spielfelder/kartenfeld.png"), new Image("bilder/spielfelder/Feld10.png"), new Image("bilder/spielfelder/Feld11.png"),  new Image("bilder/spielfelder/FreeParking.png"), new Image("bilder/spielfelder/Feld12.png"), new Image("bilder/spielfelder/kartenfeld.png"), new Image("bilder/spielfelder/Feld13.png"), new Image("bilder/spielfelder/Feld14.png"), new Image("bilder/spielfelder/Riverlady.png"), new Image("bilder/spielfelder/Feld15.png"), new Image("bilder/spielfelder/Feld16.png"), new Image("bilder/spielfelder/Core.png"), new Image("bilder/spielfelder/Feld17.png"), new Image("bilder/spielfelder/Gefängnis.png"), new Image("bilder/spielfelder/Feld18.png"), new Image("bilder/spielfelder/Feld19.png"), new Image("bilder/spielfelder/kartenfeld.png"), new Image("bilder/spielfelder/Feld20.png"), new Image("bilder/spielfelder/Riverlady.png"), new Image("bilder/spielfelder/kartenfeld.png"), new Image("bilder/spielfelder/Feld21.png"), new Image("bilder/spielfelder/strafe_judgment_hall.png") , new Image("bilder/spielfelder/Feld22.png")};
-
+	private ImageView[] bilder;
+	//private final Image[] bilder = {new Image("bilder/spielfelder/Start.png"), new Image("bilder/spielfelder/Feld1.png"), new Image("bilder/spielfelder/kartenfeld.png"), new Image("bilder/spielfelder/Feld2.png"), new Image("bilder/spielfelder/Flowey.png"), new Image("bilder/spielfelder/Riverlady.png"), new Image("bilder/spielfelder/Feld3.png"), new Image("bilder/spielfelder/kartenfeld.png"), new Image("bilder/spielfelder/Feld4.png"), new Image("bilder/spielfelder/Feld5.png"), new Image("bilder/spielfelder/Gefängnis.png"), new Image("bilder/spielfelder/Feld6.png"), new Image("bilder/spielfelder/Ice-Fabric.png"), new Image("bilder/spielfelder/Feld7.png"), new Image("bilder/spielfelder/Feld8.png"), new Image("bilder/spielfelder/Riverlady.png"), new Image("bilder/spielfelder/Feld9.png"), new Image("bilder/spielfelder/kartenfeld.png"), new Image("bilder/spielfelder/Feld10.png"), new Image("bilder/spielfelder/Feld11.png"),  new Image("bilder/spielfelder/FreeParking.png"), new Image("bilder/spielfelder/Feld12.png"), new Image("bilder/spielfelder/kartenfeld.png"), new Image("bilder/spielfelder/Feld13.png"), new Image("bilder/spielfelder/Feld14.png"), new Image("bilder/spielfelder/Riverlady.png"), new Image("bilder/spielfelder/Feld15.png"), new Image("bilder/spielfelder/Feld16.png"), new Image("bilder/spielfelder/Core.png"), new Image("bilder/spielfelder/Feld17.png"), new Image("bilder/spielfelder/Gefängnis.png"), new Image("bilder/spielfelder/Feld18.png"), new Image("bilder/spielfelder/Feld19.png"), new Image("bilder/spielfelder/kartenfeld.png"), new Image("bilder/spielfelder/Feld20.png"), new Image("bilder/spielfelder/Riverlady.png"), new Image("bilder/spielfelder/kartenfeld.png"), new Image("bilder/spielfelder/Feld21.png"), new Image("bilder/spielfelder/strafe_judgment_hall.png") , new Image("bilder/spielfelder/Feld22.png")};
+	private int zumKaufenMarkiertesFeld = -1;
+	
 	@SuppressWarnings("static-access")
 	@FXML
 	public void richtigStellen()
 	{
+		this.bilder = new ImageView[]{f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13, f14, f15, f16, f17, f18, f19, f20, f21, f22, f23, f24, f25, f26, f27, f28, f29, f30, f31, f32, f33, f34, f35, f36, f37, f38, f39, f40};
 		switch(spiel.getSpieler().length)
 		{
 		case 4:
@@ -144,6 +171,9 @@ public class SpielfeldController
 			
 		}
 		
+		textupdate();
+		spieler.setVisible(true);
+		goldmenge.setVisible(true);
 		
 		switch(spiel.getSpieler().length)
 		{
@@ -164,24 +194,19 @@ public class SpielfeldController
 	{
 		int[] würfel = spiel.momentanenSpielerBewegen();
 		
+		move.setVisible(false);
+		wuerfelL.setVisible(true);
+		wuerfelR.setVisible(true);
+		feldkarte.setVisible(false);
+		vergroesserung.setVisible(true);
+		
 		wuerfelL.setImage(new Image("bilder/würfel/Würfel " + (würfel[0]) + ".jpg"));
 		wuerfelR.setImage(new Image("bilder/würfel/Würfel " + (würfel[1]) + ".jpg"));
-		int zuBewegenderSpieler = spiel.getAmZug();
 		
-		if(spiel.getPaschcounter()==0)
-		{
-			zuBewegenderSpieler -= 1;
-			
-			if(zuBewegenderSpieler<0)
-			{
-				zuBewegenderSpieler = spiel.getSpieler().length-1;
-			}
-		}
-		
-		int spielerPosition = spiel.getSpieler()[zuBewegenderSpieler].getPosition();
+		int spielerPosition = spiel.getMomentanenSpieler().getPosition();
 		
 		int[] position = spiel.getTabellenposition(spielerPosition);
-		switch(zuBewegenderSpieler)
+		switch(spiel.getAmZug())
 		{
 		case 0:
 			gp.setColumnIndex(sp1, position[0]);
@@ -204,14 +229,21 @@ public class SpielfeldController
 			break;
 		}
 		
-		textupdate();
+		spiel.getSpielfelder()[spielerPosition].funktion(this);
+		/*if(spiel.getSpielfelder()[spielerPosition] instanceof KaufbaresFeld)
+		{
+			zumKaufenMarkiertesFeld = spielerPosition;
+		}*/
+		
+		
+		anzeigen(bilder[spielerPosition]);
 	}
 	
-	private void textupdate()
+	public void textupdate()
 	{
-		spieler.setText("Spieler " + (spiel.getAmZug() + 1));
+		spieler.setText("Player " + (spiel.getAmZug() + 1));
 		
-		goldmenge.setText(spiel.getSpieler()[spiel.getAmZug()].getGold() + " G");
+		goldmenge.setText(spiel.getMomentanenSpieler().getGold() + " G");
 	}
 	
 	
@@ -426,17 +458,164 @@ public class SpielfeldController
 		
 		int index = spiel.getIndexOfTabellenposition(position);
 		
-		vergroesserung.setImage(bilder[index]);
+		vergroesserung.setImage(bilder[index].getImage());
+		
+		
+		
+		if(spiel.getSpielfelder()[index] instanceof KaufbaresFeld)
+		{
+			umblaetterpfeil.setVisible(true);
+			KaufbaresFeld kf = (KaufbaresFeld) spiel.getSpielfelder()[index];
+			feldname.setText(kf.getName());
+			preis.setText(kf.getPreis() + " G");
+			aufenthaltsgebuehr.setText((kf.getPreis()/10) + " G");
+			
+			if(index==zumKaufenMarkiertesFeld)
+			{
+				kaufenAnzeigen(zumKaufenMarkiertesFeld);
+			}
+			else
+			{
+				buy.setVisible(false);
+				dontBuy.setVisible(false);
+			}
+			
+		}
+		else
+		{
+			umblaetterpfeil.setVisible(false);
+			feldkarte.setVisible(false);
+			vergroesserung.setVisible(true);
+		}
 	}
 	
 	@FXML
 	public void umdrehen()
 	{
+		if(feldkarte.isVisible())
+		{
+			feldkarte.setVisible(false);
+			vergroesserung.setVisible(true);
+		}
+		else
+		{
+			feldkarte.setVisible(true);
+			vergroesserung.setVisible(false);
+		}
 		
 	}
 	
 	
+	public void kaufenAnzeigen(int feld)
+	{
+		feldkarte.setVisible(true);
+		vergroesserung.setVisible(false);
+		buy.setVisible(true);
+		dontBuy.setVisible(true);
+		spielfeldTextGP.setVisible(true);
+		okKnopf.setVisible(false);
+		
+		this.zumKaufenMarkiertesFeld = feld;
+		
+		if(spiel.getSpielfelder()[feld] instanceof KaufbaresFeld)
+		{
+			KaufbaresFeld kf = (KaufbaresFeld) spiel.getSpielfelder()[feld];
+			
+			preis.setText(kf.getPreis() + " G");
+			aufenthaltsgebuehr.setText((kf.getPreis()/10) + " G");
+		}
+		
+		vergroesserung.setImage(bilder[zumKaufenMarkiertesFeld].getImage());
+	}
 	
 	
 	
+	public void spielfeldEventTextAnzeigen()
+	{
+		spielfeldTextGP.setVisible(true);
+		move.setVisible(false);
+	}
+	
+	@FXML
+	public void kaufen()
+	{
+		//kann nur kaufbar sein!
+		if(spiel.getSpielfelder()[zumKaufenMarkiertesFeld] instanceof KaufbaresFeld)
+		{
+			KaufbaresFeld kf = (KaufbaresFeld) spiel.getSpielfelder()[zumKaufenMarkiertesFeld];
+			spiel.getMomentanenSpieler().kaufen(kf);
+		}
+		
+		nichtKaufen();
+	}
+	
+	@FXML
+	public void nichtKaufen()
+	{
+		buy.setVisible(false);
+		dontBuy.setVisible(false);
+		zumKaufenMarkiertesFeld = -1;
+		
+		zugAbschliessen();
+	}
+	
+	@FXML
+	public void zugAbschliessen()
+	{
+		spiel.nächsterSpieler();
+		textupdate();
+		
+		spielfeldTextGP.setVisible(false);
+		move.setVisible(true);
+	}
+	
+	
+	@FXML
+	public void buyHoverOn()
+	{
+		buy.setTextFill(Color.LIGHTGREEN);
+	}
+	@FXML
+	public void buyHoverOff()
+	{
+		buy.setTextFill(Color.BLACK);
+	}
+	
+	@FXML
+	public void dontBuyHoverOn()
+	{
+		dontBuy.setTextFill(Color.RED);
+	}
+	@FXML
+	public void dontBuyHoverOff()
+	{
+		dontBuy.setTextFill(Color.BLACK);
+	}
+	
+	@FXML
+	public void okHoverOn()
+	{
+		okKnopf.setTextFill(Color.YELLOW);
+		
+		if(spiel.getPaschcounter()==0)
+		{
+			okKnopf.setText("Next players turn!");
+		}
+		else
+		{
+			okKnopf.setText("Roll again!");
+		}
+		
+	}
+	@FXML
+	public void okHoverOff()
+	{
+		okKnopf.setTextFill(Color.WHITE);
+		okKnopf.setText("Ok!");
+	}
+
+
+	public Label getSpielfeldEventText() {
+		return spielfeldEventText;
+	}
 }

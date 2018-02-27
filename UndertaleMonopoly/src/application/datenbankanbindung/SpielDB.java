@@ -11,7 +11,7 @@ import application.gui.SpielfeldController;
 import application.gui.Spielstand;
 import application.spiel.Spiel;
 import application.spiel.Spieler;
-import application.spiel.Spielfeld;
+import application.spiel.spielfelder.Spielfeld;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -44,7 +44,15 @@ public class SpielDB {
 			
 				while(spielfelderSet.next())
 				{
-					sf.add( spielfelderSet.getInt("SpielerID"));
+					if(spielfelderSet.getInt("SpielerID")==0)
+					{
+						sf.add(-1);
+					}
+					else
+					{
+						sf.add( spielfelderSet.getInt("SpielerID"));
+					}
+					
 				}
 			
 				s = new Spiel(spielSet.getInt("AmZug"), sp, sf);
@@ -77,7 +85,7 @@ public class SpielDB {
 			rs.next();
 			String spielID = rs.getString("SpielID");
 			
-			for(int i = 0; i<10; i++)
+			for(int i = 0; i<28; i++)
 			{
 				db.einlesen("spielfelder", "SpielID", spielID);
 			}
