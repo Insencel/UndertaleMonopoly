@@ -203,5 +203,7 @@ public class Spiel
 		return spieler;
 	}
 	
-	
+	public Gefängnisfeld getGefängnis() {
+		return (Gefängnisfeld) spielfelder[10];
+	}
 }

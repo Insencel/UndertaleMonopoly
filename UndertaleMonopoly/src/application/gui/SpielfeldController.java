@@ -2,7 +2,11 @@ package application.gui;
 
 
 
+import java.util.Random;
+
 import application.spiel.Spiel;
+import application.spiel.SpielerGefangenException;
+import application.spiel.spielfelder.Gefängnisfeld;
 import application.spiel.spielfelder.KaufbaresFeld;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
@@ -60,6 +64,12 @@ public class SpielfeldController
 	private Label spielfeldEventText;
 	@FXML
 	private Label okKnopf;
+	@FXML
+	private GridPane gefangenerEntscheidung;
+	@FXML
+	private Label t2rd;
+	@FXML
+	private Label pay50g;
 	
 	@FXML
 	private ImageView f1;
@@ -192,51 +202,70 @@ public class SpielfeldController
 	@FXML
 	public void bewegen()
 	{
-		int[] würfel = spiel.momentanenSpielerBewegen();
-		
-		move.setVisible(false);
-		wuerfelL.setVisible(true);
-		wuerfelR.setVisible(true);
-		feldkarte.setVisible(false);
-		vergroesserung.setVisible(true);
-		
-		wuerfelL.setImage(new Image("bilder/würfel/Würfel " + (würfel[0]) + ".jpg"));
-		wuerfelR.setImage(new Image("bilder/würfel/Würfel " + (würfel[1]) + ".jpg"));
-		
-		int spielerPosition = spiel.getMomentanenSpieler().getPosition();
-		
-		int[] position = spiel.getTabellenposition(spielerPosition);
-		switch(spiel.getAmZug())
+		try
 		{
-		case 0:
-			gp.setColumnIndex(sp1, position[0]);
-			gp.setRowIndex(sp1, position[1]);
-			break;
+			if(spiel.getSpielfelder()[spiel.getMomentanenSpieler().getPosition()] instanceof Gefängnisfeld)
+			{
+				Gefängnisfeld gf = (Gefängnisfeld) spiel.getSpielfelder()[spiel.getMomentanenSpieler().getPosition()];
+				
+				if(gf.isGefangen(spiel.getMomentanenSpieler()))
+				{
+					aktiviereGefangenenAuswahl();
+					throw new SpielerGefangenException();
+				}
+			}
 			
-		case 1:
-			gp.setColumnIndex(sp2, position[0]);
-			gp.setRowIndex(sp2, position[1]);
-			break;
 			
-		case 2:
-			gp.setColumnIndex(sp3, position[0]);
-			gp.setRowIndex(sp3, position[1]);
-			break;
+			int[] würfel = spiel.momentanenSpielerBewegen();
 			
-		case 3:
-			gp.setColumnIndex(sp4, position[0]);
-			gp.setRowIndex(sp4, position[1]);
-			break;
+			move.setVisible(false);
+			wuerfelL.setVisible(true);
+			wuerfelR.setVisible(true);
+			feldkarte.setVisible(false);
+			vergroesserung.setVisible(true);
+			
+			setWürfel(würfel);
+		
+			int spielerPosition = spiel.getMomentanenSpieler().getPosition();
+			
+			int[] position = spiel.getTabellenposition(spielerPosition);
+			switch(spiel.getAmZug())
+			{
+			case 0:
+				gp.setColumnIndex(sp1, position[0]);
+				gp.setRowIndex(sp1, position[1]);
+				break;
+				
+			case 1:
+				gp.setColumnIndex(sp2, position[0]);
+				gp.setRowIndex(sp2, position[1]);
+				break;
+				
+			case 2:
+				gp.setColumnIndex(sp3, position[0]);
+				gp.setRowIndex(sp3, position[1]);
+				break;
+				
+			case 3:
+				gp.setColumnIndex(sp4, position[0]);
+				gp.setRowIndex(sp4, position[1]);
+				break;
+			}
+			
+			spiel.getSpielfelder()[spielerPosition].funktion(this);
+			/*if(spiel.getSpielfelder()[spielerPosition] instanceof KaufbaresFeld)
+			{
+				zumKaufenMarkiertesFeld = spielerPosition;
+			}*/
+			
+			
+			anzeigen(bilder[spielerPosition]);
+		}
+		catch(SpielerGefangenException e)
+		{
+			
 		}
 		
-		spiel.getSpielfelder()[spielerPosition].funktion(this);
-		/*if(spiel.getSpielfelder()[spielerPosition] instanceof KaufbaresFeld)
-		{
-			zumKaufenMarkiertesFeld = spielerPosition;
-		}*/
-		
-		
-		anzeigen(bilder[spielerPosition]);
 	}
 	
 	public void textupdate()
@@ -509,11 +538,13 @@ public class SpielfeldController
 	public void kaufenAnzeigen(int feld)
 	{
 		feldkarte.setVisible(true);
-		vergroesserung.setVisible(false);
 		buy.setVisible(true);
 		dontBuy.setVisible(true);
 		spielfeldTextGP.setVisible(true);
+		vergroesserung.setVisible(false);
 		okKnopf.setVisible(false);
+	
+		
 		
 		this.zumKaufenMarkiertesFeld = feld;
 		
@@ -536,6 +567,33 @@ public class SpielfeldController
 		move.setVisible(false);
 	}
 	
+	private void aktiviereGefangenenAuswahl()
+	{
+		gefangenerEntscheidung.setVisible(true);
+		okKnopf.setVisible(false);
+	}
+	private void deaktiviereGefangenenAuswahl()
+	{
+		gefangenerEntscheidung.setVisible(false);
+		okKnopf.setVisible(true);
+	}
+	
+	@FXML
+	public void t2rd()
+	{
+		//try to roll doubles
+		spiel.getGefängnis().freiwürfeln(this);
+		deaktiviereGefangenenAuswahl();
+	}
+	
+	@FXML
+	public void pay50g()
+	{
+		spiel.getGefängnis().freikaufen(this);
+		deaktiviereGefangenenAuswahl();
+	}
+	
+	
 	@FXML
 	public void kaufen()
 	{
@@ -556,7 +614,9 @@ public class SpielfeldController
 		dontBuy.setVisible(false);
 		zumKaufenMarkiertesFeld = -1;
 		
-		zugAbschliessen();
+		spielfeldEventText.setText("Next player!");
+		okKnopf.setVisible(true);
+		spielfeldEventTextAnzeigen();
 	}
 	
 	@FXML
@@ -605,13 +665,40 @@ public class SpielfeldController
 		{
 			okKnopf.setText("Roll again!");
 		}
-		
 	}
 	@FXML
 	public void okHoverOff()
 	{
 		okKnopf.setTextFill(Color.WHITE);
 		okKnopf.setText("Ok!");
+	}
+	
+	@FXML
+	public void pay50gHoverOn()
+	{
+		pay50g.setTextFill(Color.YELLOW);
+	}
+	@FXML
+	public void pay50gHoverOff()
+	{
+		pay50g.setTextFill(Color.WHITE);
+	}
+	
+	@FXML
+	public void t2rdHoverOn()
+	{
+		t2rd.setTextFill(Color.YELLOW);
+	}
+	@FXML
+	public void t2rdHoverOff()
+	{
+		t2rd.setTextFill(Color.WHITE);
+	}
+	
+	public void setWürfel(int[] würfel)
+	{
+		wuerfelL.setImage(new Image("bilder/würfel/Würfel " + (würfel[0]) + ".jpg"));
+		wuerfelR.setImage(new Image("bilder/würfel/Würfel " + (würfel[1]) + ".jpg"));
 	}
 
 
