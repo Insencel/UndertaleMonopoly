@@ -5,6 +5,7 @@ package application.gui;
 import java.util.Random;
 
 import application.spiel.Spiel;
+import application.spiel.SpielerBewegungsunfähigException;
 import application.spiel.SpielerGefangenException;
 import application.spiel.spielfelder.Gefängnisfeld;
 import application.spiel.spielfelder.KaufbaresFeld;
@@ -70,6 +71,10 @@ public class SpielfeldController
 	private Label t2rd;
 	@FXML
 	private Label pay50g;
+	@FXML
+	private GridPane eventkarte;
+	@FXML
+	private Label eventkartenText;
 	
 	@FXML
 	private ImageView f1;
@@ -204,16 +209,16 @@ public class SpielfeldController
 	{
 		try
 		{
-			if(spiel.getSpielfelder()[spiel.getMomentanenSpieler().getPosition()] instanceof Gefängnisfeld)
+			if(spiel.getMomentanenSpieler().isGefangen())
 			{
-				Gefängnisfeld gf = (Gefängnisfeld) spiel.getSpielfelder()[spiel.getMomentanenSpieler().getPosition()];
 				
-				if(gf.isGefangen(spiel.getMomentanenSpieler()))
-				{
-					aktiviereGefangenenAuswahl();
-					throw new SpielerGefangenException();
-				}
+				throw new SpielerGefangenException();
 			}
+			else if(spiel.getMomentanenSpieler().isBewegungsunfähig())
+			{
+				throw new SpielerBewegungsunfähigException();
+			}
+			
 			
 			
 			int[] würfel = spiel.momentanenSpielerBewegen();
@@ -261,9 +266,20 @@ public class SpielfeldController
 			
 			anzeigen(bilder[spielerPosition]);
 		}
-		catch(SpielerGefangenException e)
+		catch(SpielerBewegungsunfähigException e)
 		{
+			spielfeldEventText.setText("You can't move");
+			spielfeldEventTextAnzeigen();
 			
+		}
+		catch (SpielerGefangenException e)
+		{
+			if(spiel.getSpielfelder()[spiel.getMomentanenSpieler().getPosition()] instanceof Gefängnisfeld)
+			{
+				spiel.getSpielfelder()[spiel.getMomentanenSpieler().getPosition()].funktion(this);
+			}
+			
+			aktiviereGefangenenAuswahl();
 		}
 		
 	}
@@ -593,6 +609,12 @@ public class SpielfeldController
 		deaktiviereGefangenenAuswahl();
 	}
 	
+	public void eventkarteAnzeigen(String text)
+	{
+		eventkartenText.setText(text);
+		eventkarte.setVisible(true);
+	}
+	
 	
 	@FXML
 	public void kaufen()
@@ -628,6 +650,11 @@ public class SpielfeldController
 		spielfeldTextGP.setVisible(false);
 		move.setVisible(true);
 	}
+	
+	
+	
+	
+	
 	
 	
 	@FXML

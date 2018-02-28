@@ -1,6 +1,5 @@
 package application.spiel.spielfelder;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 import application.gui.SpielfeldController;
@@ -8,26 +7,21 @@ import application.spiel.Spieler;
 
 
 public class Gefängnisfeld extends Spielfeld{
-	private ArrayList<Spieler> gefangene = new ArrayList<Spieler>();
-	private ArrayList<Integer> gefangenenZeit = new ArrayList<Integer>();
 	
 	public void gefangenNehmen(Spieler s)
 	{
-		gefangene.add(s);
-		gefangenenZeit.add(3);
+		s.setVerbleibendeGefangenenZeit(3);
 	}
 	
 	public void freilassen(Spieler s)
 	{
-		gefangenenZeit.remove(gefangene.indexOf(s));
-		gefangene.remove(s);
-		
+		s.setVerbleibendeGefangenenZeit(-1);
 	}
 
 	@Override
 	public void funktion(SpielfeldController sc)
 	{
-		if(gefangene.contains(SpielfeldController.spiel.getMomentanenSpieler()))
+		if(SpielfeldController.spiel.getMomentanenSpieler().isGefangen())
 		{
 			sc.getSpielfeldEventText().setText("You are a prisoner!");
 			sc.spielfeldEventTextAnzeigen();
@@ -62,21 +56,8 @@ public class Gefängnisfeld extends Spielfeld{
 		freilassen(SpielfeldController.spiel.getMomentanenSpieler());
 	}
 	
-	public boolean isGefangen(Spieler s)
-	{
-		return gefangene.contains(s);
-	}
-	
 	public boolean darfWürfeln(Spieler s)
 	{
-		if(isGefangen(s))
-		{
-			return gefangenenZeit.get(gefangene.indexOf(s))>0;
-		}
-		else
-		{
-			return false;
-		}
-		
+		return s.getVerbleibendeGefangenenZeit()>0;
 	}
 }
