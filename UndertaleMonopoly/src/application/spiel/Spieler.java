@@ -1,26 +1,30 @@
 package application.spiel;
 
-import application.spiel.spielfelder.KaufbaresFeld;
+import application.gui.SpielfeldController;
+import application.spiel.spielfelder.BebaubaresFeld;
+import application.spiel.spielfelder.Spielfeldgebiet;
 
 public class Spieler {
 	private int gold;
-	private int position;
-	private int verbleibendeGefangenenZeit;
-	private int rundenStehenBleiben;
+	private byte position;
+	private byte verbleibendeGefangenenZeit;
+	private byte rundenStehenBleiben;
 	public final static int startkapital = 1500;
 	
 	public Spieler()
 	{
 		this.gold = startkapital;
 		this.position = 0;
-		this.verbleibendeGefangenenZeit = 0;
+		this.verbleibendeGefangenenZeit = -1;
 		this.rundenStehenBleiben = 0;
 	}
 		
-	public Spieler(int gold, int position)
+	public Spieler(int gold, byte position, byte verbleibendeGefangenenZeit, byte rundenStehenBleiben)
 	{
 		this.gold = gold;
 		this.position = position;
+		this.verbleibendeGefangenenZeit = verbleibendeGefangenenZeit;
+		this.rundenStehenBleiben = rundenStehenBleiben;
 	}
 	
 	public void überweisen(int gold, Spieler s)
@@ -35,7 +39,7 @@ public class Spieler {
 	}
 	
 	
-	public void kaufen(KaufbaresFeld kf)
+	public void kaufen(BebaubaresFeld kf)
 	{
 		kf.setBesitzer(this);
 		this.gold -= kf.getPreis();
@@ -47,6 +51,11 @@ public class Spieler {
 		verbleibendeGefangenenZeit--;
 	}
 	
+	public void paralyseZeitVergeht()
+	{
+		rundenStehenBleiben--;
+	}
+	
 	public void plusGold(int gold)
 	{
 		this.gold+=gold;
@@ -54,14 +63,14 @@ public class Spieler {
 	
 	public void minusGold(int gold)
 	{
-		this.gold+=gold;
+		this.gold-=gold;
 	}
 	
-	public int getPosition() {
+	public byte getPosition() {
 		return position;
 	}
 
-	public void setPosition(int position) {
+	public void setPosition(byte position) {
 		this.position = position;
 	}
 
@@ -73,17 +82,55 @@ public class Spieler {
 		return verbleibendeGefangenenZeit>=0;
 	}
 
-	public int getVerbleibendeGefangenenZeit() {
+	public byte getVerbleibendeGefangenenZeit() {
 		return verbleibendeGefangenenZeit;
 	}
 
-	public void setVerbleibendeGefangenenZeit(int verbleibendeGefangenenZeit) {
+	public void setVerbleibendeGefangenenZeit(byte verbleibendeGefangenenZeit) {
 		this.verbleibendeGefangenenZeit = verbleibendeGefangenenZeit;
 	}
 	
 	public boolean isBewegungsunfähig()
 	{
 		return rundenStehenBleiben>0;
+	}
+
+	public void setRundenStehenBleiben(byte rundenStehenBleiben) {
+		this.rundenStehenBleiben = rundenStehenBleiben;
+	}
+	
+	
+	public boolean isBesitzerVonAllenFeldernImGebiet(Spielfeldgebiet gebiet)
+	{
+		boolean b = true;
+		Object[] felderObject = SpielfeldController.spiel.getBebaubareFelder();
+		
+		if(felderObject instanceof BebaubaresFeld[])
+		{
+			BebaubaresFeld[] felder = (BebaubaresFeld[]) felderObject;
+			
+			for(int i = 0; i<felder.length; i++)
+			{
+				if(felder[i].getGebiet().equals(gebiet))
+				{
+					if(!felder[i].getBesitzer().equals(this))
+					{
+						b = false;
+						
+						break;
+					}
+				}
+			}
+		}
+		
+		
+		
+		return b;
+	}
+	
+	public int besitztWieVieleHäfen()
+	{
+		return 0;
 	}
 	
 

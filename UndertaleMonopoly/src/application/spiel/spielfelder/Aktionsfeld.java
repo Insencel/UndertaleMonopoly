@@ -1,5 +1,6 @@
 package application.spiel.spielfelder;
 
+import application.eventkarten.Eventkarte;
 import application.gui.SpielfeldController;
 
 public class Aktionsfeld extends Spielfeld{
@@ -9,6 +10,11 @@ public class Aktionsfeld extends Spielfeld{
 	{
 		sc.getSpielfeldEventText().setText("");
 		sc.spielfeldEventTextAnzeigen();
+		
+		Eventkarte ek = SpielfeldController.spiel.getZufälligeEventkarte();
+		
+		sc.eventkarteAnzeigen(ek.getText());
+		ek.funktion(sc);
 	}
 
 }

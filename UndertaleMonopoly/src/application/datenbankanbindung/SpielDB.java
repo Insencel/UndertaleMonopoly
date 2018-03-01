@@ -2,16 +2,12 @@ package application.datenbankanbindung;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
-
-import javax.naming.spi.DirStateFactory.Result;
 
 import application.gui.SpielfeldController;
 import application.gui.Spielstand;
 import application.spiel.Spiel;
 import application.spiel.Spieler;
-import application.spiel.spielfelder.Spielfeld;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -36,7 +32,7 @@ public class SpielDB {
 			
 				while(spielerSet.next())
 				{
-					sp.add(new Spieler(Integer.parseInt(spielerSet.getString("Gold")), Integer.parseInt(spielerSet.getString("Position"))));
+					sp.add(new Spieler(spielerSet.getInt("Gold"), spielerSet.getByte("Position"), spielerSet.getByte("VerbleibendeGefaengnisZeit"), spielerSet.getByte("RundenStehenBleiben")));
 				}
 			
 			
@@ -93,7 +89,7 @@ public class SpielDB {
 			
 			for(int i = 0; i<spielerzahl; i++)
 			{
-				db.einlesen("spieler", "Gold, Position, SpielID", Spieler.startkapital + ", 0, " + spielID);
+				db.einlesen("spieler", "Gold, Position, SpielID, VerbleibendeGefaengnisZeit, RundenStehenBleiben", Spieler.startkapital + ", 0, " + spielID + ", -1, 0");
 			}
 			SpielfeldController.spiel = new Spiel(spielerzahl);
 		}

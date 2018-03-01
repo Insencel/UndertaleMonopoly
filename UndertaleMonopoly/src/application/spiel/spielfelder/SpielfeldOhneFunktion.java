@@ -7,6 +7,7 @@ public class SpielfeldOhneFunktion extends Spielfeld{
 	@Override
 	public void funktion(SpielfeldController sc) {
 		//(LOS und Frei Parken)
+		sc.spielfeldEventTextAnzeigen();
 	}
 
 }

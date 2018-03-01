@@ -35,6 +35,8 @@ public class Datenbank {
 					"SpielID INT NOT NULL, " +
 					"Gold INT NOT NULL, " +
 					"Position INT NOT NULL," +
+					"VerbleibendeGefaengnisZeit INT NOT NULL," +
+					"RundenStehenBleiben INT NOT NULL," +
 					"PRIMARY KEY (SPIELERID), " +
 					"INDEX (SpielID)" +
 				")");

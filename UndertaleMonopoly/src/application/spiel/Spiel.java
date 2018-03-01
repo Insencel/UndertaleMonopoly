@@ -8,9 +8,9 @@ import application.spiel.spielfelder.*;
 
 public class Spiel
 {
-	private Spielfeld[] spielfelder = {new SpielfeldOhneFunktion(), new KaufbaresFeld("Flowerfield", 60, Spielfeldgebiet.RUINS), new Aktionsfeld(), new KaufbaresFeld("Toriel's House", 60, Spielfeldgebiet.RUINS), new GeldstrafenFeld(200), new KaufbaresFeld("Riverlady West", 200, Spielfeldgebiet.RIVERLADY), new KaufbaresFeld("Conveniently-Shaped Lamp", 100, Spielfeldgebiet.SNOWDIN_FOREST), new Aktionsfeld(),  new KaufbaresFeld("Kennel", 100, Spielfeldgebiet.SNOWDIN_FOREST), new KaufbaresFeld("Long Bridge", 120, Spielfeldgebiet.SNOWDIN_FOREST), new Gefängnisfeld(), new KaufbaresFeld("Library", 140, Spielfeldgebiet.SNOWDIN), new KaufbaresFeld("Ice-Fabric", 150, Spielfeldgebiet.PRODCTION), new KaufbaresFeld("Grillby's", 140, Spielfeldgebiet.SNOWDIN), new KaufbaresFeld("Shop & Inn", 160, Spielfeldgebiet.SNOWDIN), new KaufbaresFeld("Riverlady North", 200, Spielfeldgebiet.RIVERLADY), new KaufbaresFeld("Statue", 180, Spielfeldgebiet.WATERFALL), new Aktionsfeld(),  new KaufbaresFeld("Ghost House", 180, Spielfeldgebiet.WATERFALL), new KaufbaresFeld("Temmie Village", 200, Spielfeldgebiet.WATERFALL), new SpielfeldOhneFunktion(), new KaufbaresFeld("Lab", 220, Spielfeldgebiet.HOTLAND), new Aktionsfeld(), new KaufbaresFeld("Spider", 220, Spielfeldgebiet.HOTLAND), new KaufbaresFeld("Theatre", 240, Spielfeldgebiet.HOTLAND), new KaufbaresFeld("Riverlady East", 200, Spielfeldgebiet.RIVERLADY), new KaufbaresFeld("MTT-Well", 260, Spielfeldgebiet.HOTEL), new KaufbaresFeld("MTT", 260, Spielfeldgebiet.HOTEL), new KaufbaresFeld("Core", 200, Spielfeldgebiet.PRODCTION), new KaufbaresFeld("Hotelroom", 280, Spielfeldgebiet.HOTEL), new InsGefängnisFeld(), new KaufbaresFeld("Bin", 300, Spielfeldgebiet.CORE), new KaufbaresFeld("Core-Bridge", 300, Spielfeldgebiet.CORE), new Aktionsfeld(), new KaufbaresFeld("MTT-Boss Door", 320, Spielfeldgebiet.CORE), new KaufbaresFeld("Riverlady South", 200, Spielfeldgebiet.RIVERLADY), new Aktionsfeld(),  new KaufbaresFeld("End-House", 350, Spielfeldgebiet.END), new GeldstrafenFeld(100), new KaufbaresFeld("Throne", 400, Spielfeldgebiet.END)};
+	private Spielfeld[] spielfelder = {new SpielfeldOhneFunktion(), new BebaubaresFeld("Flowerfield", 60, Spielfeldgebiet.RUINS), new Aktionsfeld(), new BebaubaresFeld("Toriel's House", 60, Spielfeldgebiet.RUINS), new GeldstrafenFeld(200), new BebaubaresFeld("Riverlady West", 200, Spielfeldgebiet.RIVERLADY), new BebaubaresFeld("Conveniently-Shaped Lamp", 100, Spielfeldgebiet.SNOWDIN_FOREST), new Aktionsfeld(),  new BebaubaresFeld("Kennel", 100, Spielfeldgebiet.SNOWDIN_FOREST), new BebaubaresFeld("Long Bridge", 120, Spielfeldgebiet.SNOWDIN_FOREST), new Gefängnisfeld(), new BebaubaresFeld("Library", 140, Spielfeldgebiet.SNOWDIN), new BebaubaresFeld("Ice-Fabric", 150, Spielfeldgebiet.PRODCTION), new BebaubaresFeld("Grillby's", 140, Spielfeldgebiet.SNOWDIN), new BebaubaresFeld("Shop & Inn", 160, Spielfeldgebiet.SNOWDIN), new BebaubaresFeld("Riverlady North", 200, Spielfeldgebiet.RIVERLADY), new BebaubaresFeld("Statue", 180, Spielfeldgebiet.WATERFALL), new Aktionsfeld(),  new BebaubaresFeld("Ghost House", 180, Spielfeldgebiet.WATERFALL), new BebaubaresFeld("Temmie Village", 200, Spielfeldgebiet.WATERFALL), new SpielfeldOhneFunktion(), new BebaubaresFeld("Lab", 220, Spielfeldgebiet.HOTLAND), new Aktionsfeld(), new BebaubaresFeld("Spider", 220, Spielfeldgebiet.HOTLAND), new BebaubaresFeld("Theatre", 240, Spielfeldgebiet.HOTLAND), new BebaubaresFeld("Riverlady East", 200, Spielfeldgebiet.RIVERLADY), new BebaubaresFeld("MTT-Well", 260, Spielfeldgebiet.HOTEL), new BebaubaresFeld("MTT", 260, Spielfeldgebiet.HOTEL), new BebaubaresFeld("Core", 200, Spielfeldgebiet.PRODCTION), new BebaubaresFeld("Hotelroom", 280, Spielfeldgebiet.HOTEL), new InsGefängnisFeld(), new BebaubaresFeld("Bin", 300, Spielfeldgebiet.CORE), new BebaubaresFeld("Core-Bridge", 300, Spielfeldgebiet.CORE), new Aktionsfeld(), new BebaubaresFeld("MTT-Boss Door", 320, Spielfeldgebiet.CORE), new BebaubaresFeld("Riverlady South", 200, Spielfeldgebiet.RIVERLADY), new Aktionsfeld(),  new BebaubaresFeld("End-House", 350, Spielfeldgebiet.END), new GeldstrafenFeld(100), new BebaubaresFeld("Throne", 400, Spielfeldgebiet.END)};
 	private final int[][] tabellenposition = {{1, 11}, {1, 10}, {1, 9}, {1, 8}, {1, 7}, {1, 6}, {1, 5}, {1, 4}, {1, 3}, {1, 2}, {1, 1}, {2, 1}, {3, 1}, {4, 1}, {5, 1}, {6, 1}, {7, 1}, {8, 1}, {9, 1}, {10, 1}, {11,1} , {11, 2}, {11, 3}, {11, 4}, {11, 5}, {11, 6}, {11, 7}, {11, 8}, {11, 9}, {11, 10}, {11, 11}, {10, 11}, {9, 11}, {8, 11},{7, 11}, {6, 11}, {5, 11}, {4, 11}, {3, 11}, {2, 11}};
-	private final Eventkarte[] kartenstapel = {new GoldKarte("Monster Kid gives you a gift!\n\nYou earn 50 G.", 50), new GoldKarte("Sans sells you a hotdog.\n\nYou pay him 20 G.", -20), new GoldKarte("You pay for Temmies college.\n\nIt costs 200G.", -200), new GoldKarte("You buy Nice Cream.\n\nIt costs 50 G.", -50), new RandomGoldKarte("#?E2&§ |=€:%*R5 #*/R? !\\O<\" #°§R$&"), new GeheInsGefängnisKarte("Papyrus caught you whilst you were busy thinking of what this card could do.\n\nGo to jail!"), new ParalyseKarte("You see Goner Kid and are shocked.\n\nYou lose one turn."), new ParalyseKarte("Burgerpants gives you and advice.\n\nDon't live your life like I did. I am 19 years old and I wasted my entire life.\n\nYou are so stunned from this intellectual statement that you can't move next turn."), new ParalyseKarte("Papyrus cooked spaghetti for you but you don't eat them.\n\n You feel bad and won't move next turn."), new BewegenZuFeldKarte("Sans invites you to go to Grillby's.\n\nGo to Grillby's.", 13), new ZumNächstenHafenKarte("The Riverlady takes you to her next harbour.")};
+	private final Eventkarte[] kartenstapel = {new GoldKarte("Monster Kid gives you a gift!\n\nYou earn 50 G.", 50), new GoldKarte("Sans sells a hotdog to you.\n\nYou pay him 20 G.", -20), new GoldKarte("You pay for Temmies college.\n\nIt costs 200G.", -200), new GoldKarte("You buy Nice Cream.\n\nIt costs 50 G.", -50), new RandomGoldKarte("#?E2&§ |=€:%*R5 #*/R? !\\O<\" #°§R$&"), new GeheInsGefängnisKarte("Papyrus caught you whilst you were busy thinking of what this card could do.\n\nGo to jail!"), new ParalyseKarte("You see Goner Kid and are shocked.\n\nYou lose one turn.", (byte) 1), new ParalyseKarte("Burgerpants gives you and advice.\n\nDon't live your life like I did. I am 19 years old and I wasted my entire life.\n\nYou are so stunned from this intellectual statement that you can't move next turn.", (byte) 1), new ParalyseKarte("Papyrus cooked spaghetti for you but you don't eat them.\n\nYou feel bad and won't move next turn.", (byte) 1), new BewegenZuFeldKarte("Sans invites you to go to Grillby's.\n\nGo to Grillby's.", (byte) 13), new ZumNächstenHafenKarte("The Riverlady takes you to her next harbour.")};
 	private Spieler[] spieler;
 	private int amZug;
 	private int paschcounter;
@@ -43,12 +43,12 @@ public class Spiel
 		
 		for(int i = 0; i<würfel.length; i++)
 		{
-			spieler[amZug].setPosition(spieler[amZug].getPosition() + würfel[i]);
+			spieler[amZug].setPosition( (byte) (spieler[amZug].getPosition() + würfel[i]));
 		}
 		
 		if(spieler[amZug].getPosition()>=tabellenposition.length)
 		{
-			spieler[amZug].setPosition(spieler[amZug].getPosition()-tabellenposition.length);
+			spieler[amZug].setPosition((byte) (spieler[amZug].getPosition()-tabellenposition.length));
 		}
 		
 		if(würfel[0] == würfel[1])
@@ -90,11 +90,11 @@ public class Spiel
 		
 		for(int i = 0; i<this.spielfelder.length; i++)
 		{
-			if(this.spielfelder[i] instanceof KaufbaresFeld)
+			if(this.spielfelder[i] instanceof BebaubaresFeld)
 			{
 				if(besitzer.get(besitzerCounter)!=-1)
 				{
-					KaufbaresFeld k = (KaufbaresFeld) this.spielfelder[i];
+					BebaubaresFeld k = (BebaubaresFeld) this.spielfelder[i];
 					k.setBesitzer(spieler[besitzer.get(besitzerCounter)]);
 					besitzerCounter++;
 				}
@@ -111,13 +111,16 @@ public class Spiel
 
 	public void nächsterSpieler()
 	{
-		if(amZug>=spieler.length-1)
+		if(paschcounter==0)
 		{
-			amZug = 0;
-		}
-		else
-		{
-			amZug++;
+			if(amZug>=spieler.length-1)
+			{
+				amZug = 0;
+			}
+			else
+			{
+				amZug++;
+			}
 		}
 	}
 
@@ -167,6 +170,36 @@ public class Spiel
 		return rückgabe;
 	}
 	
+	public KaufbaresFeld[] getKaufbareFelder()
+	{
+		ArrayList<KaufbaresFeld> kf = new ArrayList<KaufbaresFeld>();
+		
+		for(int i = 0; i<spielfelder.length; i++)
+		{
+			if(spielfelder[i] instanceof KaufbaresFeld)
+			{
+				kf.add((KaufbaresFeld) spielfelder[i]);
+			}
+		}
+		
+		return kf.toArray(new KaufbaresFeld[kf.size()]);
+	}
+	
+	public BebaubaresFeld[] getBebaubareFelder ()
+	{
+		ArrayList<BebaubaresFeld> felder = new ArrayList<BebaubaresFeld>();
+		
+		for(int i = 0; i<spielfelder.length; i++)
+		{
+			
+			
+			felder.add((BebaubaresFeld) spielfelder[i]);
+			
+			
+		}
+		return felder.toArray(new BebaubaresFeld[felder.size()]);
+	}
+	
 	public Spieler getMomentanenSpieler()
 	{
 		return spieler[amZug];
@@ -202,5 +235,10 @@ public class Spiel
 	
 	public Gefängnisfeld getGefängnis() {
 		return (Gefängnisfeld) spielfelder[10];
+	}
+	
+	public Eventkarte getZufälligeEventkarte() {
+		Random rdm = new Random();
+		return kartenstapel[rdm.nextInt(kartenstapel.length)];
 	}
 }

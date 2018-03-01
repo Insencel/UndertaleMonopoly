@@ -3,21 +3,17 @@ package application.spiel.spielfelder;
 import application.gui.SpielfeldController;
 import application.spiel.Spieler;
 
-public class KaufbaresFeld extends Spielfeld {
-	private String name;
-	private Spieler besitzer;
-	private final int preis;
-	private Spielfeldgebiet gebiet;
-	private byte häuser;
-	private boolean hotel;
+public abstract class KaufbaresFeld extends Spielfeld {
+
+	protected String name;
+	protected Spieler besitzer;
+	protected final int preis;
 	
-	public KaufbaresFeld(String name, int preis, Spielfeldgebiet gebiet)
+	public KaufbaresFeld(String name, int preis)
 	{
 		this.name = name;
 		this.preis = preis;
-		this.gebiet = gebiet;
 	}
-	
 	
 	@Override
 	public void funktion(SpielfeldController sc)
@@ -40,11 +36,11 @@ public class KaufbaresFeld extends Spielfeld {
 		}
 	}
 	
+	public abstract int aufenthaltBerechnen();
 	
-	public int aufenthaltBerechnen()
-	{
-		return preis/10;
-	}
+	public abstract int[] getPreisliste();
+	
+	
 	
 	public void setBesitzer(Spieler besitzer)
 	{
@@ -64,5 +60,4 @@ public class KaufbaresFeld extends Spielfeld {
 	public String getName() {
 		return name;
 	}
-	
 }

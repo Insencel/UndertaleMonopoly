@@ -10,7 +10,7 @@ public class InsGefängnisFeld extends Spielfeld {
 		sc.getSpielfeldEventText().setText("Go to jail!");
 		sc.spielfeldEventTextAnzeigen();
 		
-		SpielfeldController.spiel.getMomentanenSpieler().setPosition(10);
+		SpielfeldController.spiel.getMomentanenSpieler().setPosition((byte) 10);
 		
 		Gefängnisfeld gf = (Gefängnisfeld) SpielfeldController.spiel.getSpielfelder()[10];
 		gf.gefangenNehmen(SpielfeldController.spiel.getMomentanenSpieler());

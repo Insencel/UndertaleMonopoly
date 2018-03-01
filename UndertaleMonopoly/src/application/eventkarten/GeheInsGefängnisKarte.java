@@ -1,18 +1,18 @@
 package application.eventkarten;
 
-import application.spiel.Spieler;
+import application.gui.SpielfeldController;
 
 public class GeheInsGefängnisKarte extends BewegenZuFeldKarte {
 
 	public GeheInsGefängnisKarte(String text) {
-		super(text, 10);
+		super(text, (byte) 10);
 	}
 	
 	@Override
-	public void funktion(Spieler s)
+	public void funktion(SpielfeldController sc)
 	{
-		super.funktion(s);
-		s.setVerbleibendeGefangenenZeit(3);
+		super.funktion(sc);
+		SpielfeldController.spiel.getMomentanenSpieler().setVerbleibendeGefangenenZeit((byte) 3);
 	}
 
 }

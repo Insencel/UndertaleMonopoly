@@ -1,19 +1,20 @@
 package application.eventkarten;
 
-import application.spiel.Spieler;
+import application.gui.SpielfeldController;
 
 public class BewegenZuFeldKarte extends Eventkarte {
 
-	private int position;
+	private byte position;
 	
-	public BewegenZuFeldKarte(String text, int position) {
+	public BewegenZuFeldKarte(String text, byte position) {
 		super(text);
 		this.position = position;
 	}
 
 	@Override
-	public void funktion(Spieler s) {
-		s.setPosition(position);
+	public void funktion(SpielfeldController sc) {
+		super.funktion(sc);
+		SpielfeldController.spiel.getMomentanenSpieler().setPosition(position);
 	}
 
 }

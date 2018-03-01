@@ -2,7 +2,7 @@ package application.eventkarten;
 
 import java.util.Random;
 
-import application.spiel.Spieler;
+import application.gui.SpielfeldController;
 
 public class RandomGoldKarte extends Eventkarte{
 
@@ -11,11 +11,11 @@ public class RandomGoldKarte extends Eventkarte{
 	}
 
 	@Override
-	public void funktion(Spieler s) {
+	public void funktion(SpielfeldController sc) {
 		Random rdm = new Random();
 		
 		int balance = rdm.nextInt(201)-100;
-		s.plusGold(balance);
+		SpielfeldController.spiel.getMomentanenSpieler().plusGold(balance);
 	}
 	
 	

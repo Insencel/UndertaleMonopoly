@@ -1,20 +1,21 @@
 package application.gui;
 
 
-
-import java.util.Random;
-
 import application.spiel.Spiel;
 import application.spiel.SpielerBewegungsunfähigException;
 import application.spiel.SpielerGefangenException;
 import application.spiel.spielfelder.Gefängnisfeld;
 import application.spiel.spielfelder.KaufbaresFeld;
+import application.spiel.spielfelder.Produktionsfeld;
+import application.spiel.spielfelder.Riverladyfeld;
+import application.spiel.spielfelder.BebaubaresFeld;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.scene.control.Label;
 
 public class SpielfeldController
@@ -48,13 +49,48 @@ public class SpielfeldController
 	@FXML
 	private GridPane feldGP;
 	@FXML
+	private ImageView umblaetterpfeil;
+	
+	@FXML
 	private Label feldname;
 	@FXML
 	private Label preis;
+	
+	@FXML
+	private GridPane plBebaubar;
 	@FXML
 	private Label aufenthaltsgebuehr;
 	@FXML
-	private ImageView umblaetterpfeil;
+	private Label aufenthaltsgebuehr1house;
+	@FXML
+	private Label aufenthaltsgebuehr2house;
+	@FXML
+	private Label aufenthaltsgebuehr3house;
+	@FXML
+	private Label aufenthaltsgebuehr4house;
+	@FXML
+	private Label aufenthaltsgebuehrHotel;
+	
+	@FXML
+	private GridPane plRiverlady;
+	@FXML
+	private Label miete1Hafen;
+	@FXML
+	private Label miete2Haefen;
+	@FXML
+	private Label miete3Haefen;
+	@FXML
+	private Label miete4Haefen;
+	
+	@FXML
+	private GridPane plProduktion;
+	@FXML
+	private Label miete1Produktion;
+	@FXML
+	private Label miete2Produktion;
+	
+	@FXML
+	private GridPane buyMenu;
 	@FXML
 	private Label buy;
 	@FXML
@@ -74,7 +110,12 @@ public class SpielfeldController
 	@FXML
 	private GridPane eventkarte;
 	@FXML
-	private Label eventkartenText;
+	private Text eventkartenText;
+	@FXML
+	private Label hausbau;
+	
+	
+	
 	
 	@FXML
 	private ImageView f1;
@@ -207,80 +248,48 @@ public class SpielfeldController
 	@FXML
 	public void bewegen()
 	{
-		try
-		{
-			if(spiel.getMomentanenSpieler().isGefangen())
-			{
-				
-				throw new SpielerGefangenException();
-			}
-			else if(spiel.getMomentanenSpieler().isBewegungsunfähig())
-			{
-				throw new SpielerBewegungsunfähigException();
-			}
-			
-			
-			
-			int[] würfel = spiel.momentanenSpielerBewegen();
-			
-			move.setVisible(false);
-			wuerfelL.setVisible(true);
-			wuerfelR.setVisible(true);
-			feldkarte.setVisible(false);
-			vergroesserung.setVisible(true);
-			
-			setWürfel(würfel);
+		int[] würfel = spiel.momentanenSpielerBewegen();
 		
-			int spielerPosition = spiel.getMomentanenSpieler().getPosition();
+		move.setVisible(false);
+		wuerfelL.setVisible(true);
+		wuerfelR.setVisible(true);
+		feldkarte.setVisible(false);
+		vergroesserung.setVisible(true);
 			
-			int[] position = spiel.getTabellenposition(spielerPosition);
-			switch(spiel.getAmZug())
-			{
-			case 0:
-				gp.setColumnIndex(sp1, position[0]);
-				gp.setRowIndex(sp1, position[1]);
-				break;
-				
-			case 1:
-				gp.setColumnIndex(sp2, position[0]);
-				gp.setRowIndex(sp2, position[1]);
-				break;
-				
-			case 2:
-				gp.setColumnIndex(sp3, position[0]);
-				gp.setRowIndex(sp3, position[1]);
-				break;
-				
-			case 3:
-				gp.setColumnIndex(sp4, position[0]);
-				gp.setRowIndex(sp4, position[1]);
-				break;
-			}
-			
-			spiel.getSpielfelder()[spielerPosition].funktion(this);
-			/*if(spiel.getSpielfelder()[spielerPosition] instanceof KaufbaresFeld)
-			{
-				zumKaufenMarkiertesFeld = spielerPosition;
-			}*/
-			
-			
-			anzeigen(bilder[spielerPosition]);
-		}
-		catch(SpielerBewegungsunfähigException e)
+		setWürfel(würfel);
+	
+		int spielerPosition = spiel.getMomentanenSpieler().getPosition();
+		
+		int[] position = spiel.getTabellenposition(spielerPosition);
+		switch(spiel.getAmZug())
 		{
-			spielfeldEventText.setText("You can't move");
-			spielfeldEventTextAnzeigen();
+		case 0:
+			gp.setColumnIndex(sp1, position[0]);
+			gp.setRowIndex(sp1, position[1]);
+			break;
 			
+		case 1:
+			gp.setColumnIndex(sp2, position[0]);
+			gp.setRowIndex(sp2, position[1]);
+			break;
+				
+		case 2:
+			gp.setColumnIndex(sp3, position[0]);
+			gp.setRowIndex(sp3, position[1]);
+			break;
+				
+		case 3:
+			gp.setColumnIndex(sp4, position[0]);
+			gp.setRowIndex(sp4, position[1]);
+			break;
 		}
-		catch (SpielerGefangenException e)
-		{
-			if(spiel.getSpielfelder()[spiel.getMomentanenSpieler().getPosition()] instanceof Gefängnisfeld)
-			{
-				spiel.getSpielfelder()[spiel.getMomentanenSpieler().getPosition()].funktion(this);
-			}
 			
-			aktiviereGefangenenAuswahl();
-		}
+		spiel.getSpielfelder()[spielerPosition].funktion(this);
+			
+			
+		anzeigen(bilder[spielerPosition]);
+		
+		
 		
 	}
 	
@@ -510,10 +519,51 @@ public class SpielfeldController
 		if(spiel.getSpielfelder()[index] instanceof KaufbaresFeld)
 		{
 			umblaetterpfeil.setVisible(true);
-			KaufbaresFeld kf = (KaufbaresFeld) spiel.getSpielfelder()[index];
+			KaufbaresFeld kf = (BebaubaresFeld) spiel.getSpielfelder()[index];
 			feldname.setText(kf.getName());
 			preis.setText(kf.getPreis() + " G");
-			aufenthaltsgebuehr.setText((kf.getPreis()/10) + " G");
+			
+			plBebaubar.setVisible(false);
+			plProduktion.setVisible(false);
+			plRiverlady.setVisible(false);
+			
+			if(kf instanceof BebaubaresFeld)
+			{
+				BebaubaresFeld bf = (BebaubaresFeld) kf;
+				
+				
+				
+				int[] preisliste = bf.getPreisliste();
+				aufenthaltsgebuehr.setText(preisliste[0] + " G");
+				aufenthaltsgebuehr1house.setText(preisliste[1] + " G");
+				aufenthaltsgebuehr2house.setText(preisliste[2] + " G");
+				aufenthaltsgebuehr3house.setText(preisliste[3] + " G");
+				aufenthaltsgebuehr4house.setText(preisliste[4] + " G");
+				aufenthaltsgebuehrHotel.setText(preisliste[5] + " G");
+				
+				
+				if(spiel.getMomentanenSpieler().isBesitzerVonAllenFeldernImGebiet(bf.getGebiet()))
+				{
+					hausbau.setVisible(true);
+				}
+				else
+				{
+					hausbau.setVisible(false);
+				}
+			}
+			else if(kf instanceof Produktionsfeld)
+			{
+				plProduktion.setVisible(true);
+				
+				
+			}
+			else if(kf instanceof Riverladyfeld)
+			{
+				plRiverlady.setVisible(true);
+				
+				
+			}
+			
 			
 			if(index==zumKaufenMarkiertesFeld)
 			{
@@ -521,9 +571,9 @@ public class SpielfeldController
 			}
 			else
 			{
-				buy.setVisible(false);
-				dontBuy.setVisible(false);
+				buyMenu.setVisible(false);
 			}
+			
 			
 		}
 		else
@@ -554,8 +604,7 @@ public class SpielfeldController
 	public void kaufenAnzeigen(int feld)
 	{
 		feldkarte.setVisible(true);
-		buy.setVisible(true);
-		dontBuy.setVisible(true);
+		buyMenu.setVisible(true);
 		spielfeldTextGP.setVisible(true);
 		vergroesserung.setVisible(false);
 		okKnopf.setVisible(false);
@@ -564,12 +613,13 @@ public class SpielfeldController
 		
 		this.zumKaufenMarkiertesFeld = feld;
 		
-		if(spiel.getSpielfelder()[feld] instanceof KaufbaresFeld)
+		if(spiel.getSpielfelder()[feld] instanceof BebaubaresFeld)
 		{
-			KaufbaresFeld kf = (KaufbaresFeld) spiel.getSpielfelder()[feld];
-			
+			BebaubaresFeld kf = (BebaubaresFeld) spiel.getSpielfelder()[feld];
 			preis.setText(kf.getPreis() + " G");
-			aufenthaltsgebuehr.setText((kf.getPreis()/10) + " G");
+			
+			int[] preisliste = kf.getPreisliste();
+			aufenthaltsgebuehr.setText(preisliste[0] + " G");
 		}
 		
 		vergroesserung.setImage(bilder[zumKaufenMarkiertesFeld].getImage());
@@ -607,6 +657,7 @@ public class SpielfeldController
 	{
 		spiel.getGefängnis().freikaufen(this);
 		deaktiviereGefangenenAuswahl();
+		textupdate();
 	}
 	
 	public void eventkarteAnzeigen(String text)
@@ -620,10 +671,11 @@ public class SpielfeldController
 	public void kaufen()
 	{
 		//kann nur kaufbar sein!
-		if(spiel.getSpielfelder()[zumKaufenMarkiertesFeld] instanceof KaufbaresFeld)
+		if(spiel.getSpielfelder()[zumKaufenMarkiertesFeld] instanceof BebaubaresFeld)
 		{
-			KaufbaresFeld kf = (KaufbaresFeld) spiel.getSpielfelder()[zumKaufenMarkiertesFeld];
+			BebaubaresFeld kf = (BebaubaresFeld) spiel.getSpielfelder()[zumKaufenMarkiertesFeld];
 			spiel.getMomentanenSpieler().kaufen(kf);
+			textupdate();
 		}
 		
 		nichtKaufen();
@@ -632,14 +684,31 @@ public class SpielfeldController
 	@FXML
 	public void nichtKaufen()
 	{
-		buy.setVisible(false);
-		dontBuy.setVisible(false);
+		buyMenu.setVisible(false);
 		zumKaufenMarkiertesFeld = -1;
 		
-		spielfeldEventText.setText("Next player!");
+		if(spiel.getPaschcounter()==0)
+		{
+			spielfeldEventText.setText("Next player!");
+		}
+		else
+		{
+			spielfeldEventText.setText("You rolled a double so roll again!");
+		}
+		
 		okKnopf.setVisible(true);
 		spielfeldEventTextAnzeigen();
 	}
+	
+	@FXML
+	public void aufrüsten()
+	{
+		BebaubaresFeld kf = (BebaubaresFeld) spiel.getSpielfelder()[spiel.getMomentanenSpieler().getPosition()];
+		kf.zubau();
+		
+		textupdate();
+	}
+	
 	
 	@FXML
 	public void zugAbschliessen()
@@ -647,8 +716,47 @@ public class SpielfeldController
 		spiel.nächsterSpieler();
 		textupdate();
 		
+		eventkartenText.setText("");
+		
+		
+		feldkarte.setVisible(false);
+		eventkarte.setVisible(false);
 		spielfeldTextGP.setVisible(false);
-		move.setVisible(true);
+		spielfeldTextGP.setVisible(false);
+		vergroesserung.setVisible(true);
+		okKnopf.setVisible(true);
+		
+		
+		try
+		{
+			if(spiel.getMomentanenSpieler().isGefangen())
+			{
+				
+				throw new SpielerGefangenException();
+			}
+			else if(spiel.getMomentanenSpieler().isBewegungsunfähig())
+			{
+				throw new SpielerBewegungsunfähigException();
+			}
+			move.setVisible(true);
+		}
+		catch(SpielerBewegungsunfähigException e)
+		{
+			spielfeldEventText.setText("You can't move.");
+			spielfeldEventTextAnzeigen();
+			
+		}
+		catch (SpielerGefangenException e)
+		{
+			if(spiel.getSpielfelder()[spiel.getMomentanenSpieler().getPosition()] instanceof Gefängnisfeld)
+			{
+				spiel.getSpielfelder()[spiel.getMomentanenSpieler().getPosition()].funktion(this);
+			}
+			
+			aktiviereGefangenenAuswahl();
+		}
+		
+		
 	}
 	
 	
@@ -660,7 +768,7 @@ public class SpielfeldController
 	@FXML
 	public void buyHoverOn()
 	{
-		buy.setTextFill(Color.LIGHTGREEN);
+		buy.setTextFill(Color.GREEN);
 	}
 	@FXML
 	public void buyHoverOff()
@@ -720,6 +828,17 @@ public class SpielfeldController
 	public void t2rdHoverOff()
 	{
 		t2rd.setTextFill(Color.WHITE);
+	}
+	
+	@FXML
+	public void hausbauHoverOn()
+	{
+		hausbau.setTextFill(Color.GREEN);
+	}
+	@FXML
+	public void hausbauHoverOff()
+	{
+		hausbau.setTextFill(Color.BLACK);
 	}
 	
 	public void setWürfel(int[] würfel)

@@ -1,17 +1,21 @@
 package application.eventkarten;
 
-import application.spiel.Spieler;
+import application.gui.SpielfeldController;
 
 public class ParalyseKarte extends Eventkarte {
 
-	public ParalyseKarte(String text) {
+	private byte dauer;
+	
+	public ParalyseKarte(String text, byte dauer) {
 		super(text);
+		this.dauer = dauer;
 	}
 
 	@Override
-	public void funktion(Spieler s) {
+	public void funktion(SpielfeldController sc) {
+		super.funktion(sc);
 		
-		
+		SpielfeldController.spiel.getMomentanenSpieler().setRundenStehenBleiben(dauer);
 	}
 
 }

@@ -1,6 +1,6 @@
 package application.eventkarten;
 
-import application.spiel.Spieler;
+import application.gui.SpielfeldController;
 
 public class GoldKarte extends Eventkarte {
 
@@ -12,8 +12,9 @@ public class GoldKarte extends Eventkarte {
 	}
 	
 	@Override
-	public void funktion(Spieler s) {
-		s.plusGold(balance);
+	public void funktion(SpielfeldController sc) {
+		super.funktion(sc);
+		SpielfeldController.spiel.getMomentanenSpieler().plusGold(balance);
 
 	}
 

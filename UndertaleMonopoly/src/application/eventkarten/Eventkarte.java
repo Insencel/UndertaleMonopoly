@@ -1,7 +1,6 @@
 package application.eventkarten;
 
 import application.gui.SpielfeldController;
-import application.spiel.Spieler;
 
 public abstract class Eventkarte {
 

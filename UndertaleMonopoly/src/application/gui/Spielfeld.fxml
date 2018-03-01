@@ -585,15 +585,21 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <GridPane fx:id="feldkarte" visible="false" GridPane.columnSpan="2147483647" GridPane.rowSpan="2147483647" GridPane.valignment="TOP">
+                  <GridPane fx:id="feldkarte" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="280.0" prefWidth="240.0" GridPane.columnSpan="2147483647" GridPane.rowSpan="2147483647" GridPane.valignment="TOP">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="10.0" prefWidth="145.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.0" minWidth="10.0" prefWidth="95.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="10.0" percentWidth="50.0" prefWidth="129.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.0" minWidth="10.0" percentWidth="50.0" prefWidth="111.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints maxHeight="156.0" minHeight="10.0" prefHeight="127.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="188.0" minHeight="10.0" prefHeight="139.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" percentHeight="20.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                      <RowConstraints percentHeight="10.0" vgrow="SOMETIMES" />
+                      <RowConstraints percentHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints percentHeight="10.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                        <RowConstraints percentHeight="10.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                        <RowConstraints percentHeight="10.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="14.0" minHeight="5.0" percentHeight="10.0" prefHeight="12.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" percentHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" percentHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="280.0" stroke="BLACK" strokeType="INSIDE" width="240.0" GridPane.columnSpan="2" GridPane.rowSpan="3" GridPane.valignment="TOP" />
@@ -608,36 +614,222 @@
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Label text="Price" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+                        <Label text="Price" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <GridPane.margin>
-                              <Insets />
-                           </GridPane.margin>
-                           <padding>
                               <Insets left="10.0" />
-                           </padding>
-                        </Label>
-                        <Label text="Others have to pay you:" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                           <GridPane.margin>
-                              <Insets />
                            </GridPane.margin>
                         </Label>
-                        <Label fx:id="preis" text="Label" GridPane.columnIndex="1" GridPane.valignment="BOTTOM" />
-                        <Label fx:id="aufenthaltsgebuehr" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                        <Label fx:id="buy" onMouseClicked="#kaufen" onMouseEntered="#buyHoverOn" onMouseExited="#buyHoverOff" text="BUY" visible="false" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                        <Label fx:id="preis" text="Price" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <GridPane.margin>
-                              <Insets right="5.0" />
-                           </GridPane.margin>
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Label>
-                        <Label fx:id="dontBuy" onMouseClicked="#nichtKaufen" onMouseEntered="#dontBuyHoverOn" onMouseExited="#dontBuyHoverOff" text="DON'T BUY" visible="false" GridPane.rowIndex="2">
+                              <Insets right="10.0" />
+                           </GridPane.margin></Label>
+                        <GridPane fx:id="plBebaubar" visible="false" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="6">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Single rent:" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets left="10.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="aufenthaltsgebuehr" text="Worth" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets right="10.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="With 1 house" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets left="10.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="aufenthaltsgebuehr1house" text="Worth" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets right="10.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="With 2 houses" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets left="10.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="aufenthaltsgebuehr2house" text="Worth" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets right="10.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="With 3 houses" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets left="10.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="aufenthaltsgebuehr3house" text="Worth" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets right="10.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="With 4 houses" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets left="10.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="aufenthaltsgebuehr4house" text="Worth" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets right="10.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="With a hotel" GridPane.rowIndex="5">
+                                 <GridPane.margin>
+                                    <Insets left="10.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="aufenthaltsgebuehrHotel" text="Worth" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                                 <GridPane.margin>
+                                    <Insets right="10.0" />
+                                 </GridPane.margin>
+                              </Label>
+                           </children>
+                        </GridPane>
+                        <GridPane fx:id="plRiverlady" visible="false" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="5">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="You own:">
+                                 <GridPane.margin>
+                                    <Insets left="10.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label layoutX="20.0" layoutY="16.0" text="1 harbour" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="15.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="miete1Hafen" text="Worth" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets right="15.0" />
+                                 </GridPane.margin></Label>
+                              <Label layoutX="10.0" layoutY="16.0" text="2 harbours" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="15.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="miete2Haefen" layoutX="10.0" layoutY="16.0" text="Worth" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets right="15.0" />
+                                 </GridPane.margin></Label>
+                              <Label layoutX="10.0" layoutY="16.0" text="3 harbours" GridPane.rowIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="15.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="miete3Haefen" layoutX="10.0" layoutY="16.0" text="Worth" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                                 <GridPane.margin>
+                                    <Insets right="15.0" />
+                                 </GridPane.margin></Label>
+                              <Label layoutX="10.0" layoutY="16.0" text="4 harbours" GridPane.rowIndex="4">
+                                 <GridPane.margin>
+                                    <Insets left="15.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="miete4Haefen" layoutX="10.0" layoutY="16.0" text="Worth" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                                 <GridPane.margin>
+                                    <Insets right="15.0" />
+                                 </GridPane.margin></Label>
+                           </children>
+                        </GridPane>
+                        <GridPane fx:id="plProduktion" visible="false" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="6">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Text lineSpacing="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The rent of this field depends on the number of eyes you rolled. The more eyes the more expensive it becomes. Also it become more expensive if you earn both production fields." wrappingWidth="210.0" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowSpan="4" GridPane.valignment="TOP">
+                                 <GridPane.margin>
+                                    <Insets left="15.0" right="15.0" top="6.0" />
+                                 </GridPane.margin>
+                              </Text>
+                              <Label text="1 production field" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="miete1Produktion" text="x G per eye" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets right="15.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="16.0" text="2 production fields" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="miete2Produktion" layoutX="10.0" layoutY="16.0" text="x G per eye" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets right="15.0" />
+                                 </GridPane.margin>
+                              </Label>
+                           </children>
+                        </GridPane>
+                        <GridPane fx:id="buyMenu" visible="false" GridPane.columnSpan="2" GridPane.rowIndex="8">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" percentWidth="50.0" prefWidth="123.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="117.0" minWidth="10.0" percentWidth="50.0" prefWidth="117.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label fx:id="dontBuy" onMouseClicked="#nichtKaufen" onMouseEntered="#dontBuyHoverOn" onMouseExited="#dontBuyHoverOff" text="DON'T BUY" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets left="5.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Label>
+                              <Label fx:id="buy" onMouseClicked="#kaufen" onMouseEntered="#buyHoverOn" onMouseExited="#buyHoverOff" text="BUY" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets right="5.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Label>
+                           </children>
+                        </GridPane>
+                        <Label fx:id="hausbau" text="Build a house for x G" visible="false" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER">
                            <GridPane.margin>
                               <Insets left="5.0" />
                            </GridPane.margin>
@@ -650,7 +842,7 @@
                         </Label>
                      </children>
                   </GridPane>
-                  <ImageView fx:id="vergroesserung" fitHeight="274.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2" GridPane.rowSpan="3">
+                  <ImageView fx:id="vergroesserung" fitHeight="274.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnSpan="2" GridPane.rowSpan="3">
                      <image>
                         <Image url="@../../bilder/spielfelder/Start.png" />
                      </image>
