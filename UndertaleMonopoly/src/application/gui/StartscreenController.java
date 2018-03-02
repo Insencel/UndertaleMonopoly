@@ -53,6 +53,10 @@ public class StartscreenController
 	private TableColumn<Spielstand, String> zuletztGespielt;
 	@FXML
 	private TableView<Spielstand> tv;
+	@FXML
+	private ImageView ladeStart;
+	@FXML
+	private Label loeschen;
 	
 	
 	private SpielDB sdb = new SpielDB();
@@ -82,13 +86,10 @@ public class StartscreenController
 	{
 		try
 		{
+			sdb.spielstandLaden(tv.getSelectionModel().getSelectedItem().spielname);
 			FXMLLoader loader = new FXMLLoader(StartscreenController.class.getResource("Spielfeld.fxml"));
 			Scene scene = new Scene((Parent) loader.load());
 			Main.primaryStage.setScene(scene);
-			sdb.spielstandLaden(tv.getSelectionModel().getSelectedItem().spielname);
-			
-			
-			
 		}
 		catch (IOException e)
 		{
@@ -122,6 +123,9 @@ public class StartscreenController
 		gp1.setVisible(false);
 		
 		gp3.setVisible(true);
+		
+		loeschen.setVisible(false);
+		ladeStart.setVisible(false);
 		
 		
 		spielständeAnzeigen();
@@ -161,6 +165,29 @@ public class StartscreenController
 		
 		
 		tv.setItems(spielstände);
+	}
+	
+	@FXML
+	public void testMarked()
+	{
+		if(!tv.getSelectionModel().isEmpty())
+		{
+			loeschen.setVisible(true);
+			ladeStart.setVisible(true);
+		}
+		else
+		{
+			loeschen.setVisible(false);
+			ladeStart.setVisible(false);
+		}
+	}
+	
+	@FXML
+	public void loeschen()
+	{
+		sdb.alleMitNamenLöschen(tv.getSelectionModel().getSelectedItem().getSpielname());
+		
+		spielständeAnzeigen();
 	}
 	
 	
@@ -239,11 +266,13 @@ public class StartscreenController
 	public void startHoverOn()
 	{
 		fortsetzen.setImage(new Image("bilder/startscreen/start_hover.png"));
+		ladeStart.setImage(new Image("bilder/startscreen/start_hover.png"));
 	}
 	@FXML
 	public void startHoverOff()
 	{
 		fortsetzen.setImage(new Image("bilder/startscreen/start.png"));
+		ladeStart.setImage(new Image("bilder/startscreen/start.png"));
 	}
 	
 }

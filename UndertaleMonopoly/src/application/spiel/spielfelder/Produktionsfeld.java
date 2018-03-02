@@ -1,5 +1,7 @@
 package application.spiel.spielfelder;
 
+import application.gui.SpielfeldController;
+
 public class Produktionsfeld extends KaufbaresFeld {
 
 	public Produktionsfeld(String name, int preis)
@@ -10,14 +12,13 @@ public class Produktionsfeld extends KaufbaresFeld {
 	@Override
 	public int aufenthaltBerechnen()
 	{
-		if(besitzer)
-		return 0;
+		return getPreisliste()[besitzer.getAnzahlAnProduktionImBesitz() - 1] * SpielfeldController.spiel.getZuletztGewürfelt();
 	}
 	
 	@Override
 	public int[] getPreisliste()
 	{
-		int[] liste = {};
+		int[] liste = {4, 10};
 		return liste;
 	}
 

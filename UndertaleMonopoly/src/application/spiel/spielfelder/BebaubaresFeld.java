@@ -1,7 +1,6 @@
 package application.spiel.spielfelder;
 
 
-
 public class BebaubaresFeld extends KaufbaresFeld {
 	private Spielfeldgebiet gebiet;
 	private byte häuser;
@@ -69,5 +68,15 @@ public class BebaubaresFeld extends KaufbaresFeld {
 	public Spielfeldgebiet getGebiet()
 	{
 		return gebiet;
+	}
+	
+	public int getHäuser()
+	{
+		return häuser;
+	}
+	
+	public void setHäuser(int häuser)
+	{
+		this.häuser = (byte) häuser;
 	}
 }

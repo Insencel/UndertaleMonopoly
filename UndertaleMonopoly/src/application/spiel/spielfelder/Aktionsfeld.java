@@ -15,6 +15,9 @@ public class Aktionsfeld extends Spielfeld{
 		
 		sc.eventkarteAnzeigen(ek.getText());
 		ek.funktion(sc);
+		
+		sc.richtigStellen();
+		sc.textupdate();
 	}
 
 }

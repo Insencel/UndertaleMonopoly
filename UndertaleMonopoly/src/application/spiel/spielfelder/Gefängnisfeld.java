@@ -10,7 +10,7 @@ public class Gefängnisfeld extends Spielfeld{
 	
 	public void gefangenNehmen(Spieler s)
 	{
-		s.setVerbleibendeGefangenenZeit((byte) 3);
+		s.setVerbleibendeGefangenenZeit((byte) 2);
 	}
 	
 	public void freilassen(Spieler s)

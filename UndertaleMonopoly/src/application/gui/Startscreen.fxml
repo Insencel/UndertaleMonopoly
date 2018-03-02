@@ -139,6 +139,9 @@
                <image>
                   <Image url="@../../bilder/startscreen/2.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
             <ImageView fx:id="drei" fitHeight="50.0" fitWidth="50.0" layoutX="550.0" layoutY="745.0" onMouseClicked="#select3" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <image>
@@ -147,6 +150,9 @@
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
             <ImageView fx:id="vier" fitHeight="50.0" fitWidth="50.0" layoutX="550.0" layoutY="745.0" onMouseClicked="#select4" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <image>
@@ -155,6 +161,9 @@
                <GridPane.margin>
                   <Insets left="200.0" />
                </GridPane.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
          </children>
       </GridPane>
@@ -168,7 +177,7 @@
             <RowConstraints maxHeight="591.0" minHeight="10.0" prefHeight="126.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TableView fx:id="tv" onMouseClicked="#spielLaden" prefHeight="433.0" prefWidth="1280.0" GridPane.rowIndex="1">
+            <TableView fx:id="tv" onMouseClicked="#testMarked" prefHeight="433.0" prefWidth="1280.0" GridPane.rowIndex="1">
               <columns>
                 <TableColumn fx:id="spielname" prefWidth="649.0" text="Spielname" />
                 <TableColumn fx:id="zuletztGespielt" prefWidth="629.0" text="Zuletzt gespielt" />
@@ -182,11 +191,25 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Label text="Select row to load the game" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+            <Label fx:id="loeschen" onMouseClicked="#loeschen" text="DELETE" textFill="WHITE" visible="false" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
                   <Font name="Comic Sans MS" size="55.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Label>
+            <ImageView fx:id="ladeStart" fitHeight="85.0" fitWidth="136.0" onMouseClicked="#spielLaden" onMouseEntered="#startHoverOn" onMouseExited="#startHoverOff" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../../bilder/startscreen/start.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <GridPane.margin>
+                  <Insets right="10.0" />
+               </GridPane.margin>
+            </ImageView>
          </children>
       </GridPane>
    </children>

@@ -11,8 +11,8 @@ public class GeheInsGefängnisKarte extends BewegenZuFeldKarte {
 	@Override
 	public void funktion(SpielfeldController sc)
 	{
+		SpielfeldController.spiel.getGefängnis().gefangenNehmen(SpielfeldController.spiel.getMomentanenSpieler());
 		super.funktion(sc);
-		SpielfeldController.spiel.getMomentanenSpieler().setVerbleibendeGefangenenZeit((byte) 3);
 	}
 
 }

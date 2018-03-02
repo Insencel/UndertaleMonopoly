@@ -23,7 +23,8 @@ public class Datenbank {
 			anweisung.executeUpdate(
 					"CREATE TABLE IF NOT EXISTS UndertaleMonopoly.spiel(" +
 						"SpielID INT NOT NULL Auto_Increment, " +
-						"AmZug INT, " +
+						"AmZug INT NOT NULL DEFAULT 0, " +
+						"Paschcounter INT NOT NULL DEFAULT 0, " +
 						"Spielname VARCHAR(32), " +
 						"ZuletztGespielt TIMESTAMP, " +
 						"PRIMARY KEY (SpielID)" +
@@ -45,10 +46,10 @@ public class Datenbank {
 					"CREATE TABLE IF NOT EXISTS UndertaleMonopoly.spielfelder(" +
 						"SpielfelderID INT NOT NULL Auto_Increment, " +
 						"SpielID INT NOT NULL, " +
-						"SpielerID INT, " +
+						"Besitzer INT, " +
+						"Haeuser INT," +
 						"PRIMARY KEY (SpielfelderID), " +
-						"INDEX (SpielID), " +
-						"INDEX (SpielerID)" +
+						"INDEX (SpielID)" +
 					")");
 			
 		}
@@ -107,6 +108,21 @@ public class Datenbank {
 		{
 			
 			System.out.println("Löschen funktioniert nicht");
+			e.printStackTrace();
+		}
+	}
+	
+	public void update(String tabelle, String set, String query)
+	{
+		try
+		{
+			Statement anweisung = verbindung.createStatement();
+			anweisung.executeUpdate("UPDATE UndertaleMonopoly." + tabelle + " SET " + set + " WHERE " + query);
+		}
+		catch (SQLException e)
+		{
+			
+			System.out.println("Update funktioniert nicht");
 			e.printStackTrace();
 		}
 	}

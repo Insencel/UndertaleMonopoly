@@ -16,6 +16,8 @@ public class RandomGoldKarte extends Eventkarte{
 		
 		int balance = rdm.nextInt(201)-100;
 		SpielfeldController.spiel.getMomentanenSpieler().plusGold(balance);
+		
+		super.funktion(sc);
 	}
 	
 	

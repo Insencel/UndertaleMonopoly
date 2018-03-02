@@ -13,9 +13,9 @@ public class GoldKarte extends Eventkarte {
 	
 	@Override
 	public void funktion(SpielfeldController sc) {
-		super.funktion(sc);
 		SpielfeldController.spiel.getMomentanenSpieler().plusGold(balance);
-
+		
+		super.funktion(sc);
 	}
 
 }

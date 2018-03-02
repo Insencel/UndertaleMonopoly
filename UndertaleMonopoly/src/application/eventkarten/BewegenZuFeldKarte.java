@@ -13,8 +13,9 @@ public class BewegenZuFeldKarte extends Eventkarte {
 
 	@Override
 	public void funktion(SpielfeldController sc) {
-		super.funktion(sc);
 		SpielfeldController.spiel.getMomentanenSpieler().setPosition(position);
+		
+		super.funktion(sc);
 	}
 
 }

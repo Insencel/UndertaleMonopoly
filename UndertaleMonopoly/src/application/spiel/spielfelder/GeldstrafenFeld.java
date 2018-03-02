@@ -19,6 +19,8 @@ public class GeldstrafenFeld extends Spielfeld {
 		sc.spielfeldEventTextAnzeigen();
 		
 		SpielfeldController.spiel.getMomentanenSpieler().minusGold(strafe);
+		
+		sc.textupdate();
 	}
 
 }

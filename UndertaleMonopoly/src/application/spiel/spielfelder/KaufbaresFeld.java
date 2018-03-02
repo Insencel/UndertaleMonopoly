@@ -1,5 +1,6 @@
 package application.spiel.spielfelder;
 
+import application.datenbankanbindung.UpdateEnum;
 import application.gui.SpielfeldController;
 import application.spiel.Spieler;
 
@@ -26,8 +27,10 @@ public abstract class KaufbaresFeld extends Spielfeld {
 		else if(!SpielfeldController.spiel.getMomentanenSpieler().equals(besitzer))
 		{
 			int gold = aufenthaltBerechnen();
-			sc.getSpielfeldEventText().setText("You have to pay " + gold + " G to Player " + (SpielfeldController.spiel.getIndexOfSpieler(besitzer)+1) + "!\n(Afterwards you will own " + (SpielfeldController.spiel.getMomentanenSpieler().getGold()-gold) + " G)");
+			sc.getSpielfeldEventText().setText("You have to pay " + gold + " G to Player " + (SpielfeldController.spiel.getIndexOfSpieler(besitzer)+1) + "!");
+			SpielfeldController.spiel.getMomentanenSpieler().überweisen(gold, besitzer);
 			sc.spielfeldEventTextAnzeigen();
+			sc.textupdate();
 		}
 		else
 		{
@@ -45,6 +48,7 @@ public abstract class KaufbaresFeld extends Spielfeld {
 	public void setBesitzer(Spieler besitzer)
 	{
 		this.besitzer = besitzer;
+		SpielfeldController.sdb.änderungHinzufügen(UpdateEnum.besitzer);
 	}
 
 	public int getPreis() {

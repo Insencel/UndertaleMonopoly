@@ -12,7 +12,6 @@ public class ZumNächstenHafenKarte extends Eventkarte {
 	@Override
 	public void funktion(SpielfeldController sc)
 	{
-		super.funktion(sc);
 		Spieler s = SpielfeldController.spiel.getMomentanenSpieler();
 		
 		int position = s.getPosition();
@@ -33,6 +32,8 @@ public class ZumNächstenHafenKarte extends Eventkarte {
 		{
 			s.setPosition((byte) 35);
 		}
+		
+		super.funktion(sc);
 
 	}
 

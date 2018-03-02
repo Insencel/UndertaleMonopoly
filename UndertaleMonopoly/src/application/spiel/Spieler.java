@@ -1,7 +1,11 @@
 package application.spiel;
 
+import application.datenbankanbindung.UpdateEnum;
 import application.gui.SpielfeldController;
 import application.spiel.spielfelder.BebaubaresFeld;
+import application.spiel.spielfelder.KaufbaresFeld;
+import application.spiel.spielfelder.Produktionsfeld;
+import application.spiel.spielfelder.Riverladyfeld;
 import application.spiel.spielfelder.Spielfeldgebiet;
 
 public class Spieler {
@@ -36,34 +40,44 @@ public class Spieler {
 		{
 			s.plusGold(gold);
 		}
+		
 	}
 	
 	
-	public void kaufen(BebaubaresFeld kf)
+	public void kaufen(KaufbaresFeld kf)
 	{
 		kf.setBesitzer(this);
-		this.gold -= kf.getPreis();
+		this.minusGold(kf.getPreis());
 	}
 	
 	
 	public void gefangenenZeitVergeht()
 	{
 		verbleibendeGefangenenZeit--;
+		SpielfeldController.sdb.änderungHinzufügen(UpdateEnum.gefängnis);
+		
+		if(verbleibendeGefangenenZeit == -1)
+		{
+			minusGold(50);
+		}
 	}
 	
 	public void paralyseZeitVergeht()
 	{
 		rundenStehenBleiben--;
+		SpielfeldController.sdb.änderungHinzufügen(UpdateEnum.paralyse);
 	}
 	
 	public void plusGold(int gold)
 	{
 		this.gold+=gold;
+		SpielfeldController.sdb.änderungHinzufügen(UpdateEnum.gold);
 	}
 	
 	public void minusGold(int gold)
 	{
 		this.gold-=gold;
+		SpielfeldController.sdb.änderungHinzufügen(UpdateEnum.gold);
 	}
 	
 	public byte getPosition() {
@@ -71,6 +85,7 @@ public class Spieler {
 	}
 
 	public void setPosition(byte position) {
+		SpielfeldController.sdb.änderungHinzufügen(UpdateEnum.position);
 		this.position = position;
 	}
 
@@ -87,6 +102,7 @@ public class Spieler {
 	}
 
 	public void setVerbleibendeGefangenenZeit(byte verbleibendeGefangenenZeit) {
+		SpielfeldController.sdb.änderungHinzufügen(UpdateEnum.gefängnis);
 		this.verbleibendeGefangenenZeit = verbleibendeGefangenenZeit;
 	}
 	
@@ -96,19 +112,24 @@ public class Spieler {
 	}
 
 	public void setRundenStehenBleiben(byte rundenStehenBleiben) {
+		SpielfeldController.sdb.änderungHinzufügen(UpdateEnum.paralyse);
 		this.rundenStehenBleiben = rundenStehenBleiben;
+	}
+	
+	public byte getRundenStehenBleiben()
+	{
+		return rundenStehenBleiben;
 	}
 	
 	
 	public boolean isBesitzerVonAllenFeldernImGebiet(Spielfeldgebiet gebiet)
 	{
 		boolean b = true;
-		Object[] felderObject = SpielfeldController.spiel.getBebaubareFelder();
 		
-		if(felderObject instanceof BebaubaresFeld[])
+		BebaubaresFeld[] felder = SpielfeldController.spiel.getBebaubareFelder();
+		
+		try
 		{
-			BebaubaresFeld[] felder = (BebaubaresFeld[]) felderObject;
-			
 			for(int i = 0; i<felder.length; i++)
 			{
 				if(felder[i].getGebiet().equals(gebiet))
@@ -122,15 +143,66 @@ public class Spieler {
 				}
 			}
 		}
-		
+		catch(NullPointerException e)
+		{
+			b = false;
+		}
 		
 		
 		return b;
 	}
 	
-	public int besitztWieVieleHäfen()
+	public int getAnzahlAnHäfenImBesitz()
 	{
-		return 0;
+		int zähler = 0;
+		
+		KaufbaresFeld[] felder = SpielfeldController.spiel.getKaufbareFelder();
+		
+		for(int i = 0; i<felder.length; i++)
+		{
+			if(felder[i] instanceof Riverladyfeld && felder[i].getBesitzer().equals(this))
+			{
+				zähler++;
+			}
+		}
+		
+		
+		
+		return zähler;
+	}
+	
+	public int getAnzahlAnProduktionImBesitz()
+	{
+		int zähler = 0;
+		
+		KaufbaresFeld[] felder = SpielfeldController.spiel.getKaufbareFelder();
+		
+		for(int i = 0; i<felder.length; i++)
+		{
+			if(felder[i] instanceof Produktionsfeld && felder[i].getBesitzer().equals(this))
+			{
+				zähler++;
+			}
+		}
+		
+		return zähler;
+	}
+	
+	public int getScore()
+	{
+		int score = this.gold;
+		
+		KaufbaresFeld[] felder = SpielfeldController.spiel.getKaufbareFelder();
+		
+		for(int i = 0; i<felder.length; i++)
+		{
+			if(felder[i].getBesitzer()!=null && felder[i].getBesitzer().equals(this))
+			{
+				score += felder[i].getPreis();
+			}
+		}
+		
+		return score;
 	}
 	
 
