@@ -24,6 +24,7 @@ public class Main extends Application {
 			FXMLLoader loader = new FXMLLoader(StartscreenController.class.getResource("Startscreen.fxml"));
 			Scene scene = new Scene((Parent) loader.load());
 			primaryStage.setScene(scene);
+			primaryStage.setTitle("Undertale Monopoly");
 		}
 		catch (IOException e)
 		{
