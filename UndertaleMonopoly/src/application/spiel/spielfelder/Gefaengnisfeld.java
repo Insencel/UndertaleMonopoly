@@ -6,7 +6,7 @@ import application.gui.SpielfeldController;
 import application.spiel.Spieler;
 
 
-public class Gefängnisfeld extends Spielfeld{
+public class Gefaengnisfeld extends Spielfeld{
 	
 	public void gefangenNehmen(Spieler s)
 	{
@@ -33,14 +33,14 @@ public class Gefängnisfeld extends Spielfeld{
 		}
 	}
 	
-	public void freiwürfeln(SpielfeldController sc)
+	public void freiwuerfeln(SpielfeldController sc)
 	{
 		Random rdm = new Random();
-		int[] würfel = {rdm.nextInt(6)+1, rdm.nextInt(6)+1};
+		int[] wuerfel = {rdm.nextInt(6)+1, rdm.nextInt(6)+1};
 		
-		sc.setWürfel(würfel);
+		sc.setWuerfel(wuerfel);
 		
-		if(würfel[0] == würfel[1])
+		if(wuerfel[0] == wuerfel[1])
 		{
 			freilassen(SpielfeldController.spiel.getMomentanenSpieler());
 			sc.getSpielfeldEventText().setText("You freed yourself by rolling a double!");
@@ -56,7 +56,7 @@ public class Gefängnisfeld extends Spielfeld{
 		freilassen(SpielfeldController.spiel.getMomentanenSpieler());
 	}
 	
-	public boolean darfWürfeln(Spieler s)
+	public boolean darfWuerfeln(Spieler s)
 	{
 		return s.getVerbleibendeGefangenenZeit()>0;
 	}

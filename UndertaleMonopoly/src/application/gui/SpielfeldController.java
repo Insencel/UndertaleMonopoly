@@ -6,9 +6,9 @@ import java.io.IOException;
 import application.Main;
 import application.datenbankanbindung.SpielDB;
 import application.spiel.Spiel;
-import application.spiel.SpielerBewegungsunfähigException;
+import application.spiel.SpielerBewegungsunfaehigException;
 import application.spiel.SpielerGefangenException;
-import application.spiel.spielfelder.Gefängnisfeld;
+import application.spiel.spielfelder.Gefaengnisfeld;
 import application.spiel.spielfelder.KaufbaresFeld;
 import application.spiel.spielfelder.Produktionsfeld;
 import application.spiel.spielfelder.Riverladyfeld;
@@ -210,7 +210,7 @@ public class SpielfeldController
 	public static Spiel spiel = new Spiel(0, null);
 	public static SpielDB sdb = new SpielDB();
 	private ImageView[] bilder;
-	//private final Image[] bilder = {new Image("bilder/spielfelder/Start.png"), new Image("bilder/spielfelder/Feld1.png"), new Image("bilder/spielfelder/kartenfeld.png"), new Image("bilder/spielfelder/Feld2.png"), new Image("bilder/spielfelder/Flowey.png"), new Image("bilder/spielfelder/Riverlady.png"), new Image("bilder/spielfelder/Feld3.png"), new Image("bilder/spielfelder/kartenfeld.png"), new Image("bilder/spielfelder/Feld4.png"), new Image("bilder/spielfelder/Feld5.png"), new Image("bilder/spielfelder/Gefängnis.png"), new Image("bilder/spielfelder/Feld6.png"), new Image("bilder/spielfelder/Ice-Fabric.png"), new Image("bilder/spielfelder/Feld7.png"), new Image("bilder/spielfelder/Feld8.png"), new Image("bilder/spielfelder/Riverlady.png"), new Image("bilder/spielfelder/Feld9.png"), new Image("bilder/spielfelder/kartenfeld.png"), new Image("bilder/spielfelder/Feld10.png"), new Image("bilder/spielfelder/Feld11.png"),  new Image("bilder/spielfelder/FreeParking.png"), new Image("bilder/spielfelder/Feld12.png"), new Image("bilder/spielfelder/kartenfeld.png"), new Image("bilder/spielfelder/Feld13.png"), new Image("bilder/spielfelder/Feld14.png"), new Image("bilder/spielfelder/Riverlady.png"), new Image("bilder/spielfelder/Feld15.png"), new Image("bilder/spielfelder/Feld16.png"), new Image("bilder/spielfelder/Core.png"), new Image("bilder/spielfelder/Feld17.png"), new Image("bilder/spielfelder/Gefängnis.png"), new Image("bilder/spielfelder/Feld18.png"), new Image("bilder/spielfelder/Feld19.png"), new Image("bilder/spielfelder/kartenfeld.png"), new Image("bilder/spielfelder/Feld20.png"), new Image("bilder/spielfelder/Riverlady.png"), new Image("bilder/spielfelder/kartenfeld.png"), new Image("bilder/spielfelder/Feld21.png"), new Image("bilder/spielfelder/strafe_judgment_hall.png") , new Image("bilder/spielfelder/Feld22.png")};
+	//private final Image[] bilder = {new Image("bilder/spielfelder/Start.png"), new Image("bilder/spielfelder/Feld1.png"), new Image("bilder/spielfelder/kartenfeld.png"), new Image("bilder/spielfelder/Feld2.png"), new Image("bilder/spielfelder/Flowey.png"), new Image("bilder/spielfelder/Riverlady.png"), new Image("bilder/spielfelder/Feld3.png"), new Image("bilder/spielfelder/kartenfeld.png"), new Image("bilder/spielfelder/Feld4.png"), new Image("bilder/spielfelder/Feld5.png"), new Image("bilder/spielfelder/Gefaengnis.png"), new Image("bilder/spielfelder/Feld6.png"), new Image("bilder/spielfelder/Ice-Fabric.png"), new Image("bilder/spielfelder/Feld7.png"), new Image("bilder/spielfelder/Feld8.png"), new Image("bilder/spielfelder/Riverlady.png"), new Image("bilder/spielfelder/Feld9.png"), new Image("bilder/spielfelder/kartenfeld.png"), new Image("bilder/spielfelder/Feld10.png"), new Image("bilder/spielfelder/Feld11.png"),  new Image("bilder/spielfelder/FreeParking.png"), new Image("bilder/spielfelder/Feld12.png"), new Image("bilder/spielfelder/kartenfeld.png"), new Image("bilder/spielfelder/Feld13.png"), new Image("bilder/spielfelder/Feld14.png"), new Image("bilder/spielfelder/Riverlady.png"), new Image("bilder/spielfelder/Feld15.png"), new Image("bilder/spielfelder/Feld16.png"), new Image("bilder/spielfelder/Core.png"), new Image("bilder/spielfelder/Feld17.png"), new Image("bilder/spielfelder/Gefaengnis.png"), new Image("bilder/spielfelder/Feld18.png"), new Image("bilder/spielfelder/Feld19.png"), new Image("bilder/spielfelder/kartenfeld.png"), new Image("bilder/spielfelder/Feld20.png"), new Image("bilder/spielfelder/Riverlady.png"), new Image("bilder/spielfelder/kartenfeld.png"), new Image("bilder/spielfelder/Feld21.png"), new Image("bilder/spielfelder/strafe_judgment_hall.png") , new Image("bilder/spielfelder/Feld22.png")};
 	private int zumKaufenMarkiertesFeld = -1;
 	private int anzeigeIndex;
 	
@@ -261,7 +261,7 @@ public class SpielfeldController
 	{
 		try
 		{
-			int[] würfel = spiel.momentanenSpielerBewegen();
+			int[] wuerfel = spiel.momentanenSpielerBewegen();
 			
 			move.setVisible(false);
 			wuerfelL.setVisible(true);
@@ -269,7 +269,7 @@ public class SpielfeldController
 			feldkarte.setVisible(false);
 			vergroesserung.setVisible(true);
 				
-			setWürfel(würfel);
+			setWuerfel(wuerfel);
 		
 			int spielerPosition = spiel.getMomentanenSpieler().getPosition();
 			
@@ -582,7 +582,7 @@ public class SpielfeldController
 				aufenthaltsgebuehrHotel.setStyle("-fx-font-weight: normal");
 				
 				
-				switch(bf.getHäuser())
+				switch(bf.getHaeuser())
 				{
 				case 5:
 					aufenthaltsgebuehrHotel.setStyle("-fx-font-weight: bolder");
@@ -608,9 +608,9 @@ public class SpielfeldController
 				
 				
 				
-				if(spiel.getMomentanenSpieler().isBesitzerVonAllenFeldernImGebiet(bf.getGebiet()) && bf.getHäuser()<5)
+				if(spiel.getMomentanenSpieler().isBesitzerVonAllenFeldernImGebiet(bf.getGebiet()) && bf.getHaeuser()<5)
 				{
-					hausbau.setText("Buy a " + ((bf.getHäuser()==4) ? "hotel" : "house") + " for " + bf.getZubauKosten() + " G");
+					hausbau.setText("Buy a " + ((bf.getHaeuser()==4) ? "hotel" : "house") + " for " + bf.getZubauKosten() + " G");
 					hausbau.setVisible(true);
 				}
 				else
@@ -667,7 +667,7 @@ public class SpielfeldController
 				
 				if(rf.getBesitzer()!=null)
 				{
-					switch(rf.getBesitzer().getAnzahlAnHäfenImBesitz())
+					switch(rf.getBesitzer().getAnzahlAnHaefenImBesitz())
 					{
 					case 4:
 						miete4Haefen.setStyle("-fx-font-weight: bolder");
@@ -770,14 +770,14 @@ public class SpielfeldController
 	public void t2rd()
 	{
 		//try to roll doubles
-		spiel.getGefängnis().freiwürfeln(this);
+		spiel.getGefaengnis().freiwuerfeln(this);
 		deaktiviereGefangenenAuswahl();
 	}
 	
 	@FXML
 	public void pay50g()
 	{
-		spiel.getGefängnis().freikaufen(this);
+		spiel.getGefaengnis().freikaufen(this);
 		deaktiviereGefangenenAuswahl();
 		textupdate();
 	}
@@ -851,7 +851,7 @@ public class SpielfeldController
 		if(spiel.getMomentanenSpieler().getGold()>=0)
 		{
 			spiel.getMomentanenSpieler().paralyseZeitVergeht();
-			spiel.nächsterSpieler();
+			spiel.naechsterSpieler();
 			textupdate();
 			sdb.updateGame();
 			
@@ -872,13 +872,13 @@ public class SpielfeldController
 				{
 					throw new SpielerGefangenException();
 				}
-				else if(spiel.getMomentanenSpieler().isBewegungsunfähig())
+				else if(spiel.getMomentanenSpieler().isBewegungsunfaehig())
 				{
-					throw new SpielerBewegungsunfähigException();
+					throw new SpielerBewegungsunfaehigException();
 				}
 				move.setVisible(true);
 			}
-			catch(SpielerBewegungsunfähigException e)
+			catch(SpielerBewegungsunfaehigException e)
 			{
 				spielfeldEventText.setText("You can't move.");
 				spielfeldEventTextAnzeigen();
@@ -886,7 +886,7 @@ public class SpielfeldController
 			}
 			catch (SpielerGefangenException e)
 			{
-				if(spiel.getSpielfelder()[spiel.getMomentanenSpieler().getPosition()] instanceof Gefängnisfeld)
+				if(spiel.getSpielfelder()[spiel.getMomentanenSpieler().getPosition()] instanceof Gefaengnisfeld)
 				{
 					spiel.getSpielfelder()[spiel.getMomentanenSpieler().getPosition()].funktion(this);
 				}
@@ -996,10 +996,10 @@ public class SpielfeldController
 		hausbau.setTextFill(Color.BLACK);
 	}
 	
-	public void setWürfel(int[] würfel)
+	public void setWuerfel(int[] wuerfel)
 	{
-		wuerfelL.setImage(new Image("bilder/würfel/Würfel " + (würfel[0]) + ".jpg"));
-		wuerfelR.setImage(new Image("bilder/würfel/Würfel " + (würfel[1]) + ".jpg"));
+		wuerfelL.setImage(new Image("bilder/wuerfel/Wuerfel " + (wuerfel[0]) + ".jpg"));
+		wuerfelR.setImage(new Image("bilder/wuerfel/Wuerfel " + (wuerfel[1]) + ".jpg"));
 	}
 
 

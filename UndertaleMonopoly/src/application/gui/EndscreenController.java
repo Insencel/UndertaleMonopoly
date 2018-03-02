@@ -81,7 +81,7 @@ public class EndscreenController {
 		
 		screen.setVisible(true);
 		
-		SpielfeldController.sdb.alleMitNamenLöschen(SpielfeldController.spiel.getName());
+		SpielfeldController.sdb.alleMitNamenLoeschen(SpielfeldController.spiel.getName());
 	}
 	
 	

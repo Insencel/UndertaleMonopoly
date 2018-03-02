@@ -31,7 +31,7 @@ public class Spieler {
 		this.rundenStehenBleiben = rundenStehenBleiben;
 	}
 	
-	public void überweisen(int gold, Spieler s)
+	public void ueberweisen(int gold, Spieler s)
 	{
 		this.gold -= gold;
 		
@@ -54,7 +54,7 @@ public class Spieler {
 	public void gefangenenZeitVergeht()
 	{
 		verbleibendeGefangenenZeit--;
-		SpielfeldController.sdb.änderungHinzufügen(UpdateEnum.gefängnis);
+		SpielfeldController.sdb.aenderungHinzufuegen(UpdateEnum.gefaengnis);
 		
 		if(verbleibendeGefangenenZeit == -1)
 		{
@@ -65,19 +65,19 @@ public class Spieler {
 	public void paralyseZeitVergeht()
 	{
 		rundenStehenBleiben--;
-		SpielfeldController.sdb.änderungHinzufügen(UpdateEnum.paralyse);
+		SpielfeldController.sdb.aenderungHinzufuegen(UpdateEnum.paralyse);
 	}
 	
 	public void plusGold(int gold)
 	{
 		this.gold+=gold;
-		SpielfeldController.sdb.änderungHinzufügen(UpdateEnum.gold);
+		SpielfeldController.sdb.aenderungHinzufuegen(UpdateEnum.gold);
 	}
 	
 	public void minusGold(int gold)
 	{
 		this.gold-=gold;
-		SpielfeldController.sdb.änderungHinzufügen(UpdateEnum.gold);
+		SpielfeldController.sdb.aenderungHinzufuegen(UpdateEnum.gold);
 	}
 	
 	public byte getPosition() {
@@ -85,7 +85,7 @@ public class Spieler {
 	}
 
 	public void setPosition(byte position) {
-		SpielfeldController.sdb.änderungHinzufügen(UpdateEnum.position);
+		SpielfeldController.sdb.aenderungHinzufuegen(UpdateEnum.position);
 		this.position = position;
 	}
 
@@ -102,17 +102,17 @@ public class Spieler {
 	}
 
 	public void setVerbleibendeGefangenenZeit(byte verbleibendeGefangenenZeit) {
-		SpielfeldController.sdb.änderungHinzufügen(UpdateEnum.gefängnis);
+		SpielfeldController.sdb.aenderungHinzufuegen(UpdateEnum.gefaengnis);
 		this.verbleibendeGefangenenZeit = verbleibendeGefangenenZeit;
 	}
 	
-	public boolean isBewegungsunfähig()
+	public boolean isBewegungsunfaehig()
 	{
 		return rundenStehenBleiben>0;
 	}
 
 	public void setRundenStehenBleiben(byte rundenStehenBleiben) {
-		SpielfeldController.sdb.änderungHinzufügen(UpdateEnum.paralyse);
+		SpielfeldController.sdb.aenderungHinzufuegen(UpdateEnum.paralyse);
 		this.rundenStehenBleiben = rundenStehenBleiben;
 	}
 	
@@ -152,9 +152,9 @@ public class Spieler {
 		return b;
 	}
 	
-	public int getAnzahlAnHäfenImBesitz()
+	public int getAnzahlAnHaefenImBesitz()
 	{
-		int zähler = 0;
+		int zaehler = 0;
 		
 		KaufbaresFeld[] felder = SpielfeldController.spiel.getKaufbareFelder();
 		
@@ -162,18 +162,18 @@ public class Spieler {
 		{
 			if(felder[i] instanceof Riverladyfeld && felder[i].getBesitzer().equals(this))
 			{
-				zähler++;
+				zaehler++;
 			}
 		}
 		
 		
 		
-		return zähler;
+		return zaehler;
 	}
 	
 	public int getAnzahlAnProduktionImBesitz()
 	{
-		int zähler = 0;
+		int zaehler = 0;
 		
 		KaufbaresFeld[] felder = SpielfeldController.spiel.getKaufbareFelder();
 		
@@ -181,11 +181,11 @@ public class Spieler {
 		{
 			if(felder[i] instanceof Produktionsfeld && felder[i].getBesitzer().equals(this))
 			{
-				zähler++;
+				zaehler++;
 			}
 		}
 		
-		return zähler;
+		return zaehler;
 	}
 	
 	public int getScore()

@@ -12,7 +12,7 @@ public class Produktionsfeld extends KaufbaresFeld {
 	@Override
 	public int aufenthaltBerechnen()
 	{
-		return getPreisliste()[besitzer.getAnzahlAnProduktionImBesitz() - 1] * SpielfeldController.spiel.getZuletztGewürfelt();
+		return getPreisliste()[besitzer.getAnzahlAnProduktionImBesitz() - 1] * SpielfeldController.spiel.getZuletztGewuerfelt();
 	}
 	
 	@Override

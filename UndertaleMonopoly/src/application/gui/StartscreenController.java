@@ -128,7 +128,7 @@ public class StartscreenController
 		ladeStart.setVisible(false);
 		
 		
-		spielständeAnzeigen();
+		spielstaendeAnzeigen();
 	}
 	
 	
@@ -156,15 +156,15 @@ public class StartscreenController
 	
 	
 	@FXML
-	public void spielständeAnzeigen()
+	public void spielstaendeAnzeigen()
 	{
-		ObservableList<Spielstand> spielstände = sdb.alleSpielständeLaden();
+		ObservableList<Spielstand> spielstaende = sdb.alleSpielstaendeLaden();
 		
 		spielname.setCellValueFactory(new PropertyValueFactory<Spielstand, String>("spielname"));
 		zuletztGespielt.setCellValueFactory(new PropertyValueFactory<Spielstand, String>("zuletztGespielt"));
 		
 		
-		tv.setItems(spielstände);
+		tv.setItems(spielstaende);
 	}
 	
 	@FXML
@@ -185,9 +185,9 @@ public class StartscreenController
 	@FXML
 	public void loeschen()
 	{
-		sdb.alleMitNamenLöschen(tv.getSelectionModel().getSelectedItem().getSpielname());
+		sdb.alleMitNamenLoeschen(tv.getSelectionModel().getSelectedItem().getSpielname());
 		
-		spielständeAnzeigen();
+		spielstaendeAnzeigen();
 	}
 	
 	

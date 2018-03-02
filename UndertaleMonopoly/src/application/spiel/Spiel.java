@@ -10,14 +10,14 @@ import application.spiel.spielfelder.*;
 
 public class Spiel
 {
-	private Spielfeld[] spielfelder = {new SpielfeldOhneFunktion(), new BebaubaresFeld("Flowerfield", 60, Spielfeldgebiet.RUINS), new Aktionsfeld(), new BebaubaresFeld("Toriel's House", 60, Spielfeldgebiet.RUINS), new GeldstrafenFeld(200), new Riverladyfeld("Riverlady West", 200), new BebaubaresFeld("Conveniently-Shaped Lamp", 100, Spielfeldgebiet.SNOWDIN_FOREST), new Aktionsfeld(),  new BebaubaresFeld("Kennel", 100, Spielfeldgebiet.SNOWDIN_FOREST), new BebaubaresFeld("Long Bridge", 120, Spielfeldgebiet.SNOWDIN_FOREST), new Gefängnisfeld(), new BebaubaresFeld("Library", 140, Spielfeldgebiet.SNOWDIN), new Produktionsfeld("Ice-Fabric", 150), new BebaubaresFeld("Grillby's", 140, Spielfeldgebiet.SNOWDIN), new BebaubaresFeld("Shop & Inn", 160, Spielfeldgebiet.SNOWDIN), new Riverladyfeld("Riverlady North", 200), new BebaubaresFeld("Statue", 180, Spielfeldgebiet.WATERFALL), new Aktionsfeld(),  new BebaubaresFeld("Ghost House", 180, Spielfeldgebiet.WATERFALL), new BebaubaresFeld("Temmie Village", 200, Spielfeldgebiet.WATERFALL), new SpielfeldOhneFunktion(), new BebaubaresFeld("Lab", 220, Spielfeldgebiet.HOTLAND), new Aktionsfeld(), new BebaubaresFeld("Spider", 220, Spielfeldgebiet.HOTLAND), new BebaubaresFeld("Theatre", 240, Spielfeldgebiet.HOTLAND), new Riverladyfeld("Riverlady East", 200), new BebaubaresFeld("MTT-Well", 260, Spielfeldgebiet.HOTEL), new BebaubaresFeld("MTT", 260, Spielfeldgebiet.HOTEL), new Produktionsfeld("Core", 200), new BebaubaresFeld("Hotelroom", 280, Spielfeldgebiet.HOTEL), new InsGefängnisFeld(), new BebaubaresFeld("Bin", 300, Spielfeldgebiet.CORE), new BebaubaresFeld("Core-Bridge", 300, Spielfeldgebiet.CORE), new Aktionsfeld(), new BebaubaresFeld("MTT-Boss Door", 320, Spielfeldgebiet.CORE), new Riverladyfeld("Riverlady South", 200), new Aktionsfeld(),  new BebaubaresFeld("End-House", 350, Spielfeldgebiet.END), new GeldstrafenFeld(100), new BebaubaresFeld("Throne", 400, Spielfeldgebiet.END)};
+	private Spielfeld[] spielfelder = {new SpielfeldOhneFunktion(), new BebaubaresFeld("Flowerfield", 60, Spielfeldgebiet.RUINS), new Aktionsfeld(), new BebaubaresFeld("Toriel's House", 60, Spielfeldgebiet.RUINS), new GeldstrafenFeld(200), new Riverladyfeld("Riverlady West", 200), new BebaubaresFeld("Conveniently-Shaped Lamp", 100, Spielfeldgebiet.SNOWDIN_FOREST), new Aktionsfeld(),  new BebaubaresFeld("Kennel", 100, Spielfeldgebiet.SNOWDIN_FOREST), new BebaubaresFeld("Long Bridge", 120, Spielfeldgebiet.SNOWDIN_FOREST), new Gefaengnisfeld(), new BebaubaresFeld("Library", 140, Spielfeldgebiet.SNOWDIN), new Produktionsfeld("Ice-Fabric", 150), new BebaubaresFeld("Grillby's", 140, Spielfeldgebiet.SNOWDIN), new BebaubaresFeld("Shop & Inn", 160, Spielfeldgebiet.SNOWDIN), new Riverladyfeld("Riverlady North", 200), new BebaubaresFeld("Statue", 180, Spielfeldgebiet.WATERFALL), new Aktionsfeld(),  new BebaubaresFeld("Ghost House", 180, Spielfeldgebiet.WATERFALL), new BebaubaresFeld("Temmie Village", 200, Spielfeldgebiet.WATERFALL), new SpielfeldOhneFunktion(), new BebaubaresFeld("Lab", 220, Spielfeldgebiet.HOTLAND), new Aktionsfeld(), new BebaubaresFeld("Spider", 220, Spielfeldgebiet.HOTLAND), new BebaubaresFeld("Theatre", 240, Spielfeldgebiet.HOTLAND), new Riverladyfeld("Riverlady East", 200), new BebaubaresFeld("MTT-Well", 260, Spielfeldgebiet.HOTEL), new BebaubaresFeld("MTT", 260, Spielfeldgebiet.HOTEL), new Produktionsfeld("Core", 200), new BebaubaresFeld("Hotelroom", 280, Spielfeldgebiet.HOTEL), new InsGefaengnisFeld(), new BebaubaresFeld("Bin", 300, Spielfeldgebiet.CORE), new BebaubaresFeld("Core-Bridge", 300, Spielfeldgebiet.CORE), new Aktionsfeld(), new BebaubaresFeld("MTT-Boss Door", 320, Spielfeldgebiet.CORE), new Riverladyfeld("Riverlady South", 200), new Aktionsfeld(),  new BebaubaresFeld("End-House", 350, Spielfeldgebiet.END), new GeldstrafenFeld(100), new BebaubaresFeld("Throne", 400, Spielfeldgebiet.END)};
 	private final int[][] tabellenposition = {{1, 11}, {1, 10}, {1, 9}, {1, 8}, {1, 7}, {1, 6}, {1, 5}, {1, 4}, {1, 3}, {1, 2}, {1, 1}, {2, 1}, {3, 1}, {4, 1}, {5, 1}, {6, 1}, {7, 1}, {8, 1}, {9, 1}, {10, 1}, {11,1} , {11, 2}, {11, 3}, {11, 4}, {11, 5}, {11, 6}, {11, 7}, {11, 8}, {11, 9}, {11, 10}, {11, 11}, {10, 11}, {9, 11}, {8, 11},{7, 11}, {6, 11}, {5, 11}, {4, 11}, {3, 11}, {2, 11}};
-	private final Eventkarte[] kartenstapel = {new GoldKarte("Monster Kid gives you a gift!\n\nYou earn 50 G.", 50), new GoldKarte("Sans sells a hotdog to you.\n\nYou pay him 20 G.", -20), new GoldKarte("You pay for Temmies college.\n\nIt costs 200G.", -200), new GoldKarte("You buy Nice Cream.\n\nIt costs 50 G.", -50), new RandomGoldKarte("#?E2&§ |=€:%*R5 #*/R? !\\O<\" #°§R$&"), new GeheInsGefängnisKarte("Papyrus caught you whilst you were busy thinking of what this card could do.\n\nGo to jail!"), new ParalyseKarte("You see Goner Kid and are shocked.\n\nYou lose one turn.", (byte) 1), new ParalyseKarte("Burgerpants gives you and advice.\n\nDon't live your life like I did. I am 19 years old and I wasted my entire life.\n\nYou are so stunned from this intellectual statement that you can't move next turn.", (byte) 1), new ParalyseKarte("Papyrus cooked spaghetti for you but you don't eat them.\n\nYou feel bad and won't move next turn.", (byte) 1), new BewegenZuFeldKarte("Sans invites you to go to Grillby's.\n\nGo to Grillby's.", (byte) 13), new ZumNächstenHafenKarte("The Riverlady takes you to her next harbour.")};
+	private final Eventkarte[] kartenstapel = {new GoldKarte("Monster Kid gives you a gift!\n\nYou earn 50 G.", 50), new GoldKarte("Sans sells a hotdog to you.\n\nYou pay him 20 G.", -20), new GoldKarte("You pay for Temmies college.\n\nIt costs 200G.", -200), new GoldKarte("You buy Nice Cream.\n\nIt costs 50 G.", -50), new RandomGoldKarte("#?E2&§ |=€:%*R5 #*/R? !\\O<\" #°§R$&"), new GeheInsGefaengnisKarte("Papyrus caught you whilst you were busy thinking of what this card could do.\n\nGo to jail!"), new ParalyseKarte("You see Goner Kid and are shocked.\n\nYou lose one turn.", (byte) 1), new ParalyseKarte("Burgerpants gives you and advice.\n\nDon't live your life like I did. I am 19 years old and I wasted my entire life.\n\nYou are so stunned from this intellectual statement that you can't move next turn.", (byte) 1), new ParalyseKarte("Papyrus cooked spaghetti for you but you don't eat them.\n\nYou feel bad and won't move next turn.", (byte) 1), new BewegenZuFeldKarte("Sans invites you to go to Grillby's.\n\nGo to Grillby's.", (byte) 13), new ZumNaechstenHafenKarte("The Riverlady takes you to her next harbour.")};
 	private Spieler[] spieler;
 	private int amZug;
 	private int paschcounter;
-	private final int überStartGold = 200;
-	private int zuletztGewürfelt;
+	private final int ueberStartGold = 200;
+	private int zuletztGewuerfelt;
 	private String name;
 	
 	
@@ -45,12 +45,12 @@ public class Spiel
 	public int[] momentanenSpielerBewegen() throws SpielerGefangenException
 	{
 		Random rdm = new Random();
-		int[] würfel = {rdm.nextInt(6)+1, rdm.nextInt(6)+1};
-		zuletztGewürfelt = würfel[0] + würfel[1];
+		int[] wuerfel = {rdm.nextInt(6)+1, rdm.nextInt(6)+1};
+		zuletztGewuerfelt = wuerfel[0] + wuerfel[1];
 		
-		for(int i = 0; i<würfel.length; i++)
+		for(int i = 0; i<wuerfel.length; i++)
 		{
-			spieler[amZug].setPosition((byte) (spieler[amZug].getPosition() + würfel[i]));
+			spieler[amZug].setPosition((byte) (spieler[amZug].getPosition() + wuerfel[i]));
 		}
 		
 		
@@ -59,13 +59,13 @@ public class Spiel
 			spieler[amZug].setPosition((byte) (spieler[amZug].getPosition()-tabellenposition.length));
 		}
 		
-		if(würfel[0] == würfel[1])
+		if(wuerfel[0] == wuerfel[1])
 		{
 			if(paschcounter==3)
 			{
 				setPaschcounter(0);
-				getGefängnis().gefangenNehmen(getMomentanenSpieler());
-				SpielfeldController.sdb.änderungHinzufügen(UpdateEnum.paschcounter);
+				getGefaengnis().gefangenNehmen(getMomentanenSpieler());
+				SpielfeldController.sdb.aenderungHinzufuegen(UpdateEnum.paschcounter);
 				
 				throw new SpielerGefangenException();
 			}
@@ -78,25 +78,25 @@ public class Spiel
 		{
 			setPaschcounter(0);
 		}
-		SpielfeldController.sdb.änderungHinzufügen(UpdateEnum.paschcounter);
+		SpielfeldController.sdb.aenderungHinzufuegen(UpdateEnum.paschcounter);
 		
-		return würfel;
+		return wuerfel;
 	}
 	
 	
 	
 	
-	public void überLos()
+	public void ueberLos()
 	{
 		Spieler s = spieler[amZug];
 
 		if(s.getPosition()==0)
 		{
-			s.plusGold(überStartGold*2);
+			s.plusGold(ueberStartGold*2);
 		}
 		else
 		{
-			s.plusGold(überStartGold);
+			s.plusGold(ueberStartGold);
 		}
 		
 		
@@ -114,7 +114,7 @@ public class Spiel
 				{
 					BebaubaresFeld bf = (BebaubaresFeld) this.spielfelder[i];
 					
-					bf.setHäuser(spielfelddaten.get(besitzerCounter)[1]);
+					bf.setHaeuser(spielfelddaten.get(besitzerCounter)[1]);
 				}
 				
 				if(spielfelddaten.get(besitzerCounter)[0]!=-1)
@@ -134,7 +134,7 @@ public class Spiel
 		
 	}
 
-	public void nächsterSpieler()
+	public void naechsterSpieler()
 	{
 		if(paschcounter==0)
 		{
@@ -147,71 +147,71 @@ public class Spiel
 				amZug++;
 			}
 			
-			SpielfeldController.sdb.änderungHinzufügen(UpdateEnum.amZug);
+			SpielfeldController.sdb.aenderungHinzufuegen(UpdateEnum.amZug);
 		}
 	}
 
 	
 	public int getIndexOfTabellenposition(int[] gesucht)
 	{
-		int rückgabe = -1;
+		int rueckgabe = -1;
 		for(int i = 0; i < tabellenposition.length; i++)
 		{
 			if(tabellenposition[i][0] == gesucht[0]   &&   tabellenposition[i][1] == gesucht[1])
 			{
-				rückgabe = i;
+				rueckgabe = i;
 				break;
 			}
 		}
 		
-		return rückgabe;
+		return rueckgabe;
 	}
 	
 	public int getIndexOfSpielfeld(Spielfeld gesucht)
 	{
-		int rückgabe = -1;
+		int rueckgabe = -1;
 		for(int i = 0; i < spielfelder.length; i++)
 		{
 			if(spielfelder[i].equals(gesucht))
 			{
-				rückgabe = i;
+				rueckgabe = i;
 				break;
 			}
 		}
 		
-		return rückgabe;
+		return rueckgabe;
 	}
 	
 	public int getIndexOfKaufbaresFeld(KaufbaresFeld gesucht)
 	{
-		int rückgabe = -1;
+		int rueckgabe = -1;
 		KaufbaresFeld[] felder = getKaufbareFelder();
 		
 		for(int i = 0; i < felder.length; i++)
 		{
 			if(felder[i].equals(gesucht))
 			{
-				rückgabe = i;
+				rueckgabe = i;
 				break;
 			}
 		}
 		
-		return rückgabe;
+		return rueckgabe;
 	}
 	
 	public int getIndexOfSpieler(Spieler gesucht)
 	{
-		int rückgabe = -1;
+		int rueckgabe = -1;
 		for(int i = 0; i < spieler.length; i++)
 		{
 			if(spieler[i].equals(gesucht))
 			{
-				rückgabe = i;
+				rueckgabe = i;
 				break;
 			}
 		}
 		
-		return rückgabe;
+		return rueckgabe;
 	}
 	
 	public KaufbaresFeld[] getKaufbareFelder()
@@ -252,7 +252,7 @@ public class Spiel
 	private void setPaschcounter(int paschcounter)
 	{
 		this.paschcounter = paschcounter;
-		SpielfeldController.sdb.änderungHinzufügen(UpdateEnum.paschcounter);
+		SpielfeldController.sdb.aenderungHinzufuegen(UpdateEnum.paschcounter);
 	}
 	
 	public int getPaschcounter() {
@@ -283,18 +283,18 @@ public class Spiel
 		return spieler;
 	}
 	
-	public Gefängnisfeld getGefängnis() {
-		return (Gefängnisfeld) spielfelder[10];
+	public Gefaengnisfeld getGefaengnis() {
+		return (Gefaengnisfeld) spielfelder[10];
 	}
 	
-	public Eventkarte getZufälligeEventkarte() {
+	public Eventkarte getZufaelligeEventkarte() {
 		Random rdm = new Random();
 		return kartenstapel[rdm.nextInt(kartenstapel.length)];
 	}
 	
-	public int getZuletztGewürfelt()
+	public int getZuletztGewuerfelt()
 	{
-		return zuletztGewürfelt;
+		return zuletztGewuerfelt;
 	}
 	
 	public String getName()

@@ -17,9 +17,9 @@ public class SpielDB {
 
 	private Datenbank db = new Datenbank();
 	private static int spielID;
-	private ArrayList<UpdateEnum> änderungen = new ArrayList<UpdateEnum>();
-	private KaufbaresFeld besitzerÄnderung;
-	private ArrayList<BebaubaresFeld> hausänderung = new ArrayList<BebaubaresFeld>();
+	private ArrayList<UpdateEnum> aenderungen = new ArrayList<UpdateEnum>();
+	private KaufbaresFeld besitzerAenderung;
+	private ArrayList<BebaubaresFeld> hausaenderung = new ArrayList<BebaubaresFeld>();
 	
 	public void spielstandLaden(String name)
 	{
@@ -46,19 +46,19 @@ public class SpielDB {
 			
 				while(spielfelderSet.next())
 				{
-					Integer[] hinzufügen = {-1, -1};
+					Integer[] hinzufuegen = {-1, -1};
 					
 					if(spielfelderSet.getString("Besitzer")!=null)
 					{
-						hinzufügen[0] = spielfelderSet.getInt("Besitzer");
+						hinzufuegen[0] = spielfelderSet.getInt("Besitzer");
 					}
 					
 					if(spielfelderSet.getString("Haeuser")!=null)
 					{
-						hinzufügen[1] = spielfelderSet.getInt("Haeuser");
+						hinzufuegen[1] = spielfelderSet.getInt("Haeuser");
 					}
 					
-					sf.add(hinzufügen);
+					sf.add(hinzufuegen);
 				}
 			
 				s = new Spiel(spielSet.getInt("AmZug"), spielSet.getInt("Paschcounter"), sp, sf, name);
@@ -74,7 +74,7 @@ public class SpielDB {
 		}
 		catch (SQLException e)
 		{
-			System.out.println("Laden nicht möglich");
+			System.out.println("Laden nicht moeglich");
 			e.printStackTrace();
 			s = new Spiel(4, name);
 		}
@@ -142,9 +142,9 @@ public class SpielDB {
 		
 	}
 	
-	public ObservableList<Spielstand> alleSpielständeLaden()
+	public ObservableList<Spielstand> alleSpielstaendeLaden()
 	{
-		ArrayList<Spielstand> spielständeAl = new ArrayList<Spielstand>();
+		ArrayList<Spielstand> spielstaendeAl = new ArrayList<Spielstand>();
 		
 		ResultSet rs = db.auslesen("spiel", "");
 		
@@ -152,7 +152,7 @@ public class SpielDB {
 		{
 			while(rs.next())
 			{
-				spielständeAl.add(new Spielstand(rs.getString("Spielname"), rs.getString("ZuletztGespielt")));
+				spielstaendeAl.add(new Spielstand(rs.getString("Spielname"), rs.getString("ZuletztGespielt")));
 			}
 		}
 		catch (SQLException e)
@@ -160,12 +160,12 @@ public class SpielDB {
 			e.printStackTrace();
 		}
 		
-		ObservableList<Spielstand> spielstände = FXCollections.observableList(spielständeAl);
-		return spielstände;
+		ObservableList<Spielstand> spielstaende = FXCollections.observableList(spielstaendeAl);
+		return spielstaende;
 	}
 	
 	
-	public void alleMitNamenLöschen(String name)
+	public void alleMitNamenLoeschen(String name)
 	{
 		try
 		{
@@ -174,9 +174,9 @@ public class SpielDB {
 			rs.next();
 			int spielID = rs.getInt("SpielID");
 			
-			db.löschen("spiel", "SpielID=" + spielID);
-			db.löschen("spieler", "SpielID=" + spielID);
-			db.löschen("spielfelder", "SpielID=" + spielID);
+			db.loeschen("spiel", "SpielID=" + spielID);
+			db.loeschen("spieler", "SpielID=" + spielID);
+			db.loeschen("spielfelder", "SpielID=" + spielID);
 		}
 		catch (SQLException e)
 		{
@@ -188,35 +188,35 @@ public class SpielDB {
 	
 	public void updateGame()
 	{
-		if(änderungen.contains(UpdateEnum.besitzer))
+		if(aenderungen.contains(UpdateEnum.besitzer))
 		{
-			updateSpielfeldBesitzer(besitzerÄnderung);
+			updateSpielfeldBesitzer(besitzerAenderung);
 			
-			änderungen.remove(UpdateEnum.besitzer);
+			aenderungen.remove(UpdateEnum.besitzer);
 		}
-		if(änderungen.contains(UpdateEnum.häuser))
+		if(aenderungen.contains(UpdateEnum.haeuser))
 		{
-			for(int i = 0; i<hausänderung.size(); i++)
+			for(int i = 0; i<hausaenderung.size(); i++)
 			{
-				updateSpielfeldHäuser(hausänderung.get(i));
+				updateSpielfeldHaeuser(hausaenderung.get(i));
 			}
-			änderungen.remove(UpdateEnum.häuser);
+			aenderungen.remove(UpdateEnum.haeuser);
 		}
-		if(änderungen.contains(UpdateEnum.amZug))
+		if(aenderungen.contains(UpdateEnum.amZug))
 		{
 			int amZug = SpielfeldController.spiel.getAmZug();
 			
 			updateSpielAmZug(amZug);
 			
 			
-			änderungen.remove(UpdateEnum.amZug);
+			aenderungen.remove(UpdateEnum.amZug);
 		}
-		if(änderungen.contains(UpdateEnum.paschcounter))
+		if(aenderungen.contains(UpdateEnum.paschcounter))
 		{
 			updateSpielPaschcounter();
-			änderungen.remove(UpdateEnum.paschcounter);
+			aenderungen.remove(UpdateEnum.paschcounter);
 		}
-		if(änderungen.contains(UpdateEnum.gold))
+		if(aenderungen.contains(UpdateEnum.gold))
 		{
 			Spieler[] spieler = SpielfeldController.spiel.getSpieler();
 			for(int i = 0; i<spieler.length; i++)
@@ -224,9 +224,9 @@ public class SpielDB {
 				updateSpielerGold(spieler[i]);
 			}
 			
-			änderungen.remove(UpdateEnum.gold);
+			aenderungen.remove(UpdateEnum.gold);
 		}
-		if(änderungen.contains(UpdateEnum.position))
+		if(aenderungen.contains(UpdateEnum.position))
 		{
 			Spieler[] spieler = SpielfeldController.spiel.getSpieler();
 			for(int i = 0; i<spieler.length; i++)
@@ -234,19 +234,19 @@ public class SpielDB {
 				updateSpielerPosition(spieler[i]);
 			}
 			
-			änderungen.remove(UpdateEnum.position);
+			aenderungen.remove(UpdateEnum.position);
 		}
-		if(änderungen.contains(UpdateEnum.gefängnis))
+		if(aenderungen.contains(UpdateEnum.gefaengnis))
 		{
 			Spieler[] spieler = SpielfeldController.spiel.getSpieler();
 			for(int i = 0; i<spieler.length; i++)
 			{
-				updateSpielerGefängnisZeit(spieler[i]);
+				updateSpielerGefaengnisZeit(spieler[i]);
 			}
 			
-			änderungen.remove(UpdateEnum.gefängnis);
+			aenderungen.remove(UpdateEnum.gefaengnis);
 		}
-		if(änderungen.contains(UpdateEnum.paralyse))
+		if(aenderungen.contains(UpdateEnum.paralyse))
 		{
 			Spieler[] spieler = SpielfeldController.spiel.getSpieler();
 			for(int i = 0; i<spieler.length; i++)
@@ -254,7 +254,7 @@ public class SpielDB {
 				updateSpielerRundenStehenBleiben(spieler[i]);
 			}
 			
-			änderungen.remove(UpdateEnum.paralyse);
+			aenderungen.remove(UpdateEnum.paralyse);
 		}
 		
 			
@@ -276,11 +276,11 @@ public class SpielDB {
 		
 	}
 	
-	private void updateSpielfeldHäuser(BebaubaresFeld bf)
+	private void updateSpielfeldHaeuser(BebaubaresFeld bf)
 	{
 		int spielfeldID = getSpielfeldID(bf);
 		
-		db.update("spielfelder", "Haeuser=" + bf.getHäuser(), "SpielID=" + spielID + " AND SpielfelderID=" + spielfeldID);
+		db.update("spielfelder", "Haeuser=" + bf.getHaeuser(), "SpielID=" + spielID + " AND SpielfelderID=" + spielfeldID);
 	}
 	
 	
@@ -323,7 +323,7 @@ public class SpielDB {
 		db.update("spieler", "position=" + s.getPosition(), "SpielID=" + spielID + " AND SpielerID=" + getSpielerID(s));
 	}
 	
-	private void updateSpielerGefängnisZeit(Spieler s)
+	private void updateSpielerGefaengnisZeit(Spieler s)
 	{
 		db.update("spieler", "VerbleibendeGefaengnisZeit=" + s.getVerbleibendeGefangenenZeit(), "SpielID=" + spielID + " AND SpielerID=" + getSpielerID(s));
 	}
@@ -339,56 +339,56 @@ public class SpielDB {
 	private int getSpielerID(Spieler s)
 	{
 		ResultSet rs = db.auslesen("spieler", "WHERE SpielID=" + spielID);
-		int rückgabe = 0;
+		int rueckgabe = 0;
 		try
 		{
 			rs.next();
-			rückgabe = rs.getInt("SpielerID") + SpielfeldController.spiel.getIndexOfSpieler(s);
+			rueckgabe = rs.getInt("SpielerID") + SpielfeldController.spiel.getIndexOfSpieler(s);
 		}
 		catch (SQLException e)
 		{
 			e.printStackTrace();
 		}
 		
-		return rückgabe;
+		return rueckgabe;
 	}
 	
 	private int getSpielfeldID(KaufbaresFeld kf)
 	{
 		ResultSet rs = db.auslesen("spielfelder", "WHERE SpielID=" + spielID);
-		int rückgabe = 0;
+		int rueckgabe = 0;
 		try
 		{
 			rs.next();
-			rückgabe = rs.getInt("SpielfelderID") + SpielfeldController.spiel.getIndexOfKaufbaresFeld(kf);
+			rueckgabe = rs.getInt("SpielfelderID") + SpielfeldController.spiel.getIndexOfKaufbaresFeld(kf);
 		}
 		catch (SQLException e)
 		{
 			e.printStackTrace();
 		}
 		
-		return rückgabe;
+		return rueckgabe;
 	}
 	
 	
-	public void änderungHinzufügen(UpdateEnum änderung)
+	public void aenderungHinzufuegen(UpdateEnum aenderung)
 	{
-		if(!änderungen.contains(änderung))
+		if(!aenderungen.contains(aenderung))
 		{
-			änderungen.add(änderung);
+			aenderungen.add(aenderung);
 		}
 	}
 	
-	public void setBesitzerÄnderung(KaufbaresFeld k)
+	public void setBesitzeraenderung(KaufbaresFeld k)
 	{
-		this.besitzerÄnderung = k;
+		this.besitzerAenderung = k;
 	}
 	
-	public void häuserÄnderungHinzufügen(BebaubaresFeld bf)
+	public void haeuseraenderungHinzufuegen(BebaubaresFeld bf)
 	{
-		if(!hausänderung.contains(bf))
+		if(!hausaenderung.contains(bf))
 		{
-			hausänderung.add(bf);
+			hausaenderung.add(bf);
 		}
 	}
 	

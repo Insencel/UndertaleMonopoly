@@ -9,14 +9,14 @@ public abstract class Eventkarte {
 	 * Sans verkauft dir einen Hotdog. [-20G]
 	 * Du bezahlst Temmies College. [-200G]
 	 * Du kaufst Nice Cream. [-50G]
-	 * 👎︎♓︎♏︎⬧︎ ♓︎⬧︎⧫︎ ♓︎⬧︎⧫︎ ♏︎♓︎■︎ ❄︎♏︎⌧︎⧫︎ ♎︎♏︎■︎ ♎︎◆︎ ■︎♓︎♍︎♒︎⧫︎ ●︎♏︎⬧︎♏︎■︎ &︎♋︎■︎■︎⬧︎⧫︎. ☯︎✋︎■︎ ♎︎♏︎❒︎ ☪︎◆︎&︎◆︎■︎♐︎⧫︎ ♓︎⬧︎⧫︎ ♋︎●︎●︎♏︎⬧︎ ❖︎♏︎❒︎♍︎♒︎❒︎□︎❍︎⧫︎📪︎ 📄︎🗐︎☸︎ [+100G bis -100G Zufällig] (Zeichen können nicht in einem String gespeichert werden)
-	 * Papyrus fängt dich. [Ins Gefängnis]
-	 * Papyrus schützt dich vor Undyne. [1x aus dem Gefängnis] (vllt. Du erfährst, dass Papyrus die Tür manchmal nicht abschließt)
+	 * 👎︎♓︎♏︎⬧︎ ♓︎⬧︎⧫︎ ♓︎⬧︎⧫︎ ♏︎♓︎■︎ ❄︎♏︎⌧︎⧫︎ ♎︎♏︎■︎ ♎︎◆︎ ■︎♓︎♍︎♒︎⧫︎ ●︎♏︎⬧︎♏︎■︎ &︎♋︎■︎■︎⬧︎⧫︎. ☯︎✋︎■︎ ♎︎♏︎❒︎ ☪︎◆︎&︎◆︎■︎♐︎⧫︎ ♓︎⬧︎⧫︎ ♋︎●︎●︎♏︎⬧︎ ❖︎♏︎❒︎♍︎♒︎❒︎□︎❍︎⧫︎📪︎ 📄︎🗐︎☸︎ [+100G bis -100G Zufaellig] (Zeichen können nicht in einem String gespeichert werden)
+	 * Papyrus faengt dich. [Ins Gefaengnis]
+	 * Papyrus schuetzt dich vor Undyne. [1x aus dem Gefaengnis] (vllt. Du erfaehrst, dass Papyrus die Tuer manchmal nicht abschließt)
 	 * Du triffst das Goner Kid, du bist starr vor Schock. [Du kannst dich eine Runde nicht bewegen]
-	 * Sans lädt dich zu Grillby's ein. [Gehe zu Grillby's]
-	 * Du triffst den Fährmann. [Gehe zum nächsten Hafen]
-	 * Bugerpants gibt dir einen Lebensrat. [Lebe nicht wie ich, ich bin 19 Jahre alt und habe mein ganzes Leben verschwendet. Du bist verzweifelt und kannst dich nicht für eine Rund bewegen.]
-	 * Papyrus hat für dich gekocht, du lehnst ab es zu essen. [Du fühlst dich schlecht. Du musst für eine Runde aussetzen!]
+	 * Sans laedt dich zu Grillby's ein. [Gehe zu Grillby's]
+	 * Du triffst den Faehrmann. [Gehe zum naechsten Hafen]
+	 * Bugerpants gibt dir einen Lebensrat. [Lebe nicht wie ich, ich bin 19 Jahre alt und habe mein ganzes Leben verschwendet. Du bist verzweifelt und kannst dich nicht fuer eine Rund bewegen.]
+	 * Papyrus hat fuer dich gekocht, du lehnst ab es zu essen. [Du fuehlst dich schlecht. Du musst fuer eine Runde aussetzen!]
 	 */
 	
 	private String text;

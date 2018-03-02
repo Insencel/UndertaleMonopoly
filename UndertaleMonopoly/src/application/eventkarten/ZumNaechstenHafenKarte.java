@@ -3,9 +3,9 @@ package application.eventkarten;
 import application.gui.SpielfeldController;
 import application.spiel.Spieler;
 
-public class ZumNächstenHafenKarte extends Eventkarte {
+public class ZumNaechstenHafenKarte extends Eventkarte {
 
-	public ZumNächstenHafenKarte(String text) {
+	public ZumNaechstenHafenKarte(String text) {
 		super(text);
 	}
 

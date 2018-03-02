@@ -97,7 +97,7 @@ public class Datenbank {
 		return rs;
 	}
 	
-	public void löschen(String tabelle, String query)
+	public void loeschen(String tabelle, String query)
 	{
 		try
 		{
@@ -107,7 +107,7 @@ public class Datenbank {
 		catch (SQLException e)
 		{
 			
-			System.out.println("Löschen funktioniert nicht");
+			System.out.println("Loeschen funktioniert nicht");
 			e.printStackTrace();
 		}
 	}

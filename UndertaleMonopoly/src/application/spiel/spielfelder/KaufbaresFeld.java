@@ -28,7 +28,7 @@ public abstract class KaufbaresFeld extends Spielfeld {
 		{
 			int gold = aufenthaltBerechnen();
 			sc.getSpielfeldEventText().setText("You have to pay " + gold + " G to Player " + (SpielfeldController.spiel.getIndexOfSpieler(besitzer)+1) + "!");
-			SpielfeldController.spiel.getMomentanenSpieler().überweisen(gold, besitzer);
+			SpielfeldController.spiel.getMomentanenSpieler().ueberweisen(gold, besitzer);
 			sc.spielfeldEventTextAnzeigen();
 			sc.textupdate();
 		}
@@ -48,8 +48,8 @@ public abstract class KaufbaresFeld extends Spielfeld {
 	public void setBesitzer(Spieler besitzer)
 	{
 		this.besitzer = besitzer;
-		SpielfeldController.sdb.änderungHinzufügen(UpdateEnum.besitzer);
-		SpielfeldController.sdb.setBesitzerÄnderung(this);
+		SpielfeldController.sdb.aenderungHinzufuegen(UpdateEnum.besitzer);
+		SpielfeldController.sdb.setBesitzeraenderung(this);
 	}
 
 	public int getPreis() {

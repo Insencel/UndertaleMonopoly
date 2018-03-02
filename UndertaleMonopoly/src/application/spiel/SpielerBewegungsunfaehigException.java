@@ -1,6 +1,6 @@
 package application.spiel;
 
-public class SpielerBewegungsunfähigException extends Throwable {
+public class SpielerBewegungsunfaehigException extends Throwable {
 
 	/**
 	 * 

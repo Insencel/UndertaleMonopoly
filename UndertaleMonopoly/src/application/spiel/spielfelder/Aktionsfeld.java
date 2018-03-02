@@ -11,7 +11,7 @@ public class Aktionsfeld extends Spielfeld{
 		sc.getSpielfeldEventText().setText("");
 		sc.spielfeldEventTextAnzeigen();
 		
-		Eventkarte ek = SpielfeldController.spiel.getZufälligeEventkarte();
+		Eventkarte ek = SpielfeldController.spiel.getZufaelligeEventkarte();
 		
 		sc.eventkarteAnzeigen(ek.getText());
 		ek.funktion(sc);

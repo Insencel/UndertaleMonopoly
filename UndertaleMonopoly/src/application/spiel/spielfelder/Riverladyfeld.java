@@ -10,7 +10,7 @@ public class Riverladyfeld extends KaufbaresFeld {
 	@Override
 	public int aufenthaltBerechnen()
 	{
-		return getPreisliste()[besitzer.getAnzahlAnHäfenImBesitz()-1];
+		return getPreisliste()[besitzer.getAnzahlAnHaefenImBesitz()-1];
 	}
 	
 	@Override

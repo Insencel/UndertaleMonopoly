@@ -4,7 +4,7 @@ import application.gui.SpielfeldController;
 
 public class BebaubaresFeld extends KaufbaresFeld {
 	private Spielfeldgebiet gebiet;
-	private byte häuser;
+	private byte haeuser;
 	
 	public BebaubaresFeld(String name, int preis, Spielfeldgebiet gebiet)
 	{
@@ -16,16 +16,16 @@ public class BebaubaresFeld extends KaufbaresFeld {
 	
 	public void zubau()
 	{
-		häuser++;
+		haeuser++;
 		
 		besitzer.minusGold(getZubauKosten());
-		SpielfeldController.sdb.häuserÄnderungHinzufügen(this);
+		SpielfeldController.sdb.haeuseraenderungHinzufuegen(this);
 	}
 	
 	@Override
 	public int aufenthaltBerechnen()
 	{
-		int miete = getPreisliste()[häuser];
+		int miete = getPreisliste()[haeuser];
 		
 		return miete;
 	}
@@ -72,13 +72,13 @@ public class BebaubaresFeld extends KaufbaresFeld {
 		return gebiet;
 	}
 	
-	public int getHäuser()
+	public int getHaeuser()
 	{
-		return häuser;
+		return haeuser;
 	}
 	
-	public void setHäuser(int häuser)
+	public void setHaeuser(int haeuser)
 	{
-		this.häuser = (byte) häuser;
+		this.haeuser = (byte) haeuser;
 	}
 }
