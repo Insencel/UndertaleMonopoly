@@ -1,7 +1,6 @@
 package application.gui;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import application.Main;
 import application.spiel.Spiel;
@@ -48,7 +47,7 @@ public class EndscreenController {
 		
 		for(int i = 0; i<spieler.length-1; i++)
 		{
-			int maxIndex = 0;
+			int maxIndex = i;
 			
 			for(int j = i; j<spieler.length; j++)
 			{

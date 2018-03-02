@@ -526,7 +526,7 @@
                   <Insets right="2.0" />
                </GridPane.margin>
                <image>
-                  <Image url="@../../bilder/knöpfe/move.png" />
+                  <Image url="@../../bilder/knoepfe/move.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -566,12 +566,12 @@
             </ImageView>
             <ImageView fx:id="wuerfelL" fitHeight="150.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="7">
                <image>
-                  <Image url="@../../bilder/würfel/Würfel%202.jpg" />
+                  <Image url="@../../bilder/wuerfel/Wuerfel%202.jpg" />
                </image>
             </ImageView>
             <ImageView fx:id="wuerfelR" fitHeight="150.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="7">
                <image>
-                  <Image url="@../../bilder/würfel/Würfel%204.jpg" />
+                  <Image url="@../../bilder/wuerfel/Wuerfel%204.jpg" />
                </image>
             </ImageView>
             <GridPane fx:id="feldGP" maxHeight="-Infinity" prefHeight="280.0" prefWidth="240.0" GridPane.columnIndex="5" GridPane.columnSpan="3" GridPane.rowIndex="3" GridPane.rowSpan="4">
@@ -854,7 +854,7 @@
                   </ImageView>
                   <ImageView fx:id="umblaetterpfeil" fitHeight="31.0" fitWidth="50.0" onMouseClicked="#umdrehen" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
                      <image>
-                        <Image url="@../../bilder/knöpfe/seitenwechsel.png" />
+                        <Image url="@../../bilder/knoepfe/seitenwechsel.png" />
                      </image>
                      <GridPane.margin>
                         <Insets bottom="13.0" right="11.0" />
