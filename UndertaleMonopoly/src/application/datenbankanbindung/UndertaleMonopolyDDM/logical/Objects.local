@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.logical.LogicalDesign>
+   <object objectType="Entity" objectID="0B68A423-A33D-4FB4-C028-6C932B8C2F5F" name="Spiel" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Entity" propertyParentId="216C3405-345A-63DC-003A-D86F1CA5E040" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Entity" objectID="4EA15AA5-3435-EBE4-1EA1-5ABAFE32634F" name="Spieler" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Entity" propertyParentId="216C3405-345A-63DC-003A-D86F1CA5E040" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Entity" objectID="91B0BC8A-F01A-65C1-99B9-D229BABE0533" name="Spielfelder" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Entity" propertyParentId="216C3405-345A-63DC-003A-D86F1CA5E040" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Relation" objectID="DE953AD7-8B7F-1C06-76E3-56127AE70732" name="Relation_1" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Relation" propertyParentId="216C3405-345A-63DC-003A-D86F1CA5E040" propertySourceId="0B68A423-A33D-4FB4-C028-6C932B8C2F5F" propertyTargetId="4EA15AA5-3435-EBE4-1EA1-5ABAFE32634F"/>
+   <object objectType="Relation" objectID="07E38040-9883-CE39-4A97-538C740AEC07" name="Relation_4" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Relation" propertyParentId="216C3405-345A-63DC-003A-D86F1CA5E040" propertySourceId="0B68A423-A33D-4FB4-C028-6C932B8C2F5F" propertyTargetId="91B0BC8A-F01A-65C1-99B9-D229BABE0533"/>
+</oracle.dbtools.crest.model.design.logical.LogicalDesign>

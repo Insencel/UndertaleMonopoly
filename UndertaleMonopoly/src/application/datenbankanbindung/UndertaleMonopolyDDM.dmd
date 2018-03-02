@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="UndertaleMonopolyDDM" id="846F0A3C-E711-A179-9F5A-72D3D65827EF" version="3.5">
+<createdBy>Kaan</createdBy>
+<createdTime>2018-03-02 09:02:31 UTC</createdTime>
+<ownerDesignName>UndertaleMonopolyDDM</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>846F0A3C-E711-A179-9F5A-72D3D65827EF</designId>
+</OSDM_Design>

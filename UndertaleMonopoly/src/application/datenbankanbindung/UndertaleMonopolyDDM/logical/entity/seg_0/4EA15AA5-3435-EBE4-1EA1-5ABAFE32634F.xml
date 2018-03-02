@@ -1,0 +1,123 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="4EA15AA5-3435-EBE4-1EA1-5ABAFE32634F" name="Spieler">
+<createdBy>Kaan</createdBy>
+<createdTime>2018-03-02 09:15:05 UTC</createdTime>
+<ownerDesignName>UndertaleMonopolyDDM</ownerDesignName>
+<engineerTo>
+<item key="9A812D63-8594-B5D2-E8CB-763055F77336" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="SpielerID" id="B7B8522D-1080-B87B-2DE0-AB905603B7A4">
+<createdBy>Kaan</createdBy>
+<createdTime>2018-03-02 09:15:24 UTC</createdTime>
+<ownerDesignName>UndertaleMonopolyDDM</ownerDesignName>
+<engineerTo>
+<item key="9A812D63-8594-B5D2-E8CB-763055F77336" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="SpielID" id="32CA97CD-6A5F-280B-14DC-116C20A91E70">
+<createdBy>Kaan</createdBy>
+<createdTime>2018-03-02 09:15:24 UTC</createdTime>
+<ownerDesignName>UndertaleMonopolyDDM</ownerDesignName>
+<engineerTo>
+<item key="9A812D63-8594-B5D2-E8CB-763055F77336" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Gold" id="1D69A085-7720-4276-3CE4-5E199449B3EC">
+<createdBy>Kaan</createdBy>
+<createdTime>2018-03-02 09:15:24 UTC</createdTime>
+<ownerDesignName>UndertaleMonopolyDDM</ownerDesignName>
+<engineerTo>
+<item key="9A812D63-8594-B5D2-E8CB-763055F77336" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Position" id="83815C9E-A02B-2488-DC32-06E4EDD6FABD">
+<createdBy>Kaan</createdBy>
+<createdTime>2018-03-02 09:15:25 UTC</createdTime>
+<ownerDesignName>UndertaleMonopolyDDM</ownerDesignName>
+<engineerTo>
+<item key="9A812D63-8594-B5D2-E8CB-763055F77336" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="VerbleibendeGefaengnisZeit" id="07DD6C78-1551-DF37-2B10-38256468278A">
+<createdBy>Kaan</createdBy>
+<createdTime>2018-03-02 09:15:25 UTC</createdTime>
+<ownerDesignName>UndertaleMonopolyDDM</ownerDesignName>
+<engineerTo>
+<item key="9A812D63-8594-B5D2-E8CB-763055F77336" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="RundenStehenBleiben" id="B13CAA3D-BFDE-B10D-2477-7CA2CDE4EEBB">
+<createdBy>Kaan</createdBy>
+<createdTime>2018-03-02 09:15:25 UTC</createdTime>
+<ownerDesignName>UndertaleMonopolyDDM</ownerDesignName>
+<engineerTo>
+<item key="9A812D63-8594-B5D2-E8CB-763055F77336" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="SpielID1" id="DB3FDA1E-CE30-8B57-FEF7-9923F0EEE745">
+<createdBy>Kaan</createdBy>
+<createdTime>2018-03-02 09:27:55 UTC</createdTime>
+<generatorID>DE953AD7-8B7F-1C06-76E3-56127AE70732</generatorID>
+<ownerDesignName>UndertaleMonopolyDDM</ownerDesignName>
+<engineerTo>
+<item key="9A812D63-8594-B5D2-E8CB-763055F77336" value="true"/>
+</engineerTo>
+<referedAttribute>F2766A66-48F1-57E5-4232-5CEBF8320259</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="6794380D-AD13-2393-C85F-F0902D5B927A" name="Spieler PK">
+<createdBy>Kaan</createdBy>
+<createdTime>2018-03-02 09:16:18 UTC</createdTime>
+<ownerDesignName>UndertaleMonopolyDDM</ownerDesignName>
+<engineerTo>
+<item key="9A812D63-8594-B5D2-E8CB-763055F77336" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>B7B8522D-1080-B87B-2DE0-AB905603B7A4</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
