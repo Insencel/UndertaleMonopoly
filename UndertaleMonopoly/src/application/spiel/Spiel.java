@@ -271,8 +271,8 @@ public class Spiel
 		return spielfelder;
 	}
 
-	public int[] getTabellenposition(int i) {
-		return tabellenposition[i];
+	public int[] getTabellenposition(int position) {
+		return tabellenposition[position];
 	}
 	
 	public int[][] getTabellenposition() {

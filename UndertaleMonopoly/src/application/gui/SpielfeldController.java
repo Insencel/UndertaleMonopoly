@@ -907,11 +907,7 @@ public class SpielfeldController
 			{
 				e.printStackTrace();
 			}
-			
 		}
-		
-		
-		
 	}
 	
 	

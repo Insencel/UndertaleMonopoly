@@ -55,9 +55,4 @@ public class Gefaengnisfeld extends Spielfeld{
 		
 		freilassen(SpielfeldController.spiel.getMomentanenSpieler());
 	}
-	
-	public boolean darfWuerfeln(Spieler s)
-	{
-		return s.getVerbleibendeGefangenenZeit()>0;
-	}
 }

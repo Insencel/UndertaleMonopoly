@@ -127,19 +127,5 @@ public class Datenbank {
 		}
 	}
 	
-	public ResultSet eigeneSeclectAbfrage(String query)
-	{
-		ResultSet rs = null;
-		try	
-		{
-			Statement anweisung = verbindung.createStatement();
-			rs = anweisung.executeQuery("query");
-		}
-		catch (SQLException e)
-		{
-			System.out.println("Auslesen funktioniert nicht");
-			e.printStackTrace();
-		}
-		return rs;
-	}
+
 }
