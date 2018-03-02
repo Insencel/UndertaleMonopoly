@@ -19,7 +19,7 @@ public class SpielDB {
 	private static int spielID;
 	private ArrayList<UpdateEnum> änderungen = new ArrayList<UpdateEnum>();
 	private KaufbaresFeld besitzerÄnderung;
-	private ArrayList<BebaubaresFeld> hausänderung;
+	private ArrayList<BebaubaresFeld> hausänderung = new ArrayList<BebaubaresFeld>();
 	
 	public void spielstandLaden(String name)
 	{
@@ -204,11 +204,7 @@ public class SpielDB {
 		}
 		if(änderungen.contains(UpdateEnum.amZug))
 		{
-			int amZug = SpielfeldController.spiel.getAmZug()-1;
-			if(amZug<0)
-			{
-				amZug = SpielfeldController.spiel.getSpieler().length-1;
-			}
+			int amZug = SpielfeldController.spiel.getAmZug();
 			
 			updateSpielAmZug(amZug);
 			
@@ -324,30 +320,30 @@ public class SpielDB {
 	
 	private void updateSpielerPosition(Spieler s)
 	{
-		db.update("spieler", "position=" + s.getPosition(), "SpielID=" + spielID + " AND SpielerID=" + getMomentanerSpielerID());
+		db.update("spieler", "position=" + s.getPosition(), "SpielID=" + spielID + " AND SpielerID=" + getSpielerID(s));
 	}
 	
 	private void updateSpielerGefängnisZeit(Spieler s)
 	{
-		db.update("spieler", "VerbleibendeGefaengnisZeit=" + s.getVerbleibendeGefangenenZeit(), "SpielID=" + spielID + " AND SpielerID=" + getMomentanerSpielerID());
+		db.update("spieler", "VerbleibendeGefaengnisZeit=" + s.getVerbleibendeGefangenenZeit(), "SpielID=" + spielID + " AND SpielerID=" + getSpielerID(s));
 	}
 	
 	private void updateSpielerRundenStehenBleiben(Spieler s)
 	{
-		db.update("spieler", "RundenStehenBleiben=" + s.getRundenStehenBleiben() , "SpielID=" + spielID + " AND SpielerID=" + getMomentanerSpielerID());
+		db.update("spieler", "RundenStehenBleiben=" + s.getRundenStehenBleiben() , "SpielID=" + spielID + " AND SpielerID=" + getSpielerID(s));
 	}
 	
 	
 	
 	
-	private int getMomentanerSpielerID()
+	private int getSpielerID(Spieler s)
 	{
 		ResultSet rs = db.auslesen("spieler", "WHERE SpielID=" + spielID);
 		int rückgabe = 0;
 		try
 		{
 			rs.next();
-			rückgabe = rs.getInt("SpielerID") + SpielfeldController.spiel.getAmZug();
+			rückgabe = rs.getInt("SpielerID") + SpielfeldController.spiel.getIndexOfSpieler(s);
 		}
 		catch (SQLException e)
 		{

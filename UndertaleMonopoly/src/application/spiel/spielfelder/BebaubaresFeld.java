@@ -1,5 +1,6 @@
 package application.spiel.spielfelder;
 
+import application.gui.SpielfeldController;
 
 public class BebaubaresFeld extends KaufbaresFeld {
 	private Spielfeldgebiet gebiet;
@@ -18,6 +19,7 @@ public class BebaubaresFeld extends KaufbaresFeld {
 		häuser++;
 		
 		besitzer.minusGold(getZubauKosten());
+		SpielfeldController.sdb.häuserÄnderungHinzufügen(this);
 	}
 	
 	@Override

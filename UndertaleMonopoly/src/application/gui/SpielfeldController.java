@@ -548,7 +548,7 @@ public class SpielfeldController
 			
 			if(kf.getBesitzer()==null)
 			{
-				preis.setStyle("-fx-font-weight: bold");
+				preis.setStyle("-fx-font-weight: bolder");
 				owner.setVisible(false);
 			}
 			else
@@ -585,24 +585,24 @@ public class SpielfeldController
 				switch(bf.getHäuser())
 				{
 				case 5:
-					aufenthaltsgebuehrHotel.setStyle("-fx-font-weight: bold");
+					aufenthaltsgebuehrHotel.setStyle("-fx-font-weight: bolder");
 					break;
 				case 4:
-					aufenthaltsgebuehr4house.setStyle("-fx-font-weight: bold");
+					aufenthaltsgebuehr4house.setStyle("-fx-font-weight: bolder");
 					break;
 				case 3:
-					aufenthaltsgebuehr3house.setStyle("-fx-font-weight: bold");
+					aufenthaltsgebuehr3house.setStyle("-fx-font-weight: bolder");
 					break;
 				case 2:
-					aufenthaltsgebuehr2house.setStyle("-fx-font-weight: bold");
+					aufenthaltsgebuehr2house.setStyle("-fx-font-weight: bolder");
 					break;
 				case 1:
-					aufenthaltsgebuehr1house.setStyle("-fx-font-weight: bold");
+					aufenthaltsgebuehr1house.setStyle("-fx-font-weight: bolder");
 					break;
 				case 0:
 					if(bf.getBesitzer()!=null)
 					{
-						aufenthaltsgebuehr.setStyle("-fx-font-weight: bold");
+						aufenthaltsgebuehr.setStyle("-fx-font-weight: bolder");
 					}
 				}
 				
@@ -637,10 +637,10 @@ public class SpielfeldController
 					switch(pf.getBesitzer().getAnzahlAnProduktionImBesitz())
 					{
 					case 2:
-						miete2Produktion.setStyle("-fx-font-weight: bold");
+						miete2Produktion.setStyle("-fx-font-weight: bolder");
 						break;
 					case 1:
-						miete1Produktion.setStyle("-fx-font-weight: bold");
+						miete1Produktion.setStyle("-fx-font-weight: bolder");
 						break;
 					}
 				}
@@ -670,16 +670,16 @@ public class SpielfeldController
 					switch(rf.getBesitzer().getAnzahlAnHäfenImBesitz())
 					{
 					case 4:
-						miete4Haefen.setStyle("-fx-font-weight: bold");
+						miete4Haefen.setStyle("-fx-font-weight: bolder");
 						break;
 					case 3:
-						miete3Haefen.setStyle("-fx-font-weight: bold");
+						miete3Haefen.setStyle("-fx-font-weight: bolder");
 						break;
 					case 2:
-						miete2Haefen.setStyle("-fx-font-weight: bold");
+						miete2Haefen.setStyle("-fx-font-weight: bolder");
 						break;
 					case 1:
-						miete1Hafen.setStyle("-fx-font-weight: bold");
+						miete1Hafen.setStyle("-fx-font-weight: bolder");
 						break;
 					}
 				}

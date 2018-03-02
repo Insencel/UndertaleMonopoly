@@ -49,6 +49,7 @@ public abstract class KaufbaresFeld extends Spielfeld {
 	{
 		this.besitzer = besitzer;
 		SpielfeldController.sdb.änderungHinzufügen(UpdateEnum.besitzer);
+		SpielfeldController.sdb.setBesitzerÄnderung(this);
 	}
 
 	public int getPreis() {
