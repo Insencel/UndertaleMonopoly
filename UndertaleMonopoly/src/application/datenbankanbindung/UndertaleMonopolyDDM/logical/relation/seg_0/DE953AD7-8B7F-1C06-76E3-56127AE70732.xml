@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_1" directorySegmentName="seg_0" id="DE953AD7-8B7F-1C06-76E3-56127AE70732">
+<createdBy>Kaan</createdBy>
+<createdTime>2018-03-02 09:27:55 UTC</createdTime>
+<ownerDesignName>UndertaleMonopolyDDM</ownerDesignName>
+<engineerTo>
+<item key="9A812D63-8594-B5D2-E8CB-763055F77336" value="true"/>
+</engineerTo>
+<sourcePk>F2A7F31D-19E8-C5CA-4DC9-B982B1F43D80</sourcePk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>0B68A423-A33D-4FB4-C028-6C932B8C2F5F</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>4EA15AA5-3435-EBE4-1EA1-5ABAFE32634F</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

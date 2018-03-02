@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="216C3405-345A-63DC-003A-D86F1CA5E040" mainViewID="DA07AA2F-28CB-33BD-9C73-6FBBDF4D650A">
+<createdBy>Kaan</createdBy>
+<createdTime>2018-03-02 09:02:31 UTC</createdTime>
+<ownerDesignName>UndertaleMonopolyDDM</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>
